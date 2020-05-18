@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFF0"
+    tools:contex=".PopUpSignIn">
+
+    <TextView
+        android:id="@+id/popup_labName"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/labName"
+        android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/popup_edName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/popup_labName"
+        android:background="@drawable/border"
+        android:inputType="text"
+        android:gravity="center"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/popup_labSurname"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/popup_labName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/labSurname"
+        android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/popup_edSurname"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/popup_edName"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/popup_labSurname"
+        android:background="@drawable/border"
+        android:inputType="text"
+        android:gravity="center"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/popup_labEmail"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/popup_labSurname"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/labEmail"
+        android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/popup_edEmail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/popup_edSurname"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/popup_labEmail"
+        android:background="@drawable/border"
+        android:inputType="textEmailAddress"
+        android:gravity="center"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/popup_labPassword"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/popup_labEmail"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/labPassword"
+        android:textColor="#000" />
+
+    <EditText
+        android:id="@+id/popup_edPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/popup_edEmail"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@+id/popup_labEmail"
+        android:background="@drawable/border"
+        android:inputType="textPassword"
+        android:gravity="center"
+        android:textColor="#000" />
+
+    <Button
+        android:id="@+id/popup_btnSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/popup_edPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_bg"
+        android:backgroundTint="#FF9800"
+        android:text="@string/sign_in"
+        android:textAlignment="center"
+        android:textColor="#000" />
+
+</RelativeLayout>
