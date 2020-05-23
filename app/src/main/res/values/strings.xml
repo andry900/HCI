@@ -27,4 +27,5 @@
     <string name="labSurname">"Surname: "</string>
     <string name="labPassword">"Password: "</string>
     <string name="exit">Exit</string>
+    <string name="new_doc_btn">Insert new document</string>
 </resources>
