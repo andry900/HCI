@@ -17,7 +17,8 @@
         android:id="@+id/imageView"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_app_logo"
         app:civ_border_width="1dp"
         app:civ_shadow="true"
         app:civ_shadow_radius="10"
@@ -27,15 +28,23 @@
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/imageView"
-        android:textColor="#FFF"/>
+        android:text="Marco Rossi"
+        android:textSize="20sp"
+        android:textColor="#FDFCFC"/>
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameTextView"
-        android:textColor="#FFF"/>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="marcorossi@gmail.com"
+        android:textSize="15sp"
+        android:textColor="#FBFAFA"/>
 
 </RelativeLayout>
