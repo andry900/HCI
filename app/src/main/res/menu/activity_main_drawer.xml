@@ -26,7 +26,7 @@
             android:title="@string/menu_documents" />
         <item
             android:id="@+id/nav_analytics"
-            android:icon="@drawable/ic_analythics"
+            android:icon="@drawable/ic_analytics"
             android:title="@string/menu_analytics" />
 
         <item android:title="@string/exit">
