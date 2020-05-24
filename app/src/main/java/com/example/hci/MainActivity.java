@@ -37,4 +37,10 @@ public class MainActivity extends AppCompatActivity {
         Intent navigationActivity = new Intent(getApplicationContext(), NavigationActivity.class);
         startActivity(navigationActivity);
     }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        finish();
+    }
 }

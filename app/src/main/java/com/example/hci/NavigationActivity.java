@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -75,17 +72,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
-    public void loadLoggedUserData() {
-        View nav_header_main = navigationView.getHeaderView(0);
-
-        TextView nameTextView = nav_header_main.findViewById(R.id.nameTextView);
-        TextView emailTextView =  nav_header_main.findViewById(R.id.emailTextView);
-        ImageView imageView =  nav_header_main.findViewById(R.id.imageView);
-
-        emailTextView.append("luca.rossi@gmail.com");
-        //imageView.setImageResource(R.mipmap.avatar);
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         FrameLayout frameLayout = findViewById(R.id.nav_host_fragment);
@@ -97,7 +83,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
                         .addToBackStack(null)
                         .commit();
-                Objects.requireNonNull(getSupportActionBar()).setTitle("HCI");
+                Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
                 break;
 
             case R.id.nav_profile:
@@ -173,7 +159,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
             navigationView.getMenu().getItem(1).setChecked(false);
             navigationView.getMenu().getItem(0).setChecked(true);
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Virgilio");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
         else if (fragment instanceof DocumentsFragment) {
@@ -184,7 +170,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
             navigationView.getMenu().getItem(2).setChecked(false);
             navigationView.getMenu().getItem(0).setChecked(true);
-            Objects.requireNonNull(getSupportActionBar()).setTitle("HCI");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
         else if (fragment instanceof AnalyticsFragment) {
@@ -195,7 +181,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
             navigationView.getMenu().getItem(3).setChecked(false);
             navigationView.getMenu().getItem(0).setChecked(true);
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Virgilio");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
         else {  //HomeFragment
