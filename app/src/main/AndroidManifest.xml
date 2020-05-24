@@ -24,6 +24,9 @@
         <activity android:name=".PopUpSignIn"
             android:theme="@style/AppTheme.PopUpTheme"
             android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".ui.numbers.ChooseIconNumber"
+            android:theme="@style/AppTheme.PopUpTheme"/>
     </application>
 
 </manifest>

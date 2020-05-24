@@ -5,4 +5,32 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_numbers">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutListViewNumbers"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/numbers_listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:divider="?attr/colorPrimary"
+            android:dividerHeight="2dp"
+            android:visibility="visible"
+            android:layout_weight="0.7"/>
+
+        <Button
+            android:id="@+id/insertNumber_button"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="@string/insert_number"
+            android:visibility="visible"/>
+
+    </LinearLayout>
 </RelativeLayout>

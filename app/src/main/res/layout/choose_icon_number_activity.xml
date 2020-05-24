@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="#00BCD4"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton_ic_ambulance"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.3"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_ambulance" />
+
+            <ImageButton
+                android:id="@+id/imageButton_ic_fire"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.3"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_fire" />
+
+            <ImageButton
+                android:id="@+id/imageButton_ic_police"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.3"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_police" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="#00BCD4"
+            android:orientation="horizontal"
+            android:weightSum="0.99">
+
+            <ImageButton
+                android:id="@+id/imageButton_ic_neighbour"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0.3"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_neighbour" />
+
+            <ImageButton
+                android:id="@+id/imageButton_ic_water"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0.3"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_water" />
+
+            <ImageButton
+                android:id="@+id/imageButton_ic_landlord"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="0.3"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_landlord" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
