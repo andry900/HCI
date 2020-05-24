@@ -17,6 +17,8 @@ import com.example.hci.R;
 import java.util.ArrayList;
 
 public class NumbersFragment extends Fragment {
+    ArrayList<String> icon_numbers = new ArrayList<>();
+    ArrayList<String> numbers = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,8 +40,6 @@ public class NumbersFragment extends Fragment {
 
 
     private void fill_listViewNumbers(ListView numbers_listView){
-        ArrayList<String> icon_numbers = new ArrayList<>();
-        ArrayList<String> numbers = new ArrayList<>();
         icon_numbers.add(String.valueOf(R.mipmap.ic_ambulance));
         icon_numbers.add(String.valueOf(R.mipmap.ic_landlord));
         icon_numbers.add(String.valueOf(R.mipmap.ic_water));
@@ -55,4 +55,5 @@ public class NumbersFragment extends Fragment {
         NumbersCustomAdapter numbersCustomAdapter = new NumbersCustomAdapter((Activity)getContext(),numbers,icon_numbers);
         numbers_listView.setAdapter(numbersCustomAdapter);
     }
+
 }
