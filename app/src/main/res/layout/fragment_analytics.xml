@@ -3,6 +3,110 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_analytics">
+    android:id="@+id/fragment_analytics"
+    android:background="#FFF">
+
+    <TextView
+        android:id="@+id/home_analytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_analytics"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/time_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_time_frame"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_below="@+id/home_analytics"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/labStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/starting_date"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:layout_below="@+id/time_frame"
+        android:layout_marginTop="27dp"
+        android:layout_marginStart="80dp"/>
+
+    <EditText
+        android:id="@+id/editStart"
+        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_below="@+id/time_frame"
+        android:layout_toEndOf="@id/labStart"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/border"
+        android:hint="@string/enter_date"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textColorHint="#808080"
+        android:inputType="date"/>
+
+    <ImageButton
+        android:id="@+id/calStart"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/time_frame"
+        android:layout_marginTop="21dp"
+        android:layout_toEndOf="@id/editStart"
+        android:layout_marginStart="10dp"
+        android:src="@mipmap/ic_calendar"/>
+
+    <TextView
+        android:id="@+id/labEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ending_date"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:layout_below="@+id/labStart"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="80dp"/>
+
+    <EditText
+        android:id="@+id/editEnd"
+        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_below="@+id/editStart"
+        android:layout_toEndOf="@id/labStart"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/border"
+        android:hint="@string/enter_date"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textColorHint="#808080"
+        android:inputType="date"/>
+
+    <ImageButton
+        android:id="@+id/calEnd"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/calStart"
+        android:layout_marginTop="21dp"
+        android:layout_toEndOf="@id/editStart"
+        android:layout_marginStart="10dp"
+        android:src="@mipmap/ic_calendar"/>
+
+    <Button
+        android:id="@+id/btnAnalytics"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labEnd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="@string/generate_analytics"
+        android:textSize="12sp" />
 
 </RelativeLayout>

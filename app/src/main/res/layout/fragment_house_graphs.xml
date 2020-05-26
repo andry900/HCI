@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_analytics"
+    android:background="#FFF">
+
+    <TextView
+        android:id="@+id/home_analytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/house_graphs"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/time_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time_frame"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/home_analytics"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/frame_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/home_analytics"
+        android:layout_toEndOf="@id/time_frame"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/average_expenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/average_expenses"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/home_analytics"
+        android:layout_toEndOf="@id/frame_days"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="50dp"/>
+
+    <TextView
+        android:id="@+id/expenses_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/expenses_data"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/average_expenses"
+        android:layout_toEndOf="@id/frame_days"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="70dp"/>
+
+    <LinearLayout
+        android:id="@+id/graphs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/expenses_data"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/histogram"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_weight="0.9"
+            android:background="#FFF"
+            android:scaleType="fitStart"
+            android:src="@mipmap/ic_histogram" />
+
+        <ImageButton
+            android:id="@+id/pieChat"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_weight="0.5"
+            android:background="#FFFFFF"
+            android:scaleType="fitEnd"
+            android:src="@mipmap/ic_pie_chart" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/rental_analytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rental_analytics"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/graphs"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="40dp"/>
+
+    <TextView
+        android:id="@+id/food_analytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food_analytics"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/graphs"
+        android:layout_toEndOf="@id/rental_analytics"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="90dp"/>
+
+    <ImageButton
+        android:id="@+id/graph"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/graphs"
+        android:layout_marginTop="30dp"
+        android:background="#FFF"
+        android:scaleType="fitStart"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_line_graph" />
+
+    <TextView
+        android:id="@+id/bills_analytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bills_analytics"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:layout_below="@+id/graph"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

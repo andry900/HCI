@@ -17,6 +17,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import com.example.hci.ui.analytics.HouseGraphs;
 import com.example.hci.ui.home.HomeFragment;
 import com.example.hci.ui.events.EventsFragment;
 import com.example.hci.ui.documents.DocumentsFragment;
@@ -151,7 +152,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
 
-        if (fragment instanceof EventsFragment) {
+        if (fragment instanceof ProfileFragment) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
@@ -162,7 +163,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if (fragment instanceof DocumentsFragment) {
+        else if (fragment instanceof EventsFragment) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
@@ -173,7 +174,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if (fragment instanceof AnalyticsFragment) {
+        else if (fragment instanceof NumbersFragment) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
@@ -183,6 +184,34 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             navigationView.getMenu().getItem(0).setChecked(true);
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
+        }
+        else if (fragment instanceof DocumentsFragment) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
+                    .commit();
+
+            navigationView.getMenu().getItem(4).setChecked(false);
+            navigationView.getMenu().getItem(0).setChecked(true);
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else if (fragment instanceof AnalyticsFragment) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
+                    .commit();
+
+            navigationView.getMenu().getItem(5).setChecked(false);
+            navigationView.getMenu().getItem(0).setChecked(true);
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else if (fragment instanceof HouseGraphs) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new AnalyticsFragment(),"fragment_analytics")
+                    .commit();
         }
         else {  //HomeFragment
             if (doubleBackToExitPressedOnce) {
