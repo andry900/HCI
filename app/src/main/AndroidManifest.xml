@@ -27,6 +27,9 @@
 
         <activity android:name=".ui.numbers.ChooseIconNumber"
             android:theme="@style/AppTheme.PopUpTheme"/>
+
+        <activity android:name=".ui.documents.ChooseLabel"
+            android:theme="@style/AppTheme.PopUpTheme"/>
     </application>
 
 </manifest>
