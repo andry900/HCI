@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="72dp"
+    android:backgroundTint="@color/colorPrimary">
 
     <TextView
         android:id="@+id/doc_name"
@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="DOCNAME"
+        android:text="@string/docname_ui"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="LABEL"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/label_ui"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="@+id/doc_name"
         app:layout_constraintTop_toBottomOf="@+id/doc_name" />
 
@@ -32,9 +35,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:text="STATUS"
+        android:text="@string/status_ui"
         android:textAlignment="viewEnd"
+        android:textColor="@color/colorPrimaryDark"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/doc_label" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doc_label" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,4 +42,7 @@
     <string name="rental_analytics">Rental Analytics</string>
     <string name="food_analytics">Food Analytics</string>
     <string name="bills_analytics">Bills Analytics</string>
+    <string name="docname_ui">DOCNAME</string>
+    <string name="label_ui">LABEL</string>
+    <string name="status_ui">STATUS</string>
 </resources>
