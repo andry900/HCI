@@ -6,18 +6,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hci.R;
+import com.example.hci.ui.numbers.InsertNumberFragment;
 
 import java.util.ArrayList;
 
 public class DocumentsFragment extends Fragment {
 
     private RecyclerView docList;
+    private Button newDocBtn;
+
     private LinearLayoutManager lm;
     private DocumentListAdapter mAdapter;
     private ArrayList<Document> savedDocs;
@@ -28,6 +33,7 @@ public class DocumentsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_documents, container, false);
 
         docList = root.findViewById(R.id.docs_list);
+        newDocBtn = root.findViewById(R.id.newDoc_btn);
 
         savedDocs = new ArrayList<>();
         savedDocs.add(new Document("February Energy Bill", "bill","payed",
@@ -42,6 +48,12 @@ public class DocumentsFragment extends Fragment {
         docList.setLayoutManager(lm);
         mAdapter = new DocumentListAdapter(savedDocs);
         docList.setAdapter(mAdapter);
+
+        newDocBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ChooseLabel.class);
+            startActivity(intent);
+        });
+
         return root;
     }
 
@@ -110,7 +122,5 @@ public class DocumentsFragment extends Fragment {
         public void setAmount(Float amount) {
             this.amount = amount;
         }
-
-
     }
 }

@@ -29,7 +29,11 @@
             android:theme="@style/AppTheme.PopUpTheme"/>
 
         <activity android:name=".ui.documents.ChooseLabel"
-            android:theme="@style/AppTheme.PopUpTheme"/>
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:excludeFromRecents="true"/>
+        <activity android:name=".ui.documents.InsertNewDocument"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>
