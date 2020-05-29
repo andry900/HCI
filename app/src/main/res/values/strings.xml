@@ -45,4 +45,12 @@
     <string name="docname_ui">DOCNAME</string>
     <string name="label_ui">LABEL</string>
     <string name="status_ui">STATUS</string>
+    <string name="name_textview">Insert document name</string>
+    <string name="utility_field">Insert the utility type</string>
+    <string name="amount_field">Insert amount of the bill</string>
+    <string name="image_hint">Select an image for the document:</string>
+    <string name="img_storage">STORAGE</string>
+    <string name="img_camera">CAMERA</string>
+    <string name="uploaded_img">uploaded img</string>
+    <string name="select_a_status">Select a status</string>
 </resources>

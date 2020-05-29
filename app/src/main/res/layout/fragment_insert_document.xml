@@ -1,20 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@android:color/background_light">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+>
+
+            <TextView
+                android:id="@+id/titleDocInsert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp"
+                app:borderColor="@color/colorPrimary"
+                app:borderWidth="2dp"
+                app:cornerRadius="8dp">
+
+                <EditText
+                    android:id="@+id/nameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name_textview"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorPrimary" />
+            </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+
+            <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                android:id="@+id/utilityBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+
+                android:layout_marginTop="5dp"
+                app:borderColor="@color/colorPrimary"
+                app:borderWidth="2dp"
+                app:cornerRadius="8dp">
+
+                <EditText
+                    android:id="@+id/utilityField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/utility_field"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorPrimary" />
+            </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+
+            <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                android:id="@+id/amountBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                app:borderColor="@color/colorPrimary"
+                app:borderWidth="2dp"
+                app:cornerRadius="8dp">
+
+                <EditText
+                    android:id="@+id/amountField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/amount_field"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorPrimary" />
+            </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border_list">
+
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/status_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hapticFeedbackEnabled="false"
+                    android:hint="@string/select_a_status"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="16sp"
+                    app:arrowTint="@color/colorPrimary"
+                    app:textTint="@color/colorPrimary" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="7dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:text="@string/image_hint"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp">
+
+                <Button
+                    android:id="@+id/cameraBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:drawableStart="@drawable/ic_photo_camera_black_24dp"
+                    android:text="@string/img_camera"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/storageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:drawableStart="@drawable/ic_sd_storage_black_24dp"
+                    android:text="@string/img_storage"
+                    tools:ignore="ButtonStyle" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/upld_img"
+                android:layout_width="300dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border_list"
+                android:contentDescription="@string/uploaded_img"
+                app:srcCompat="@mipmap/ic_general_image" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingEnd="30dp"
+                android:paddingStart="30dp">
+
+                <ImageButton
+                    android:id="@+id/prevBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/rounded_btn"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    android:textColor="#fff" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/listDivider"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/nextBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/rounded_btn"
+                    android:src="@drawable/ic_arrow_forward_black_24dp"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+</ScrollView>
