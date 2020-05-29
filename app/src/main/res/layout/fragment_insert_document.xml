@@ -20,15 +20,15 @@
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
 
             <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="8dp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="2dp"
@@ -41,6 +41,7 @@
                     android:hint="@string/name_textview"
                     android:importantForAutofill="no"
                     android:inputType="text"
+                    android:paddingStart="20dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/colorPrimary" />
             </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
@@ -50,8 +51,8 @@
                 android:id="@+id/utilityBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
 
                 android:layout_marginTop="5dp"
                 app:borderColor="@color/colorPrimary"
@@ -65,6 +66,7 @@
                     android:hint="@string/utility_field"
                     android:importantForAutofill="no"
                     android:inputType="text"
+                    android:paddingStart="20dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/colorPrimary" />
             </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
@@ -74,8 +76,8 @@
                 android:id="@+id/amountBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="2dp"
@@ -88,6 +90,7 @@
                     android:hint="@string/amount_field"
                     android:importantForAutofill="no"
                     android:inputType="number"
+                    android:paddingStart="20dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/colorPrimary" />
             </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
@@ -96,8 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_marginBottom="7dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/border_list">
 
@@ -109,7 +112,7 @@
                     android:hint="@string/select_a_status"
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/colorPrimary"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:arrowTint="@color/colorPrimary"
                     app:textTint="@color/colorPrimary" />
             </TableRow>
