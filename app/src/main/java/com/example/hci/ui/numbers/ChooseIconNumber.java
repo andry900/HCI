@@ -4,64 +4,84 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.ImageButton;
-
-import androidx.fragment.app.Fragment;
-
 import com.example.hci.R;
 
+
 public class ChooseIconNumber extends Activity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_icon_number_activity);
+
+        //TO CREATE THE PANEL
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
-
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.4));
 
-        InsertNumberFragment insertNumberFragment = new InsertNumberFragment();
-
-        ImageButton im = insertNumberFragment.getIc_general_image();
-
+        //IMAGE BUTTONS
         ImageButton imgButton_ic_ambulance = findViewById(R.id.imageButton_ic_ambulance);
-        imgButton_ic_ambulance.setOnClickListener(v -> {
-            insertNumberFragment.ic_general_image.setBackgroundResource(R.mipmap.ic_ambulance);
-            finish();
-        });
-
         ImageButton imgButton_ic_fire = findViewById(R.id.imageButton_ic_fire);
-        imgButton_ic_fire.setOnClickListener(v -> {
-            insertNumberFragment.ic_general_image.setBackgroundResource(R.mipmap.ic_fire);
-            finish();
-        });
-
         ImageButton imgButton_ic_police = findViewById(R.id.imageButton_ic_police);
-        imgButton_ic_police.setOnClickListener(v -> {
-            insertNumberFragment.ic_general_image.setBackgroundResource(R.mipmap.ic_police);
-            finish();
-        });
-
-        ImageButton imgButton_ic_neighbour = findViewById(R.id.imageButton_ic_neighbour);
-        imgButton_ic_neighbour.setOnClickListener(v -> {
-            insertNumberFragment.ic_general_image.setBackgroundResource(R.mipmap.ic_neighbour);
-            finish();
-        });
-
         ImageButton imgButton_ic_water = findViewById(R.id.imageButton_ic_water);
-        imgButton_ic_water.setOnClickListener(v -> {
-            insertNumberFragment.ic_general_image.setBackgroundResource(R.mipmap.ic_water);
+        ImageButton imgButton_ic_neighbour = findViewById(R.id.imageButton_ic_neighbour);
+        ImageButton imgButton_ic_landlord = findViewById(R.id.imageButton_ic_landlord);
+
+        //CLICK ON AMBULANCE ICON
+        imgButton_ic_ambulance.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            imgButton_ic_ambulance.setTag("imgButton_ic_ambulance");
+            returnIntent.putExtra("result",imgButton_ic_ambulance.getTag().toString());
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
 
-        ImageButton imgButton_ic_landlord = findViewById(R.id.imageButton_ic_landlord);
+        //CLICK ON FIRE ICON
+        imgButton_ic_fire.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            imgButton_ic_fire.setTag("imgButton_ic_fire");
+            returnIntent.putExtra("result",imgButton_ic_fire.getTag().toString());
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
+        });
+
+        //CLICK ON POLICE ICON
+        imgButton_ic_police.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            imgButton_ic_police.setTag("imgButton_ic_police");
+            returnIntent.putExtra("result",imgButton_ic_police.getTag().toString());
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
+        });
+
+        //CLICK ON NEIGHBOUR ICON
+        imgButton_ic_neighbour.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            imgButton_ic_neighbour.setTag("imgButton_ic_neighbour");
+            returnIntent.putExtra("result",imgButton_ic_neighbour.getTag().toString());
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
+        });
+
+        //CLICK ON WATER ICON
+        imgButton_ic_water.setOnClickListener(v -> {
+            Intent returnIntent = new Intent();
+            imgButton_ic_water.setTag("imgButton_ic_water");
+            returnIntent.putExtra("result",imgButton_ic_water.getTag().toString());
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
+        });
+
+        //CLICK ON LANDLORD ICON
         imgButton_ic_landlord.setOnClickListener(v -> {
-            insertNumberFragment.ic_general_image.setBackgroundResource(R.mipmap.ic_landlord);
+            Intent returnIntent = new Intent();
+            imgButton_ic_landlord.setTag("imgButton_ic_landlord");
+            returnIntent.putExtra("result",imgButton_ic_landlord.getTag().toString());
+            setResult(Activity.RESULT_OK,returnIntent);
             finish();
         });
     }

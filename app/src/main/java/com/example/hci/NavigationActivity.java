@@ -22,7 +22,9 @@ import com.example.hci.ui.home.HomeFragment;
 import com.example.hci.ui.events.EventsFragment;
 import com.example.hci.ui.documents.DocumentsFragment;
 import com.example.hci.ui.analytics.AnalyticsFragment;
+import com.example.hci.ui.numbers.InsertNumberFragment;
 import com.example.hci.ui.numbers.NumbersFragment;
+import com.example.hci.ui.numbers.ShowUsefulNumber;
 import com.example.hci.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
 import android.os.Handler;
@@ -184,6 +186,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             navigationView.getMenu().getItem(0).setChecked(true);
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
+        }
+        else if(fragment instanceof InsertNumberFragment || fragment instanceof ShowUsefulNumber){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new NumbersFragment(),"fragment_numbers")
+                    .commit();
         }
         else if (fragment instanceof DocumentsFragment) {
             getSupportFragmentManager()

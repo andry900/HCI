@@ -23,7 +23,7 @@
             android:layout_marginTop="25dp"
             android:layout_toEndOf="@+id/image_itemListView_number"
             android:gravity="left|center"
-            android:fontFamily="@font/amita"
+            android:fontFamily="@font/architects_daughter"
             android:textSize="18sp"
             android:textColor="#000" />
     </RelativeLayout>

@@ -53,4 +53,6 @@
     <string name="img_camera">CAMERA</string>
     <string name="uploaded_img">uploaded img</string>
     <string name="select_a_status">Select a status</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
 </resources>
