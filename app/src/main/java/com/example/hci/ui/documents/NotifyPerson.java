@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.hci.R;
+import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
 
 import java.util.ArrayList;
 
@@ -35,14 +36,15 @@ public class NotifyPerson extends Fragment {
         ImageButton prev = root.findViewById(R.id.prevBtn);
         
         Bundle recapBundle = getArguments();
+        selectedPersons = new ArrayList<String>();
 
         if(personsList == null) {
             personsList = new ArrayList<Person>();
-            personsList.add(new Person("Mario Rossi", "Roomates", null));
-            personsList.add(new Person("Palma Alessandro", "Roomates", null));
-            personsList.add(new Person("Bellia Andrea", "Landlord", null));
-            personsList.add(new Person("Manzara Manuel", "Roomates", null));
-            personsList.add(new Person("Santinelli Stefano", "Roomates", null));
+            personsList.add(new Person("Mario Rossi", "Roomates", null,false));
+            personsList.add(new Person("Palma Alessandro", "Roomates", null,false));
+            personsList.add(new Person("Bellia Andrea", "Landlord", null,false));
+            personsList.add(new Person("Manzara Manuel", "Roomates", null,false));
+            personsList.add(new Person("Santinelli Stefano", "Roomates", null,false));
         }
         personRecycler.setHasFixedSize(true);
         LinearLayoutManager lm = new LinearLayoutManager(getContext());
@@ -50,15 +52,34 @@ public class NotifyPerson extends Fragment {
         PersonAdapter mAdapter = new PersonAdapter(personsList);
         personRecycler.setAdapter(mAdapter);
 
-      next.setOnClickListener(v ->{
+        next.setOnClickListener(v ->{
           assert recapBundle != null;
           recapBundle.putStringArrayList("persons", selectedPersons);
           //start recap frgament
-      });
+        });
 
-      prev.setOnClickListener(v->{
+        RecyclerItemClickSupport.addTo(personRecycler).setOnItemClickListener(
+                new RecyclerItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                String n = personsList.get(position).getName();
+                if(selectedPersons.contains(n)){
+                    selectedPersons.remove(n);
+                    personsList.get(position).setSel(Boolean.FALSE);
+                    mAdapter.notifyDataSetChanged();
+                }
+                else {
+                    selectedPersons.add(n);
+                    personsList.get(position).setSel(Boolean.TRUE);
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        prev.setOnClickListener(v->{
           getActivity().onBackPressed();
-      });
+        });
+
         return root;
     }
 
@@ -66,11 +87,13 @@ public class NotifyPerson extends Fragment {
         String name;
         String type;
         Bitmap img;
+        Boolean sel;
 
-        public Person(String name, String type, Bitmap img) {
+        public Person(String name, String type, Bitmap img, Boolean sel) {
             this.name = name;
             this.type = type;
             this.img = img;
+            this.sel = sel;
         }
         public String getName() {
             return name;
@@ -80,6 +103,21 @@ public class NotifyPerson extends Fragment {
         }
         public Bitmap getImg() {
             return img;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        public void setType(String type) {
+            this.type = type;
+        }
+        public void setImg(Bitmap img) {
+            this.img = img;
+        }
+        public Boolean getSel() {
+            return sel;
+        }
+        public void setSel(Boolean sel) {
+            this.sel = sel;
         }
     }
 }

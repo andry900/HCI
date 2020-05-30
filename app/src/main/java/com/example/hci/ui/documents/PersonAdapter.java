@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class PersonAdapter extends RecyclerView.Adapter<com.example.hci.ui.docum
             TextView name;
             TextView type;
             ImageView img;
+            CheckBox selected;
 
             MyViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -30,6 +32,7 @@ public class PersonAdapter extends RecyclerView.Adapter<com.example.hci.ui.docum
                 name =  itemView.findViewById(R.id.name_person);
                 type = itemView.findViewById(R.id.person_type);
                 img = itemView.findViewById(R.id.person_img);
+                selected = itemView.findViewById(R.id.sel_persons);
             }
         }
 
@@ -51,6 +54,7 @@ public class PersonAdapter extends RecyclerView.Adapter<com.example.hci.ui.docum
             if (data.get(position) != null) {
                 (holder.name).setText(data.get(position).getName());
                 (holder.type).setText(data.get(position).getType());
+                (holder.selected).setChecked(data.get(position).getSel());
                 Bitmap tmp_img = data.get(position).getImg();
                 if (tmp_img!= null) {
                     (holder.img).setImageBitmap(tmp_img);
