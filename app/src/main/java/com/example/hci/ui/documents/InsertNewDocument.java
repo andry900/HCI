@@ -95,6 +95,11 @@ public class InsertNewDocument extends AppCompatActivity {
                     "Valid", "not valid"));
             status.attachDataSource(dataset);
         }
+
+        next.setOnClickListener(v -> {
+            Intent intentPers = new Intent(getApplicationContext(), NotifyPerson.class);
+            startActivity(intentPers);
+        });
     }
 
 }

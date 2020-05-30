@@ -53,4 +53,5 @@
     <string name="img_camera">CAMERA</string>
     <string name="uploaded_img">uploaded img</string>
     <string name="select_a_status">Select a status</string>
+    <string name="people_title">Select people to be notified</string>
 </resources>
