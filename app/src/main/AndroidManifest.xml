@@ -35,6 +35,8 @@
         <activity android:name=".ui.documents.InsertNewDocument"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".ui.documents.NotifyPerson"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 
