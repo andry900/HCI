@@ -51,11 +51,12 @@
     <string name="image_hint">Select an image for the document:</string>
     <string name="img_storage">STORAGE</string>
     <string name="img_camera">CAMERA</string>
-    <string name="uploaded_img">uploaded img</string>
+    <string name="uploaded_img">Uploaded img</string>
     <string name="select_a_status">Select a status</string>
     <string name="people_title">Select people to be notified</string>
-    <string name="update">update</string>
-    <string name="delete">delete</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="advanced_analytics">Advanced Analytics</string>
     <string name="recap_title">Verify inserted data and confirm</string>
     <string name="confirm">CONFIRM</string>
     <string name="change">CHANGE</string>

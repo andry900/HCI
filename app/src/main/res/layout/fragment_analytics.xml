@@ -36,7 +36,7 @@
         android:textSize="15sp"
         android:layout_below="@+id/time_frame"
         android:layout_marginTop="27dp"
-        android:layout_marginStart="80dp"/>
+        android:layout_marginStart="50dp"/>
 
     <EditText
         android:id="@+id/editStart"
@@ -72,7 +72,7 @@
         android:textSize="15sp"
         android:layout_below="@+id/labStart"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="80dp"/>
+        android:layout_marginStart="50dp"/>
 
     <EditText
         android:id="@+id/editEnd"
@@ -107,6 +107,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:text="@string/generate_analytics"
-        android:textSize="12sp" />
+        android:textSize="16sp" />
 
 </RelativeLayout>

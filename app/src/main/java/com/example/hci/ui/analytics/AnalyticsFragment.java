@@ -20,6 +20,7 @@ import java.util.Locale;
 
 public class AnalyticsFragment extends Fragment {
     private DatePickerDialog picker;
+    public static String starting_date, ending_date;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_analytics, container, false);
@@ -34,8 +35,11 @@ public class AnalyticsFragment extends Fragment {
         calEnd = root.findViewById(R.id.calEnd);
         btnAnalytics = root.findViewById(R.id.btnAnalytics);
 
+        calendar_start.setText(starting_date);
+        calendar_end.setText(ending_date);
+
         calStart.setOnClickListener(v -> {
-            final Calendar calendar = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
             int day = calendar.get(Calendar.DAY_OF_MONTH);
             int month = calendar.get(Calendar.MONTH);
             int year = calendar.get(Calendar.YEAR);
@@ -49,7 +53,7 @@ public class AnalyticsFragment extends Fragment {
         });
 
         calEnd.setOnClickListener(v -> {
-            final Calendar calendar = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
             int day = calendar.get(Calendar.DAY_OF_MONTH);
             int month = calendar.get(Calendar.MONTH);
             int year = calendar.get(Calendar.YEAR);
@@ -63,25 +67,27 @@ public class AnalyticsFragment extends Fragment {
         });
 
         btnAnalytics.setOnClickListener(v -> {
-            if (!calendar_start.getText().toString().equals("") && !calendar_end.getText().toString().equals("")) {
+            starting_date = calendar_start.getText().toString();
+            ending_date = calendar_end.getText().toString();
+
+            if (!starting_date.equals("") && !ending_date.equals("")) {
                 try {
-                    Date date1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(calendar_start.getText().toString());
-                    Date date2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(calendar_end.getText().toString());
+                    Date date1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(starting_date);
+                    Date date2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(ending_date);
 
-                    assert date1 != null;
-                    int result = date1.compareTo(date2);
+                    if (date1 != null) {
+                        int result = date1.compareTo(date2);
 
-                    if (result >= 0) {
-                        Toast.makeText(getContext(), "Starting date must be before the ending date!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        HouseGraphs houseGraphs = HouseGraphs
-                                .newInstance(calendar_start.getText().toString(), calendar_end.getText().toString());
-
-                        requireActivity()
-                                .getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.nav_host_fragment, houseGraphs, "fragment_house_graphs")
-                                .commit();
+                        if (result >= 0) {
+                            Toast.makeText(getContext(), "Starting date must be before the ending date!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            requireActivity()
+                                    .getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.nav_host_fragment, new HouseGraphs(), "fragment_house_graphs")
+                                    .addToBackStack(null)
+                                    .commit();
+                        }
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();

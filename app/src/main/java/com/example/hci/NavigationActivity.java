@@ -17,6 +17,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.hci.ui.analytics.AdvancedAnalytics;
 import com.example.hci.ui.analytics.HouseGraphs;
 import com.example.hci.ui.documents.InsertNewDocument;
 import com.example.hci.ui.documents.NotifyPerson;
@@ -224,6 +226,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new AnalyticsFragment(),"fragment_analytics")
+                    .commit();
+        }
+        else if (fragment instanceof AdvancedAnalytics) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new HouseGraphs(),"fragment_house_graphs")
                     .commit();
         }
         else {  //HomeFragment
