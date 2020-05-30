@@ -56,4 +56,7 @@
     <string name="people_title">Select people to be notified</string>
     <string name="update">update</string>
     <string name="delete">delete</string>
+    <string name="recap_title">Verify inserted data and confirm</string>
+    <string name="confirm">CONFIRM</string>
+    <string name="change">CHANGE</string>
 </resources>
