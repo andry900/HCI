@@ -18,6 +18,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.hci.ui.analytics.HouseGraphs;
+import com.example.hci.ui.documents.InsertNewDocument;
+import com.example.hci.ui.documents.NotifyPerson;
 import com.example.hci.ui.home.HomeFragment;
 import com.example.hci.ui.events.EventsFragment;
 import com.example.hci.ui.documents.DocumentsFragment;
@@ -203,6 +205,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             navigationView.getMenu().getItem(0).setChecked(true);
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
+        }
+        else if(fragment instanceof InsertNewDocument || fragment instanceof NotifyPerson){
+            getSupportFragmentManager().popBackStackImmediate();
         }
         else if (fragment instanceof AnalyticsFragment) {
             getSupportFragmentManager()
