@@ -35,10 +35,10 @@ public class InsertNewDocument extends Fragment {
     ImageButton next;
     ImageButton prev;
 
-    String selName;
-    String selUtility;
-    String selAmount;
-    String selStatus;
+    String selName = null;
+    String selUtility = null;
+    String selAmount = null;
+    String selStatus = null;
 
     @Nullable
     @Override
@@ -65,8 +65,12 @@ public class InsertNewDocument extends Fragment {
                 }
             }
         });
+
         next =  root.findViewById(R.id.nextBtn);
         prev = root.findViewById(R.id.prevBtn);
+        prev.setOnClickListener(v->{
+            getActivity().onBackPressed();
+        });
 
         Bundle bundle = getArguments();
         assert bundle != null;
@@ -99,17 +103,23 @@ public class InsertNewDocument extends Fragment {
         }
 
         next.setOnClickListener(v -> {
+
+            NotifyPerson notifyPerson = new NotifyPerson();
+            Bundle b = new Bundle();
+            b.putString("name", selName);
+            b.putString("name", selAmount);
+            b.putString("name", selStatus);
+            b.putString("name", selUtility);
+            notifyPerson.setArguments(bundle);
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.nav_host_fragment, new NotifyPerson(), "notifyPerson")
+                    .replace(R.id.nav_host_fragment, notifyPerson, "notifyPerson")
                     .addToBackStack(null)
                     .commit();
         });
 
         return root;
     }
-
-
 
 }

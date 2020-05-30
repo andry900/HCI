@@ -60,6 +60,7 @@ public class DocumentsFragment extends Fragment {
             startActivityForResult(intent,2);
         });
 
+
         return root;
     }
 

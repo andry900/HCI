@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.hci.R;
 
@@ -20,6 +21,9 @@ import static com.example.hci.ui.documents.DocumentsFragment.personsList;
 
 public class NotifyPerson extends Fragment {
 
+
+    private ArrayList<String> selectedPersons;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,6 +31,10 @@ public class NotifyPerson extends Fragment {
         View root = inflater.inflate(R.layout.notify_person, container, false);
 
         RecyclerView personRecycler = root.findViewById(R.id.person_list);
+        ImageButton next = root.findViewById(R.id.nextBtn);
+        ImageButton prev = root.findViewById(R.id.prevBtn);
+        
+        Bundle recapBundle = getArguments();
 
         if(personsList == null) {
             personsList = new ArrayList<Person>();
@@ -42,6 +50,15 @@ public class NotifyPerson extends Fragment {
         PersonAdapter mAdapter = new PersonAdapter(personsList);
         personRecycler.setAdapter(mAdapter);
 
+      next.setOnClickListener(v ->{
+          assert recapBundle != null;
+          recapBundle.putStringArrayList("persons", selectedPersons);
+          //start recap frgament
+      });
+
+      prev.setOnClickListener(v->{
+          getActivity().onBackPressed();
+      });
         return root;
     }
 
