@@ -32,10 +32,14 @@ public class NumbersCustomAdapter extends ArrayAdapter<String> {
         ImageView icon_number= rowView.findViewById(R.id.image_itemListView_number);
         TextView number = rowView.findViewById(R.id.textView_itemListView_number);
 
-
         number.setText(numbers.get(position));
         icon_number.setImageResource(Integer.parseInt(icon_numbers.get(position)));
 
         return rowView;
+    }
+
+    @Override
+    public int getCount() {
+        return numbers.size();
     }
 }

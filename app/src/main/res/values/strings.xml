@@ -54,4 +54,6 @@
     <string name="uploaded_img">uploaded img</string>
     <string name="select_a_status">Select a status</string>
     <string name="people_title">Select people to be notified</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
 </resources>
