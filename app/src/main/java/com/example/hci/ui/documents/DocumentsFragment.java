@@ -25,7 +25,8 @@ public class DocumentsFragment extends Fragment {
 
     private LinearLayoutManager lm;
     private DocumentListAdapter mAdapter;
-    private ArrayList<Document> savedDocs;
+    static ArrayList<Document> savedDocs;
+    static ArrayList<NotifyPerson.Person> personsList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

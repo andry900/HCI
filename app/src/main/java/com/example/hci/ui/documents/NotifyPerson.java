@@ -2,27 +2,22 @@ package com.example.hci.ui.documents;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-
 import com.example.hci.R;
-
-import java.util.ArrayList;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.example.hci.ui.documents.DocumentsFragment.personsList;
+
 public class NotifyPerson extends AppCompatActivity {
-    private RecyclerView personRecycler;
-    private ArrayList<Person> personsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notify_person);
 
-        personRecycler = findViewById(R.id.person_list);
+        RecyclerView personRecycler = findViewById(R.id.person_list);
 
-        personsList = new ArrayList<>();
         personsList.add(new Person("Mario Rossi","Roomates",null));
         personsList.add(new Person("Palma Alessandro","Roomates",null));
         personsList.add(new Person("Bellia Andrea","Landlord",null));
