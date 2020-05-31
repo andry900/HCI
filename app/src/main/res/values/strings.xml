@@ -60,4 +60,26 @@
     <string name="recap_title">Verify inserted data and confirm</string>
     <string name="confirm">CONFIRM</string>
     <string name="change">CHANGE</string>
+    <string name="percentage_change">Percentage change respect previous year:</string>
+    <string name="_12_2">+ 12,2%</string>
+    <string name="_6_8">- 6,8%</string>
+    <string name="_3_23">- 3,23%</string>
+    <string name="data_type">Data Type:</string>
+    <string name="visualization_type">Visualization Type:</string>
+    <string name="advanced_average_data">Per year: 1600€\nPer month: 133,33€\nPer day: 4,44€</string>
+    <string name="advanced_median_data">Per year: 1430€\nPer month: 100€\nPer day: 2,5€</string>
+    <string name="advanced_variance_data">Per year: 2,162\nPer month: 6,2\nPer day: 15</string>
+    <string name="median_expenses">Median Expenses:</string>
+    <string name="variance_expenses">Variance Expenses:</string>
+
+    <string-array name="data_types">
+        <item>Average</item>
+        <item>Median</item>
+        <item>Variance</item>
+    </string-array>
+    <string-array name="visualization_types">
+        <item>Histogram</item>
+        <item>Pie Chart</item>
+        <item>Line Graph</item>
+    </string-array>
 </resources>
