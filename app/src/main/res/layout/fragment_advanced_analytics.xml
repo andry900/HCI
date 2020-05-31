@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:text="@string/average_expenses"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_below="@+id/home_analytics"
         android:layout_marginTop="350dp"
         android:layout_marginStart="20dp"/>
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:text="@string/advanced_average_data"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_below="@+id/average_expenses"
         android:layout_marginTop="5dp"
         android:layout_marginStart="33dp"/>
@@ -107,7 +107,8 @@
         android:layout_height="wrap_content"
         android:text="@string/median_expenses"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:visibility="invisible"
         android:layout_below="@+id/home_analytics"
         android:layout_marginTop="350dp"
         android:layout_marginStart="20dp"/>
@@ -118,7 +119,8 @@
         android:layout_height="wrap_content"
         android:text="@string/advanced_median_data"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:visibility="invisible"
         android:layout_below="@+id/median_expenses"
         android:layout_marginTop="5dp"
         android:layout_marginStart="33dp"/>
@@ -129,7 +131,8 @@
         android:layout_height="wrap_content"
         android:text="@string/variance_expenses"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:visibility="invisible"
         android:layout_below="@+id/home_analytics"
         android:layout_marginTop="350dp"
         android:layout_marginStart="20dp"/>
@@ -140,7 +143,8 @@
         android:layout_height="wrap_content"
         android:text="@string/advanced_variance_data"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:visibility="invisible"
         android:layout_below="@+id/variance_expenses"
         android:layout_marginTop="5dp"
         android:layout_marginStart="33dp"/>
@@ -151,7 +155,7 @@
         android:layout_height="wrap_content"
         android:text="@string/percentage_change"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_below="@+id/home_analytics"
         android:layout_marginTop="350dp"
         android:layout_marginStart="220dp"/>

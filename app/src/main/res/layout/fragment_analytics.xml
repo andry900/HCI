@@ -36,7 +36,7 @@
         android:textSize="15sp"
         android:layout_below="@+id/time_frame"
         android:layout_marginTop="27dp"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="40dp"/>
 
     <EditText
         android:id="@+id/editStart"
@@ -55,12 +55,13 @@
 
     <ImageButton
         android:id="@+id/calStart"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/time_frame"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="11dp"
         android:layout_toEndOf="@id/editStart"
         android:layout_marginStart="10dp"
+        android:background="#FFF"
         android:src="@mipmap/ic_calendar"/>
 
     <TextView
@@ -71,8 +72,8 @@
         android:textColor="#000"
         android:textSize="15sp"
         android:layout_below="@+id/labStart"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"/>
 
     <EditText
         android:id="@+id/editEnd"
@@ -81,7 +82,7 @@
         android:layout_below="@+id/editStart"
         android:layout_toEndOf="@id/labStart"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="47dp"
         android:background="@drawable/border"
         android:hint="@string/enter_date"
         android:textAlignment="center"
@@ -91,12 +92,13 @@
 
     <ImageButton
         android:id="@+id/calEnd"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/calStart"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="26dp"
         android:layout_toEndOf="@id/editStart"
         android:layout_marginStart="10dp"
+        android:background="#FFF"
         android:src="@mipmap/ic_calendar"/>
 
     <Button
