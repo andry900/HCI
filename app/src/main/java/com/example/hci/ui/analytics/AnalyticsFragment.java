@@ -1,6 +1,7 @@
 package com.example.hci.ui.analytics;
 
 import android.app.DatePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import com.example.hci.R;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -22,6 +26,7 @@ public class AnalyticsFragment extends Fragment {
     private DatePickerDialog picker;
     public static String starting_date, ending_date;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_analytics, container, false);
 
@@ -70,7 +75,20 @@ public class AnalyticsFragment extends Fragment {
             starting_date = calendar_start.getText().toString();
             ending_date = calendar_end.getText().toString();
 
-            if (!starting_date.equals("") && !ending_date.equals("")) {
+            if (starting_date.equals("") && ending_date.equals("")) {
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDateTime now = LocalDateTime.now();
+
+                starting_date = "01/01/2015";
+                ending_date = dtf.format(now);
+
+                requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, new HouseGraphs(), "fragment_house_graphs")
+                        .addToBackStack(null)
+                        .commit();
+            } else if (!starting_date.equals("") && !ending_date.equals("")) {
                 try {
                     Date date1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(starting_date);
                     Date date2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(ending_date);
