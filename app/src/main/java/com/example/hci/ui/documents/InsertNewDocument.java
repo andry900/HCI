@@ -2,6 +2,7 @@ package com.example.hci.ui.documents;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,25 +104,55 @@ public class InsertNewDocument extends Fragment {
         }
 
         next.setOnClickListener(v -> {
-
-            NotifyPerson notifyPerson = new NotifyPerson();
-            Bundle b = new Bundle();
-            selName = "bolletta gennaio";
-            selStatus = "To pay";
-            b.putString("name", selName);
-            b.putString("amount", selAmount);
-            b.putString("status", selStatus);
-            b.putString("utility", selUtility);
-            notifyPerson.setArguments(b);
-            getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.nav_host_fragment, notifyPerson, "notifyPerson")
-                    .addToBackStack(null)
-                    .commit();
+            if (checkAndCollectData()){
+                NotifyPerson notifyPerson = new NotifyPerson();
+                Bundle b = new Bundle();
+                b.putString("name", selName);
+                b.putString("amount", selAmount);
+                b.putString("status", selStatus);
+                b.putString("utility", selUtility);
+                notifyPerson.setArguments(b);
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, notifyPerson, "notifyPerson")
+                        .addToBackStack(null)
+                        .commit();
+            }
         });
 
+
         return root;
+    }
+
+    private boolean checkAndCollectData() {
+        if (name.getText().toString().equals("") || name.getText().toString().equals(" ")){
+            name.setError("Please enter a name!");
+            return false;}
+        if (utility.getVisibility() == View.VISIBLE) {
+            if (utility.getText().toString().equals("") || utility.getText().toString().equals(" ")) {
+                utility.setError("Please fill this field!");
+                return false;
+            }
+        }
+        if (amount.getVisibility() == View.VISIBLE) {
+            if (amount.getText().toString().equals("") || amount.getText().toString().equals(" ")) {
+                amount.setError("Please enter an amount!");
+                return false;
+            }
+        }
+        if (selStatus == null) {
+                amount.setHint("Please enter a valid status!");
+                amount.setHintTextColor(Color.RED);
+                return false;
+        }
+
+        selName = name.getText().toString();
+        selStatus = status.getText().toString();
+        selUtility = utility.getText().toString();
+        selAmount = amount.getText().toString();
+
+        return true;
     }
 
 }
