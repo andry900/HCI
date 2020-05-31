@@ -90,7 +90,7 @@ public class AnalyticsFragment extends Fragment {
                         }
                     }
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getContext(), "One or more invalid dates have been entered!", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(getContext(), "You must select starting and ending dates!", Toast.LENGTH_SHORT).show();

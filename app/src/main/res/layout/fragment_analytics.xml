@@ -51,6 +51,7 @@
         android:textAlignment="center"
         android:textColor="#000"
         android:textColorHint="#808080"
+        android:maxLength="10"
         android:inputType="date"/>
 
     <ImageButton
@@ -88,6 +89,7 @@
         android:textAlignment="center"
         android:textColor="#000"
         android:textColorHint="#808080"
+        android:maxLength="10"
         android:inputType="date"/>
 
     <ImageButton
@@ -103,12 +105,14 @@
 
     <Button
         android:id="@+id/btnAnalytics"
-        android:layout_width="135dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/labEnd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:text="@string/generate_analytics"
+        android:background="@drawable/round_bg"
+        android:backgroundTint="@color/colorPrimary"
         android:textSize="16sp" />
 
 </RelativeLayout>
