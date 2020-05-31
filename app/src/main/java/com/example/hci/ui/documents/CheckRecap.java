@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hci.R;
 
@@ -66,16 +67,14 @@ public class CheckRecap extends Fragment {
 
         Float finalAmount = amount;
         confirm.setOnClickListener(v -> {
-            Bitmap img = null;
-            if(!recapBundle.getParcelable("image").equals("")){
-                img = recapBundle.getParcelable("image");
-            }
             DocumentsFragment.Document newDoc = new DocumentsFragment.Document(
                     recapBundle.getString("name"), recapBundle.getString("label"),
-                    recapBundle.getString("status"),img,
+                    recapBundle.getString("status"),recapBundle.getParcelable("image"),
                     recapBundle.getString("utility"),
                     finalAmount);
             savedDocs.add(newDoc);
+            Toast.makeText(getContext(), "Document has been correctly inserted",
+                    Toast.LENGTH_LONG).show();
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()

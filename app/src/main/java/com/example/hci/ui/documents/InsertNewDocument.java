@@ -70,6 +70,9 @@ public class InsertNewDocument extends Fragment {
         utility = root.findViewById(R.id.utilityField);
         amount = root.findViewById(R.id.amountField);
         docImg = root.findViewById(R.id.upld_img);
+        if (selImg != null) {
+            docImg.setImageBitmap(selImg);
+        }
         camBtn = root.findViewById(R.id.cameraBtn);
         camBtn.setOnClickListener(v->{
             if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
