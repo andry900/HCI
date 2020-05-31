@@ -89,11 +89,11 @@ public class DocumentsFragment extends Fragment {
         private String name;
         private String label;
         private String status;
-        private String img;
+        private Bitmap img;
         private String utility;
         private Float amount;
 
-        Document(String name, String label, String status, String img, String utility, Float amount) {
+        Document(String name, String label, String status, Bitmap img, String utility, Float amount) {
             this.name = name;
             this.label = label;
             this.status = status;
@@ -126,11 +126,11 @@ public class DocumentsFragment extends Fragment {
             this.status = status;
         }
 
-        public String getImg() {
+        public Bitmap getImg() {
             return img;
         }
 
-        public void setImg(String img) {
+        public void setImg(Bitmap img) {
             this.img = img;
         }
 

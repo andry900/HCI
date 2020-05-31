@@ -1,5 +1,6 @@
 package com.example.hci.ui.documents;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import com.example.hci.R;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,12 +35,12 @@ public class CheckRecap extends Fragment {
         sb.append("RECAP: \n -");
         sb.append( recapBundle.getString("name"));
         sb.append("\n -");
-        if(recapBundle.getString("amount") != null) {
-            amount = Float.parseFloat(Objects.requireNonNull(recapBundle.getString("amount")));
+        if(!recapBundle.getString("amount").equals("")) {
+            amount = Float.valueOf((recapBundle.getString("amount")));
             sb.append(amount);
             sb.append("\n -");
         }
-        if(recapBundle.getString("utility") != null) {
+        if(recapBundle.getString("utility").equals("")) {
             sb.append(recapBundle.getString("utility"));
             sb.append("\n -");
         }
@@ -66,9 +66,13 @@ public class CheckRecap extends Fragment {
 
         Float finalAmount = amount;
         confirm.setOnClickListener(v -> {
+            Bitmap img = null;
+            if(!recapBundle.getParcelable("image").equals("")){
+                img = recapBundle.getParcelable("image");
+            }
             DocumentsFragment.Document newDoc = new DocumentsFragment.Document(
                     recapBundle.getString("name"), recapBundle.getString("label"),
-                    recapBundle.getString("status"),null,
+                    recapBundle.getString("status"),img,
                     recapBundle.getString("utility"),
                     finalAmount);
             savedDocs.add(newDoc);
