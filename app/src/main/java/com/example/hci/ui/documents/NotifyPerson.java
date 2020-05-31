@@ -55,7 +55,14 @@ public class NotifyPerson extends Fragment {
         next.setOnClickListener(v ->{
           assert recapBundle != null;
           recapBundle.putStringArrayList("persons", selectedPersons);
-          //start recap frgament
+          CheckRecap recapFrag = new CheckRecap();
+          recapFrag.setArguments(recapBundle);
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, recapFrag, "checkRecap")
+                    .addToBackStack(null)
+                    .commit();
         });
 
         RecyclerItemClickSupport.addTo(personRecycler).setOnItemClickListener(

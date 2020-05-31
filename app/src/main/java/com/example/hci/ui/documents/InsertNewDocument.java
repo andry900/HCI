@@ -106,11 +106,13 @@ public class InsertNewDocument extends Fragment {
 
             NotifyPerson notifyPerson = new NotifyPerson();
             Bundle b = new Bundle();
+            selName = "bolletta gennaio";
+            selStatus = "To pay";
             b.putString("name", selName);
-            b.putString("name", selAmount);
-            b.putString("name", selStatus);
-            b.putString("name", selUtility);
-            notifyPerson.setArguments(bundle);
+            b.putString("amount", selAmount);
+            b.putString("status", selStatus);
+            b.putString("utility", selUtility);
+            notifyPerson.setArguments(b);
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()

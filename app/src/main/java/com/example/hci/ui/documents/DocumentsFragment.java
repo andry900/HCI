@@ -40,15 +40,15 @@ public class DocumentsFragment extends Fragment {
 
         docList = root.findViewById(R.id.docs_list);
         newDocBtn = root.findViewById(R.id.newDoc_btn);
-
-        savedDocs = new ArrayList<>();
-        savedDocs.add(new Document("February Energy Bill", "bill","payed",
-                null,null,null));
-        savedDocs.add(new Document("February telephone Bill", "bill","payed",
-                null,null,null));
-        savedDocs.add(new Document("telephone contract", "contract","payed",
-                null,null,null));
-
+        if (savedDocs == null) {
+            savedDocs = new ArrayList<>();
+            savedDocs.add(new Document("February Energy Bill", "bill", "payed",
+                    null, null, null));
+            savedDocs.add(new Document("February telephone Bill", "bill", "payed",
+                    null, null, null));
+            savedDocs.add(new Document("telephone contract", "contract", "payed",
+                    null, null, null));
+        }
         docList.setHasFixedSize(true);
         lm = new LinearLayoutManager(getContext());
         docList.setLayoutManager(lm);
@@ -59,7 +59,6 @@ public class DocumentsFragment extends Fragment {
             Intent intent = new Intent(getContext(), ChooseLabel.class);
             startActivityForResult(intent,2);
         });
-
 
         return root;
     }
