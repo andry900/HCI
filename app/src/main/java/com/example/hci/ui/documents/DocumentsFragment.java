@@ -26,11 +26,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class DocumentsFragment extends Fragment {
 
-    private RecyclerView docList;
-    private Button newDocBtn;
-
-    private LinearLayoutManager lm;
-    private DocumentListAdapter mAdapter;
     static ArrayList<Document> savedDocs;
     static ArrayList<NotifyPerson.Person> personsList;
 
@@ -39,21 +34,21 @@ public class DocumentsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_documents, container, false);
 
-        docList = root.findViewById(R.id.docs_list);
-        newDocBtn = root.findViewById(R.id.newDoc_btn);
+        RecyclerView docList = root.findViewById(R.id.docs_list);
+        Button newDocBtn = root.findViewById(R.id.newDoc_btn);
         if (savedDocs == null) {
             savedDocs = new ArrayList<>();
-            savedDocs.add(new Document("February Energy Bill", "BILL", "payed",
-                    null, null, null));
-            savedDocs.add(new Document("February telephone Bill", "BILL", "payed",
-                    null, null, null));
+            savedDocs.add(new Document("February Energy Bill", "UTILITY", "payed",
+                    null, "Energy", Float.valueOf("256.98")));
+            savedDocs.add(new Document("February telephone Bill", "UTILITY", "payed",
+                    null, "Gas", Float.valueOf("123.68")));
             savedDocs.add(new Document("telephone contract", "CONTRACT", "payed",
                     null, null, null));
         }
         docList.setHasFixedSize(true);
-        lm = new LinearLayoutManager(getContext());
+        LinearLayoutManager lm = new LinearLayoutManager(getContext());
         docList.setLayoutManager(lm);
-        mAdapter = new DocumentListAdapter(savedDocs);
+        DocumentListAdapter mAdapter = new DocumentListAdapter(savedDocs);
         docList.setAdapter(mAdapter);
 
         newDocBtn.setOnClickListener(v -> {

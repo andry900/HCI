@@ -36,10 +36,10 @@ public class NotifyPerson extends Fragment {
         ImageButton prev = root.findViewById(R.id.prevBtn);
         
         Bundle recapBundle = getArguments();
-        selectedPersons = new ArrayList<String>();
+        selectedPersons = new ArrayList<>();
 
         if(personsList == null) {
-            personsList = new ArrayList<Person>();
+            personsList = new ArrayList<>();
             personsList.add(new Person("Mario Rossi", "Roomates", null,false));
             personsList.add(new Person("Palma Alessandro", "Roomates", null,false));
             personsList.add(new Person("Bellia Andrea", "Landlord", null,false));
@@ -66,22 +66,18 @@ public class NotifyPerson extends Fragment {
         });
 
         RecyclerItemClickSupport.addTo(personRecycler).setOnItemClickListener(
-                new RecyclerItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                String n = personsList.get(position).getName();
-                if(selectedPersons.contains(n)){
-                    selectedPersons.remove(n);
-                    personsList.get(position).setSel(Boolean.FALSE);
+                (recyclerView, position, v) -> {
+                    String n = personsList.get(position).getName();
+                    if(selectedPersons.contains(n)){
+                        selectedPersons.remove(n);
+                        personsList.get(position).setSel(Boolean.FALSE);
+                    }
+                    else {
+                        selectedPersons.add(n);
+                        personsList.get(position).setSel(Boolean.TRUE);
+                    }
                     mAdapter.notifyDataSetChanged();
-                }
-                else {
-                    selectedPersons.add(n);
-                    personsList.get(position).setSel(Boolean.TRUE);
-                    mAdapter.notifyDataSetChanged();
-                }
-            }
-        });
+                });
 
         prev.setOnClickListener(v->{
           getActivity().onBackPressed();
