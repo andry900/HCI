@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hci.R;
 import com.example.hci.ui.numbers.InsertNumberFragment;
+import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -42,11 +43,11 @@ public class DocumentsFragment extends Fragment {
         newDocBtn = root.findViewById(R.id.newDoc_btn);
         if (savedDocs == null) {
             savedDocs = new ArrayList<>();
-            savedDocs.add(new Document("February Energy Bill", "bill", "payed",
+            savedDocs.add(new Document("February Energy Bill", "BILL", "payed",
                     null, null, null));
-            savedDocs.add(new Document("February telephone Bill", "bill", "payed",
+            savedDocs.add(new Document("February telephone Bill", "BILL", "payed",
                     null, null, null));
-            savedDocs.add(new Document("telephone contract", "contract", "payed",
+            savedDocs.add(new Document("telephone contract", "CONTRACT", "payed",
                     null, null, null));
         }
         docList.setHasFixedSize(true);
@@ -59,6 +60,24 @@ public class DocumentsFragment extends Fragment {
             Intent intent = new Intent(getContext(), ChooseLabel.class);
             startActivityForResult(intent,2);
         });
+
+        RecyclerItemClickSupport.addTo(docList).setOnItemClickListener(
+                new RecyclerItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        DocumentVisualization docFrag = new DocumentVisualization();
+                        Bundle b = new Bundle();
+                        b.putInt("item", position);
+                        docFrag.setArguments(b);
+                        getActivity()
+                                .getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment, docFrag,
+                                        "visualizeDoc")
+                                .addToBackStack(null)
+                                .commit();
+                    }
+                });
 
         return root;
     }

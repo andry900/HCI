@@ -1,6 +1,7 @@
 package com.example.hci.ui.documents;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +33,7 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -60,12 +61,17 @@ public class InsertNewDocument extends Fragment {
     private static final int CAMERA_REQUEST = 1888;
 
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_insert_document, container, false);
-
+        //retrieve passed data
+        Bundle bundle = getArguments();
+        assert bundle != null;
+        String selector = bundle.getString("label");
+        //initialize layout items and responsiveness
         name = root.findViewById(R.id.nameField);
         utility = root.findViewById(R.id.utilityField);
         amount = root.findViewById(R.id.amountField);
@@ -94,7 +100,7 @@ public class InsertNewDocument extends Fragment {
         });
 
         status = root.findViewById(R.id.status_box);
-        //set spinner on item click listener
+        //set item click listener on the spinner item
         status.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
             @Override
             public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
@@ -114,14 +120,22 @@ public class InsertNewDocument extends Fragment {
 
         next.setOnClickListener(v -> {
             if (checkAndCollectData()){
-
                 NotifyPerson notifyPerson = new NotifyPerson();
+                //prepare data to pass on
                 Bundle b = new Bundle();
                 b.putString("name", selName);
                 b.putString("amount", selAmount);
                 b.putString("status", selStatus);
-                b.putString("utility", selUtility);
                 b.putParcelable("image", selImg);
+                if (selector.equals("OTHERS")){
+                    b.putString("utility", "");
+                    b.putString("label", selUtility.toUpperCase());
+                }
+                else{
+                    b.putString("utility", selUtility);
+                    b.putString("label", selector);
+
+                }
                 notifyPerson.setArguments(b);
                 getActivity()
                         .getSupportFragmentManager()
@@ -137,9 +151,7 @@ public class InsertNewDocument extends Fragment {
             getActivity().onBackPressed();
         });
 
-        Bundle bundle = getArguments();
-        assert bundle != null;
-        String selector = bundle.getString("label");
+        //hide and shows layout items wrt selected label
         Objects.requireNonNull(selector);
         if (selector.equals("CONTRACT")){
             ((TextView)root.findViewById(R.id.titleDocInsert)).setText("Insert new contract");

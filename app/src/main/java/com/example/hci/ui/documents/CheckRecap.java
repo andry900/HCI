@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import static com.example.hci.ui.documents.DocumentsFragment.savedDocs;
 
 public class CheckRecap extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -27,7 +28,10 @@ public class CheckRecap extends Fragment {
         View root = inflater.inflate(R.layout.recap_fragment, container, false);
         Bundle recapBundle = getArguments();
         Float amount = null;
-
+        String utility = recapBundle.getString("utility");
+        if(utility.equals("")){
+            utility = null;
+        }
         TextView recapText = root.findViewById(R.id.recapMultiLine);
         Button confirm = root.findViewById(R.id.confirm_btn);
         Button change = root.findViewById(R.id.change_btn);
@@ -41,7 +45,7 @@ public class CheckRecap extends Fragment {
             sb.append(amount);
             sb.append("\n -");
         }
-        if(recapBundle.getString("utility").equals("")) {
+        if(!recapBundle.getString("utility").equals("")) {
             sb.append(recapBundle.getString("utility"));
             sb.append("\n -");
         }
@@ -65,13 +69,14 @@ public class CheckRecap extends Fragment {
 
         });
 
+
         Float finalAmount = amount;
+        String finalUtility = utility;
         confirm.setOnClickListener(v -> {
             DocumentsFragment.Document newDoc = new DocumentsFragment.Document(
                     recapBundle.getString("name"), recapBundle.getString("label"),
                     recapBundle.getString("status"),recapBundle.getParcelable("image"),
-                    recapBundle.getString("utility"),
-                    finalAmount);
+                    finalUtility, finalAmount);
             savedDocs.add(newDoc);
             Toast.makeText(getContext(), "Document has been correctly inserted",
                     Toast.LENGTH_LONG).show();

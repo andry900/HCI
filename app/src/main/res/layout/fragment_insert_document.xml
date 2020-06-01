@@ -31,7 +31,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="8dp"
                 app:borderColor="@color/colorPrimary"
-                app:borderWidth="2dp"
+                app:borderWidth="1dp"
                 app:cornerRadius="8dp">
 
                 <EditText
@@ -56,7 +56,7 @@
 
                 android:layout_marginTop="5dp"
                 app:borderColor="@color/colorPrimary"
-                app:borderWidth="2dp"
+                app:borderWidth="1dp"
                 app:cornerRadius="8dp">
 
                 <EditText
@@ -80,7 +80,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 app:borderColor="@color/colorPrimary"
-                app:borderWidth="2dp"
+                app:borderWidth="1dp"
                 app:cornerRadius="8dp">
 
                 <EditText
@@ -97,11 +97,11 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
-                android:layout_marginBottom="7dp"
+                android:layout_height="54dp"
+                android:layout_marginBottom="9dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
                 android:background="@drawable/border_list">
 
                 <org.angmarch.views.NiceSpinner

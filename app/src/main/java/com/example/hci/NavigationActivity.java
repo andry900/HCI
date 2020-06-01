@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.hci.ui.analytics.AdvancedAnalytics;
 import com.example.hci.ui.analytics.HouseGraphs;
+import com.example.hci.ui.documents.DocumentVisualization;
 import com.example.hci.ui.documents.InsertNewDocument;
 import com.example.hci.ui.documents.NotifyPerson;
 import com.example.hci.ui.home.HomeFragment;
@@ -208,7 +209,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if(fragment instanceof InsertNewDocument || fragment instanceof NotifyPerson){
+        else if(fragment instanceof InsertNewDocument || fragment instanceof NotifyPerson
+        || fragment instanceof DocumentVisualization){
             getSupportFragmentManager().popBackStackImmediate();
         }
         else if (fragment instanceof AnalyticsFragment) {
