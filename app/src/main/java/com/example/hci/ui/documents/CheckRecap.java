@@ -1,7 +1,9 @@
 package com.example.hci.ui.documents;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +19,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import static android.widget.Toast.LENGTH_LONG;
 import static com.example.hci.ui.documents.DocumentsFragment.savedDocs;
 
 public class CheckRecap extends Fragment {
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -78,8 +82,16 @@ public class CheckRecap extends Fragment {
                     recapBundle.getString("status"),recapBundle.getParcelable("image"),
                     finalUtility, finalAmount);
             savedDocs.add(newDoc);
-            Toast.makeText(getContext(), "Document has been correctly inserted",
-                    Toast.LENGTH_LONG).show();
+            LayoutInflater toastInfl = getLayoutInflater();
+            View layout = toastInfl.inflate(R.layout.insertion_toast_layout,
+                     getView().findViewById(R.id.custom_toast_container));
+            Toast t = new Toast(getContext());
+            TextView tv = layout.findViewById(R.id.txtvw);
+            tv.setText("Document has been correctly inserted and persons notified!!");
+            t.setDuration(LENGTH_LONG);
+            t.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+            t.setView(layout);
+            t.show();
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
