@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:fontFamily="@font/architects_daughter"
-        android:text="@string/i_miei_eventi"
+        android:text="@string/my_events"
         android:textSize="25sp"
         android:textColor="#000" />
 

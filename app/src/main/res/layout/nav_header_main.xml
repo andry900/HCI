@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_below="@+id/imageView"
-        android:text="Marco Rossi"
+        android:text="@string/marco_rossi"
         android:textSize="20sp"
         android:textColor="#FDFCFC"/>
 
@@ -42,7 +42,7 @@
         android:layout_below="@+id/nameTextView"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="marco.rossi@gmail.com"
+        android:text="@string/marco_rossi_gmail_com"
         android:textSize="15sp"
         android:textColor="#FBFAFA"/>
 
