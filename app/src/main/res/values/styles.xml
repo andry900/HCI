@@ -20,4 +20,19 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="CalenderViewMonthCustomText" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">#000</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="CalendarViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">#000</item>
+        <item name="android:weekNumberColor">#000</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">#000</item>
+    </style>
+
 </resources>

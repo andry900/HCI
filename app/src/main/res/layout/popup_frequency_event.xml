@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView_popup_frequency_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/architects_daughter"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_monday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/monday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000" />
+
+
+        <TextView
+            android:id="@+id/textView_tuesday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/tuesday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000"/>
+
+        <TextView
+            android:id="@+id/textView_wednesday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/wednesday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_thursday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/thursday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000"/>
+
+
+        <TextView
+            android:id="@+id/textView_friday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/friday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000"/>
+
+        <TextView
+            android:id="@+id/textView_saturday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/saturday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_sunday"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/sunday"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_from_hour_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:text="@string/from"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/editText_from_hour_event"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/border"
+            android:hint="@string/from"
+            android:inputType="time"
+            android:maxLength="5"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textColorHint="#808080"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/textView_to_hour_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amita"
+            android:gravity="center"
+            android:text="@string/to"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+        <EditText
+            android:id="@+id/editText_to_hour_event"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/border"
+            android:hint="@string/to"
+            android:inputType="time"
+            android:maxLength="5"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textColorHint="#808080"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/button_ok_daily_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="20dp"
+        android:text="@string/ok"
+        android:textColor="#FFF"
+        android:background="@drawable/round_bg"
+        android:backgroundTint="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/button_back_daily_freq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/back"
+            android:textColor="#FFF"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/colorPrimary" />
+
+    </LinearLayout>
+</LinearLayout>

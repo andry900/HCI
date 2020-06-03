@@ -30,6 +30,12 @@
         <activity android:name=".ui.numbers.ChooseIconNumber"
             android:theme="@style/AppTheme.PopUpTheme"/>
 
+        <activity android:name=".ui.events.ChooseTypeofEvent"
+            android:theme="@style/AppTheme.PopUpTheme"/>
+
+        <activity android:name=".ui.events.PopUpFrequencyEvent"
+            android:theme="@style/AppTheme.PopUpTheme"/>
+
         <activity android:name=".ui.documents.ChooseLabel"
             android:theme="@style/Theme.AppCompat.Dialog"
             android:excludeFromRecents="true"/>
