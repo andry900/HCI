@@ -63,6 +63,7 @@
         android:hint="@string/enter_your_name"
         android:textAlignment="center"
         android:textColor="#000"
+        android:text="@string/marco"
         android:textColorHint="#808080"
         android:inputType="text"/>
 
@@ -89,6 +90,7 @@
         android:hint="@string/enter_your_surname"
         android:textAlignment="center"
         android:textColor="#000"
+        android:text="@string/rossi"
         android:textColorHint="#808080"
         android:inputType="text"/>
 
@@ -115,6 +117,7 @@
         android:hint="@string/enter_your_age"
         android:textAlignment="center"
         android:textColor="#000"
+        android:text="@string/_23"
         android:textColorHint="#808080"
         android:inputType="number"/>
 
@@ -141,6 +144,7 @@
         android:hint="@string/enter_your_profession"
         android:textAlignment="center"
         android:textColor="#000"
+        android:text="@string/student"
         android:textColorHint="#808080"
         android:inputType="text"/>
 
@@ -168,6 +172,7 @@
         android:hint="@string/enter_your_passions_nand_hobbies"
         android:textAlignment="center"
         android:textColor="#000"
+        android:text="@string/i_really_like_to_play_football_in_my_free_time_i_also_enjoy_reading"
         android:textColorHint="#808080"
         android:inputType="textMultiLine"/>
 

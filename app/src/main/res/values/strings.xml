@@ -109,6 +109,11 @@
     <string name="enter_your_profession">Enter your profession</string>
     <string name="passions_and_hobbies">Passions and \nHobbies:</string>
     <string name="enter_your_passions_nand_hobbies">Enter your passions\nand hobbies</string>
+    <string name="marco">Marco</string>
+    <string name="rossi">Rossi</string>
+    <string name="_23">23</string>
+    <string name="student">Student</string>
+    <string name="i_really_like_to_play_football_in_my_free_time_i_also_enjoy_reading">I really like to play football. In my free time I also enjoy reading.</string>
 
     <string-array name="data_types">
         <item>Average</item>
