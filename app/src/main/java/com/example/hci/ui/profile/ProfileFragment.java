@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -18,15 +17,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.hci.NavigationActivity;
 import com.example.hci.R;
+import com.example.hci.ui.home.HomeFragment;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
-    private ImageView profile_pic;
-    public static Bitmap gallery_image;
+    private static Bitmap gallery_image;
+    private CircularImageView profile_pic;
     private static final int PICK_IMAGE = 200;
-    public static String strName, strSurname, intAge, strProfession, strHobbies;
+    private static String strName, strSurname, strProfession, strHobbies;
+    private Integer intAge;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class ProfileFragment extends Fragment {
             profile_pic.setImageBitmap(gallery_image);
             name.setText(strName);
             surname.setText(strSurname);
-            age.setText(intAge);
+            age.setText(String.valueOf(intAge));
             profession.setText(strProfession);
             hobbies.setText(strHobbies);
         }
@@ -60,15 +62,14 @@ public class ProfileFragment extends Fragment {
         });
 
         btnSave.setOnClickListener(v-> {
-            NavigationActivity navigationActivity = new NavigationActivity();
-
             strName = name.getText().toString();
             strSurname = surname.getText().toString();
-            intAge = age.getText().toString();
+            intAge = Integer.parseInt(age.getText().toString());
             strProfession = profession.getText().toString();
             strHobbies = hobbies.getText().toString();
 
-            navigationActivity.change_profile_info(gallery_image, strName, strSurname);
+            HomeFragment.change_home_info(gallery_image, strName, strSurname, intAge);
+            NavigationActivity.change_nav_info(strName, strSurname);
 
             Toast.makeText(getContext(), "Changes applied!", Toast.LENGTH_SHORT).show();
         });
@@ -98,7 +99,6 @@ public class ProfileFragment extends Fragment {
                 e.printStackTrace();
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
             }
-
         }
     }
 }

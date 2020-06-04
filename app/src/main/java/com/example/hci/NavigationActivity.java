@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -20,7 +21,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.hci.ui.analytics.AdvancedAnalytics;
 import com.example.hci.ui.analytics.HouseGraphs;
 import com.example.hci.ui.documents.DocumentVisualization;
@@ -35,8 +35,6 @@ import com.example.hci.ui.numbers.NumbersFragment;
 import com.example.hci.ui.numbers.ShowUsefulNumber;
 import com.example.hci.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
-import com.mikhaellopez.circularimageview.CircularImageView;
-
 import android.os.Handler;
 import java.util.Objects;
 
@@ -253,16 +251,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         }
     }
 
-    public void change_profile_info(Bitmap bitmap, String name, String surname) {
+    public static void change_nav_info(String name, String surname) {
         View nav_header_main = navigationView.getHeaderView(0);
 
-        CircularImageView global_image = nav_header_main.findViewById(R.id.imageView);
         TextView global_name = nav_header_main.findViewById(R.id.nameTextView);
         TextView global_email = nav_header_main.findViewById(R.id.emailTextView);
-
-        if (bitmap != null)  {
-            global_image.setImageBitmap(bitmap);
-        }
 
         if (!name.equals("") && !surname.equals("")) {
             String newName = name + " " + surname;
