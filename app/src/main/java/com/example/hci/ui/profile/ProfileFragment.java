@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class ProfileFragment extends Fragment {
     private CircularImageView profile_pic;
     private static final int PICK_IMAGE = 200;
     private static String strName, strSurname, strProfession, strHobbies;
-    private Integer intAge;
+    private static Integer intAge;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,10 +49,25 @@ public class ProfileFragment extends Fragment {
 
         if (gallery_image != null) {
             profile_pic.setImageBitmap(gallery_image);
+        }
+
+        if (strName != null) {
             name.setText(strName);
+        }
+
+        if (strSurname != null) {
             surname.setText(strSurname);
+        }
+
+        if (intAge != null) {
             age.setText(String.valueOf(intAge));
+        }
+
+        if (strProfession != null) {
             profession.setText(strProfession);
+        }
+
+        if (strHobbies != null) {
             hobbies.setText(strHobbies);
         }
 
@@ -64,14 +80,34 @@ public class ProfileFragment extends Fragment {
         btnSave.setOnClickListener(v-> {
             strName = name.getText().toString();
             strSurname = surname.getText().toString();
-            intAge = Integer.parseInt(age.getText().toString());
+
+            if (!age.getText().toString().equals("")) {
+                intAge = Integer.parseInt(age.getText().toString());
+            } else {
+                age.setError("Please enter your Age!");
+            }
+
             strProfession = profession.getText().toString();
             strHobbies = hobbies.getText().toString();
 
-            HomeFragment.change_home_info(gallery_image, strName, strSurname, intAge);
-            NavigationActivity.change_nav_info(strName, strSurname);
+            if (strName.equals("") || strSurname.equals("")) {
+                if (TextUtils.isEmpty(strName)) {
+                    name.setError("Please enter your Name!");
+                }
 
-            Toast.makeText(getContext(), "Changes applied!", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(strSurname)) {
+                    surname.setError("Please enter your Surname!");
+                }
+            } else {
+                HomeFragment.home_profile = gallery_image;
+                HomeFragment.homeName = strName;
+                HomeFragment.homeSurname = strSurname;
+                HomeFragment.homeAge = intAge;
+
+                NavigationActivity.change_nav_info(strName, strSurname);
+
+                Toast.makeText(getContext(), "Changes applied!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         return root;

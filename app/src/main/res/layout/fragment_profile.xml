@@ -172,6 +172,7 @@
         android:hint="@string/enter_your_passions_nand_hobbies"
         android:textAlignment="center"
         android:textColor="#000"
+        android:padding="5dp"
         android:text="@string/i_really_like_to_play_football_in_my_free_time_i_also_enjoy_reading"
         android:textColorHint="#808080"
         android:inputType="textMultiLine"/>
