@@ -33,7 +33,6 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import static android.app.Activity.RESULT_OK;
@@ -59,7 +58,6 @@ public class InsertNewDocument extends Fragment {
     private static final int PICK_IMAGE = 200;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private static final int CAMERA_REQUEST = 1888;
-
 
     @SuppressLint("SetTextI18n")
     @Nullable
