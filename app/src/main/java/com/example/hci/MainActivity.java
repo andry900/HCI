@@ -1,10 +1,13 @@
 package com.example.hci;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
 
+import java.time.format.TextStyle;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login_main);
 
         Button login = findViewById(R.id.login);
-        Button signIn = findViewById(R.id.sign_in);
+        CheckedTextView signIn = findViewById(R.id.sign_in);
         Button google = findViewById(R.id.google_login);
         Button facebook = findViewById(R.id.facebook_login);
         login_name = findViewById(R.id.email);
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             Login();
         });
         signIn.setOnClickListener(v -> {
+
             Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
             startActivityForResult(intent, 1);
         });

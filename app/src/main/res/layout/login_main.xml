@@ -10,33 +10,22 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="110dp"
+        android:layout_width="150dp"
         android:layout_height="45dp"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/round_bg"
         android:text="@string/login"
         android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <Button
-        android:id="@+id/sign_in"
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/round_bg"
-        android:text="@string/sign_in"
-        android:textColor="#000"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintTop_toTopOf="@+id/login" />
 
     <Button
         android:id="@+id/google_login"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="172dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="180dp"
         android:background="@drawable/round_bg"
         android:drawableStart="@drawable/ic_google_logo"
         android:gravity="center"
@@ -101,7 +90,7 @@
         android:id="@+id/image"
         android:layout_width="110dp"
         android:layout_height="120dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_app_logo"
@@ -137,5 +126,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/htr" />
+
+    <CheckedTextView
+        android:id="@+id/sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Register to OverTheRoom"
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="@+id/facebook_login"
+        app:layout_constraintStart_toStartOf="@+id/facebook_login"
+        app:layout_constraintTop_toBottomOf="@+id/facebook_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
