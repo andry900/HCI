@@ -39,6 +39,8 @@ dependencies {
     implementation 'com.github.anoop44:AwesomeTextInputLayout:78d29c9bb8'
     implementation 'com.github.arcadefire:nice-spinner:1.4.4'
     implementation 'com.rohit.recycleritemclicksupport:recycleritemclicksupport:1.0.1'
+    implementation 'com.github.tibolte:agendacalendarview:1.0.4'
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
