@@ -1,5 +1,5 @@
 # OverTheRoom
-## An interactive mobile application designed with the principle of UCD (User Cenetered Design)
+## An interactive mobile application designed with the principles of UCD (User Cenetered Design)
 
 HCI (Human-Computer Interaction) project
 
