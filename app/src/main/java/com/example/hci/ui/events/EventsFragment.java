@@ -24,6 +24,7 @@ public class EventsFragment extends Fragment {
     public static ArrayList<String> defined_events = new ArrayList<>();
     public static String date_selected;
     public boolean event_selected = false;
+    public static long start_date;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class EventsFragment extends Fragment {
                 calendar.set(Calendar.YEAR, year);
 
                 long milliTime = calendar.getTimeInMillis();
+                start_date = milliTime;
                 calendarEvent.setDate(milliTime,true,true);
             }
         }
@@ -64,6 +66,7 @@ public class EventsFragment extends Fragment {
         add_event_button.setOnClickListener(v -> {
             if (!event_selected) {
                 date_selected = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                start_date = Calendar.getInstance().getTimeInMillis();
             }
             Intent intent = new Intent(getContext(), ChooseTypeofEvent.class);
             startActivityForResult(intent, 1);

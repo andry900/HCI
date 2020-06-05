@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             Login();
         });
         signIn.setOnClickListener(v -> {
-
             Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
             startActivityForResult(intent, 1);
         });

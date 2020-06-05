@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#03A9F4</color>
     <color name="colorAccent">#00BCD4</color>
+    <color name="dailyColor">#905E00</color>
+    <color name="monthlyColor">#086702</color>
+    <color name="noPeriodicColor">#A23563</color>
+    <color name="weeklyColor">#FF6600</color>
+
 </resources>

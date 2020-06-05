@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment implements CalendarPickerController {
     public static Bitmap home_profile;
     public static String homeName, homeSurname;
     public static Integer homeAge;
+    public static List<CalendarEvent> eventList = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,8 +66,10 @@ public class HomeFragment extends Fragment implements CalendarPickerController {
         minDate.set(Calendar.DAY_OF_MONTH, 1);
         maxDate.add(Calendar.YEAR, 1);
 
-        List<CalendarEvent> eventList = new ArrayList<>();
-        mockList(eventList);
+        if(eventList == null){
+            eventList = new ArrayList<>();
+            mockList(eventList);
+        }
 
         mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), this);
 
