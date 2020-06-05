@@ -80,6 +80,10 @@ public class CheckRecap extends Fragment {
                 t.show();
 
                 EventsFragment.defined_events.add(EventsFragment.date_selected);
+                InsertNewEvent.button_event_popup.setText(getResources().getString(R.string.enter_days_and_hours));
+                InsertNewEvent.from_hour_event = "";
+                InsertNewEvent.to_hour_event = "";
+                InsertNewEvent.days = "";
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()

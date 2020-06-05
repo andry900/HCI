@@ -33,7 +33,7 @@ public class InsertNewEvent extends Fragment {
     public static String duration = "";
     public static String type_of_event = "";
     public static String description = "";
-    private Button button_event_popup;
+    public static Button button_event_popup;
     private String frequency_chosen;
     @SuppressLint("SetTextI18n")
 
