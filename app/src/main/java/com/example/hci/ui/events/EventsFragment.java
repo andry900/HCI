@@ -38,14 +38,14 @@ public class EventsFragment extends Fragment {
         calendarEvent.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date_selected = dayOfMonth + "/" + month + "/" + year;
+                date_selected = dayOfMonth + "-" + month + "-" + year;
                 event_selected = true;
             }
         });
 
         if(defined_events.size()!=0){
             for(int i=0;i<defined_events.size();i++){
-                String[] result = defined_events.get(i).split("/");
+                String[] result = defined_events.get(i).split("-");
                 int day = Integer.parseInt(result[0]);
                 int month = Integer.parseInt(result[1]);
                 int year = Integer.parseInt(result[2]);
