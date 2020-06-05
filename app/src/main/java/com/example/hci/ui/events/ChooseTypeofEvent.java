@@ -6,15 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import com.example.hci.R;
-import com.example.hci.ui.numbers.InsertNumberFragment;
+
 
 public class ChooseTypeofEvent extends Activity {
     Button daily_button;
@@ -36,10 +29,6 @@ public class ChooseTypeofEvent extends Activity {
         int height = displayMetrics.heightPixels;
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.6));
 
-        //GETTING TYPE OF FREQUENCY
-        Intent intent = getIntent();
-        String frequency_chosen = intent.getStringExtra("frequency_chosen");
-
         //BUTTONS
         daily_button = findViewById(R.id.daily_event_button);
         weekly_button = findViewById(R.id.weekly_event_button);
@@ -55,6 +44,7 @@ public class ChooseTypeofEvent extends Activity {
 
     }
 
+    //PASS THE FREQUENCY CHOSEN BACK TO THE EVENTS FRAGMENT
     private void onClickSpecificButton(Button button){
         button.setOnClickListener(v -> {
             String frequency = "";

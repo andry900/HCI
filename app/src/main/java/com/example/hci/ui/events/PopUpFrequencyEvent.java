@@ -1,19 +1,27 @@
 package com.example.hci.ui.events;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.hci.R;
+import java.util.ArrayList;
+import java.util.Objects;
+
 
 public class PopUpFrequencyEvent extends Activity {
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +32,16 @@ public class PopUpFrequencyEvent extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
-        getWindow().setLayout((int) (width * 0.93), (int) (height * 0.6));
+        getWindow().setLayout((int) (width * 0.93), (int) (height * 0.75));
 
         //INITIALIZE ELEMENTS
         Button ok_button = findViewById(R.id.button_ok_daily_freq);
         Button back_button = findViewById(R.id.button_back_daily_freq);
+        LinearLayout layout_mon_tue_wed = findViewById(R.id.layout_mon_tue_wed);
+        LinearLayout layout_thu_fri_sat = findViewById(R.id.layout_thu_fri_sat);
+        LinearLayout layout_sunday = findViewById(R.id.layout_sunday);
+        LinearLayout layout_calendar_freq_popup = findViewById(R.id.layout_calendar_freq_popup);
+
         CheckBox checkBox_monday = findViewById(R.id.checkbox_monday);
         CheckBox checkBox_tuesday = findViewById(R.id.checkbox_tuesday);
         CheckBox checkBox_wednesday = findViewById(R.id.checkbox_wednesday);
@@ -36,13 +49,49 @@ public class PopUpFrequencyEvent extends Activity {
         CheckBox checkBox_friday = findViewById(R.id.checkbox_friday);
         CheckBox checkBox_saturday = findViewById(R.id.checkbox_saturday);
         CheckBox checkBox_sunday = findViewById(R.id.checkbox_sunday);
+
         EditText editText_from_hour_event = findViewById(R.id.editText_from_hour_event);
         EditText editText_to_hour_event = findViewById(R.id.editText_to_hour_event);
         TextView textView_popup_frequency_event = findViewById(R.id.textView_popup_frequency_event);
 
+        GridView calendarEvent_freq_popup = findViewById(R.id.calendar_event_freq_popup);
+
+        //GET THE FREQUENCY CHOSEN BY THE USER FROM PREVIOUS FRAGMENT
         Intent intent = getIntent();
         String frequency_chosen = intent.getStringExtra("frequency_chosen");
-        textView_popup_frequency_event.setText(frequency_chosen);
+        textView_popup_frequency_event.setText("Choose the " + frequency_chosen + " frequency");
+
+        //FILTER RESULTS BASED ON THE FREQUENCY CHOSEN
+        if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic")  ){
+            textView_popup_frequency_event.setText("Choose the time for the " + frequency_chosen + " event");
+
+            layout_mon_tue_wed.setVisibility(View.INVISIBLE);
+            layout_thu_fri_sat.setVisibility(View.INVISIBLE);
+            layout_sunday.setVisibility(View.INVISIBLE);
+            layout_calendar_freq_popup.setVisibility(View.INVISIBLE);
+        }
+
+        else if(Objects.equals(frequency_chosen, "weekly")){
+            layout_calendar_freq_popup.setVisibility(View.INVISIBLE);
+            layout_mon_tue_wed.setVisibility(View.VISIBLE);
+            layout_thu_fri_sat.setVisibility(View.VISIBLE);
+            layout_sunday.setVisibility(View.VISIBLE);
+        }
+
+        else{
+            layout_mon_tue_wed.setVisibility(View.INVISIBLE);
+            layout_thu_fri_sat.setVisibility(View.INVISIBLE);
+            layout_sunday.setVisibility(View.INVISIBLE);
+            layout_calendar_freq_popup.setVisibility(View.VISIBLE);
+
+           ArrayList<String> days = new ArrayList<>();
+
+            for(int i = 0;i<31;i++){
+               days.add(String.valueOf(i+1));
+            }
+            GridViewAdapter adapter = new GridViewAdapter(this,days);
+            calendarEvent_freq_popup.setAdapter(adapter);
+        }
 
         //CLICKING ON BACK BUTTON
         back_button.setOnClickListener(v -> {
@@ -51,50 +100,80 @@ public class PopUpFrequencyEvent extends Activity {
 
         //CLICKING OK BUTTON
         ok_button.setOnClickListener(v -> {
-            if(!checkBox_monday.isChecked() && !checkBox_tuesday.isChecked() && !checkBox_wednesday.isChecked()
-            && !checkBox_thursday.isChecked() && !checkBox_friday.isChecked() && !checkBox_saturday.isChecked() &&
-            !checkBox_sunday.isChecked()){
-                Toast toast= Toast.makeText(getApplicationContext(), "You must check at least one day", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-            }
-            else if(editText_from_hour_event.getText().toString().equals("") || editText_from_hour_event.getText().toString().equals(" ")
-            || editText_to_hour_event.getText().toString().equals("") || editText_to_hour_event.getText().toString().equals(" ")){
-                    Toast toast= Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
+
+            if(Objects.equals(frequency_chosen, "weekly")) {
+
+                if (!checkBox_monday.isChecked() && !checkBox_tuesday.isChecked() && !checkBox_wednesday.isChecked()
+                        && !checkBox_thursday.isChecked() && !checkBox_friday.isChecked() && !checkBox_saturday.isChecked() &&
+                        !checkBox_sunday.isChecked()) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "You must check at least one day", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
+                } else if (editText_from_hour_event.getText().toString().equals("") || editText_from_hour_event.getText().toString().equals(" ")
+                        || editText_to_hour_event.getText().toString().equals("") || editText_to_hour_event.getText().toString().equals(" ")) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                } else if (!editText_from_hour_event.getText().toString().contains(":") ||
+                        !editText_to_hour_event.getText().toString().contains(":")){
+                    Toast toast = Toast.makeText(getApplicationContext(), "the value must contain ':'", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+                else {
+                    InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();
+                    InsertNewEvent.to_hour_event = editText_to_hour_event.getText().toString();
+
+                    if (checkBox_monday.isChecked()) {
+                        InsertNewEvent.days = "Monday, ";
+                    }
+                    if (checkBox_tuesday.isChecked()) {
+                        InsertNewEvent.days += "Tuesday, ";
+                    }
+                    if (checkBox_wednesday.isChecked()) {
+                        InsertNewEvent.days += "Wednesday, ";
+                    }
+                    if (checkBox_thursday.isChecked()) {
+                        InsertNewEvent.days += "Thursday, ";
+                    }
+                    if (checkBox_friday.isChecked()) {
+                        InsertNewEvent.days += "Friday, ";
+                    }
+                    if (checkBox_saturday.isChecked()) {
+                        InsertNewEvent.days += "Saturday, ";
+                    }
+                    if (checkBox_sunday.isChecked()) {
+                        InsertNewEvent.days += "Sunday, ";
+                    }
+
+                    Intent returnIntent = new Intent();
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    finish();
+                }
             }
-            else{
-                InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();
-                InsertNewEvent.to_hour_event = editText_to_hour_event.getText().toString();
 
-                if(checkBox_monday.isChecked()){
-                    InsertNewEvent.days = "Monday, ";
+            if(Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic") || Objects.equals(frequency_chosen, "monthly") || frequency_chosen.equals("yearly")){
+                if (editText_from_hour_event.getText().toString().equals("") || editText_from_hour_event.getText().toString().equals(" ")
+                        || editText_to_hour_event.getText().toString().equals("") || editText_to_hour_event.getText().toString().equals(" ")) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
-                if(checkBox_tuesday.isChecked()){
-                    InsertNewEvent.days+="Tuesday, ";
+                else if (!editText_from_hour_event.getText().toString().contains(":") ||
+                        !editText_to_hour_event.getText().toString().contains(":")){
+                    Toast toast = Toast.makeText(getApplicationContext(), "the value must contain ':'", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
-                if(checkBox_wednesday.isChecked()){
-                    InsertNewEvent.days+="Wednesday, ";
-                }
-                if(checkBox_thursday.isChecked()){
-                    InsertNewEvent.days+="Thursday, ";
-                }
-                if(checkBox_friday.isChecked()){
-                    InsertNewEvent.days+="Friday, ";
-                }
-                if(checkBox_saturday.isChecked()){
-                    InsertNewEvent.days+="Saturday, ";
-                }
-                if(checkBox_sunday.isChecked()){
-                    InsertNewEvent.days+="Sunday, ";
-                }
+                else {
+                    InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();
+                    InsertNewEvent.to_hour_event = editText_to_hour_event.getText().toString();
 
-                Intent returnIntent = new Intent();
-                setResult(Activity.RESULT_OK,returnIntent);
-                finish();
+                    Intent returnIntent = new Intent();
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    finish();
+                }
             }
-
         });
     }
 }

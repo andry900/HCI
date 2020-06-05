@@ -83,7 +83,7 @@
     <string name="insert_new_event">Insert new event</string>
     <string name="description">Description</string>
     <string name="type_of_event">Type of event</string>
-    <string name="date_and_hour">Enter Date and Hour</string>
+    <string name="enter_days_and_hours">Enter Days and Hours</string>
     <string name="enter_duration">Enter duration</string>
     <string name="choose_daily_frequency">Choose daily frequency</string>
     <string name="monday">Monday</string>

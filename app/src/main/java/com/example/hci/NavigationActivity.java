@@ -26,6 +26,7 @@ import com.example.hci.ui.analytics.HouseGraphs;
 import com.example.hci.ui.documents.DocumentVisualization;
 import com.example.hci.ui.documents.InsertNewDocument;
 import com.example.hci.ui.documents.NotifyPerson;
+import com.example.hci.ui.events.InsertNewEvent;
 import com.example.hci.ui.home.HomeFragment;
 import com.example.hci.ui.events.EventsFragment;
 import com.example.hci.ui.documents.DocumentsFragment;
@@ -183,6 +184,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             navigationView.getMenu().getItem(0).setChecked(true);
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
+        }
+        else if(fragment instanceof InsertNewEvent){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
+                    .commit();
         }
         else if (fragment instanceof NumbersFragment) {
             getSupportFragmentManager()

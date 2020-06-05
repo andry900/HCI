@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/border"
                 android:fontFamily="sans-serif"
-                android:text="@string/date_and_hour"
+                android:text="@string/enter_days_and_hours"
                 android:textColor="#000"
                 android:textSize="15sp" />
 

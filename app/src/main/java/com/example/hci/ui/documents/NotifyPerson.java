@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.hci.R;
+import com.example.hci.ui.events.InsertNewEvent;
 import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,16 +55,35 @@ public class NotifyPerson extends Fragment {
         personRecycler.setAdapter(mAdapter);
 
         next.setOnClickListener(v ->{
-          assert recapBundle != null;
-          recapBundle.putStringArrayList("persons", selectedPersons);
-          CheckRecap recapFrag = new CheckRecap();
-          recapFrag.setArguments(recapBundle);
-            getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.nav_host_fragment, recapFrag, "checkRecap")
-                    .addToBackStack(null)
-                    .commit();
+            assert getArguments() != null;
+            if(Objects.equals(getArguments().getString("insert_new_event"), "insert new event")){
+                String frequency_chosen = getArguments().getString("frequency_chosen");
+
+                CheckRecap checkRecap = new CheckRecap();
+                Bundle arguments = new Bundle();
+                arguments.putString("notify_person", "notify person");
+                arguments.putStringArrayList("persons",selectedPersons);
+                arguments.putString("frequency_chosen",frequency_chosen);
+                checkRecap.setArguments(arguments);
+
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment,checkRecap, "checkRecap")
+                        .addToBackStack(null)
+                        .commit();
+            }else {
+                assert recapBundle != null;
+                recapBundle.putStringArrayList("persons", selectedPersons);
+                CheckRecap recapFrag = new CheckRecap();
+                recapFrag.setArguments(recapBundle);
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, recapFrag, "checkRecap")
+                        .addToBackStack(null)
+                        .commit();
+            }
         });
 
         RecyclerItemClickSupport.addTo(personRecycler).setOnItemClickListener(
