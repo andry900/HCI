@@ -11,23 +11,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.hci.R;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class NumbersCustomAdapter extends ArrayAdapter<String> {
-
     private final Context context;
     private final ArrayList<String> numbers;
     private final ArrayList<String> icon_numbers;
 
-    NumbersCustomAdapter(Activity context, ArrayList<String> numbers, ArrayList<String> icon_numbers){
+    NumbersCustomAdapter(Activity context, ArrayList<String> numbers, ArrayList<String> icon_numbers) {
         super(context, R.layout.number_item,numbers);
         this.context = context;
         this.numbers = numbers;
         this.icon_numbers = icon_numbers;
     }
 
-    public View getView(int position, View view, ViewGroup parent){
+    public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.number_item,null,true);
+        @SuppressLint("ViewHolder") View rowView = Objects.requireNonNull(inflater).inflate(R.layout.number_item,null,true);
 
         ImageView icon_number= rowView.findViewById(R.id.image_itemListView_number);
         TextView number = rowView.findViewById(R.id.textView_itemListView_number);

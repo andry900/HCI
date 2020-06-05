@@ -1,14 +1,11 @@
 package com.example.hci.ui.documents;
 
 import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import com.example.hci.R;
-
 import androidx.fragment.app.FragmentActivity;
 
 public class ChooseLabel extends FragmentActivity {

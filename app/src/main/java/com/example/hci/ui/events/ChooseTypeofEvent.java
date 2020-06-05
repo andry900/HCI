@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 import android.widget.Button;
 import com.example.hci.R;
 
-
 public class ChooseTypeofEvent extends Activity {
     Button daily_button;
     Button weekly_button;
@@ -45,18 +44,18 @@ public class ChooseTypeofEvent extends Activity {
     }
 
     //PASS THE FREQUENCY CHOSEN BACK TO THE EVENTS FRAGMENT
-    private void onClickSpecificButton(Button button){
+    private void onClickSpecificButton(Button button) {
         button.setOnClickListener(v -> {
             String frequency = "";
             if (daily_button.equals(button)) {
                 frequency = "daily";
             } else if (weekly_button.equals(button)) {
                 frequency = "weekly";
-            }else if(monthly_button.equals(button)){
+            } else if (monthly_button.equals(button)) {
                 frequency = "monthly";
-            }else if(yearly_button.equals(button)){
+            } else if (yearly_button.equals(button)) {
                 frequency = "yearly";
-            }else if(no_periodic_button.equals(button)){
+            } else if (no_periodic_button.equals(button)) {
                 frequency = "no periodic";
             }
             Intent returnIntent = new Intent();

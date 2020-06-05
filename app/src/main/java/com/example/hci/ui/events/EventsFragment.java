@@ -2,15 +2,12 @@ package com.example.hci.ui.events;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,17 +17,13 @@ import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
 import com.github.tibolte.agendacalendarview.models.CalendarEvent;
 import com.github.tibolte.agendacalendarview.models.DayItem;
-
-import java.security.AlgorithmParameterGenerator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-
 import static android.app.Activity.RESULT_OK;
 
 public class EventsFragment extends Fragment implements CalendarPickerController {
@@ -103,11 +96,11 @@ public class EventsFragment extends Fragment implements CalendarPickerController
         event_selected = true;
         Date sdt = null;
         try {
-            sdt = new SimpleDateFormat("dd-MM-yyyy").parse(date_selected);
+            sdt = new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY).parse(date_selected);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        start_date = sdt.getTime();
+        start_date = Objects.requireNonNull(sdt).getTime();
         }
 
     @Override
@@ -117,9 +110,9 @@ public class EventsFragment extends Fragment implements CalendarPickerController
 
     @Override
     public void onScrollToDate(Calendar calendar) {
-        if (getActivity().findViewById(R.id.event_agenda_bar) != null) {
-            ((TextView)getActivity().findViewById(R.id.event_agenda_bar)).setText(
-                    (calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()))
+        if (requireActivity().findViewById(R.id.event_agenda_bar) != null) {
+            ((TextView) requireActivity().findViewById(R.id.event_agenda_bar)).setText(
+                    (Objects.requireNonNull(calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())))
                             .toUpperCase());
         }
     }

@@ -96,6 +96,7 @@
         android:layout_below="@+id/editText_insert_comment"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:padding="5dp"
         android:gravity="center"
         android:background="@drawable/round_bg"
         android:backgroundTint="@color/colorPrimary"

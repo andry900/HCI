@@ -1,13 +1,11 @@
 package com.example.hci;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -185,7 +183,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if(fragment instanceof InsertNewEvent){
+        else if (fragment instanceof InsertNewEvent) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
@@ -202,7 +200,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if(fragment instanceof InsertNumberFragment || fragment instanceof ShowUsefulNumber){
+        else if (fragment instanceof InsertNumberFragment || fragment instanceof ShowUsefulNumber) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new NumbersFragment(),"fragment_numbers")
@@ -219,8 +217,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if(fragment instanceof InsertNewDocument || fragment instanceof NotifyPerson
-        || fragment instanceof DocumentVisualization){
+        else if (fragment instanceof InsertNewDocument || fragment instanceof NotifyPerson
+        || fragment instanceof DocumentVisualization) {
             getSupportFragmentManager().popBackStackImmediate();
         }
         else if (fragment instanceof AnalyticsFragment) {

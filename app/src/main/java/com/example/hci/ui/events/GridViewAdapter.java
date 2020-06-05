@@ -11,14 +11,14 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import com.example.hci.R;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GridViewAdapter extends ArrayAdapter<String> {
-
     private final Context context;
     private final ArrayList<String> days;
     public static String dates = "";
 
-    GridViewAdapter(Activity context, ArrayList<String> days){
+    GridViewAdapter(Activity context, ArrayList<String> days) {
         super(context, R.layout.number_item, days);
         this.context = context;
         this.days = days;
@@ -26,18 +26,15 @@ public class GridViewAdapter extends ArrayAdapter<String> {
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.gridview_cell, null, true);
+        @SuppressLint("ViewHolder") View rowView = Objects.requireNonNull(inflater).inflate(R.layout.gridview_cell, null, true);
 
         TextView day = rowView.findViewById(R.id.textView_day);
         day.setText(days.get(position));
 
-        day.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                day.setBackground(ContextCompat.getDrawable(context, R.drawable.cell_gridview_border));
-                dates += day.getText().toString() + " - ";
+        day.setOnClickListener(v -> {
+            day.setBackground(ContextCompat.getDrawable(context, R.drawable.cell_gridview_border));
+            dates += day.getText().toString() + " - ";
 
-            }
         });
 
 

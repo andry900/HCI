@@ -7,25 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.hci.R;
-import com.example.hci.ui.numbers.InsertNumberFragment;
 import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
 import static android.app.Activity.RESULT_OK;
 
 public class DocumentsFragment extends Fragment {
-
     static ArrayList<Document> savedDocs;
     static ArrayList<NotifyPerson.Person> personsList;
 
@@ -57,21 +50,18 @@ public class DocumentsFragment extends Fragment {
         });
 
         RecyclerItemClickSupport.addTo(docList).setOnItemClickListener(
-                new RecyclerItemClickSupport.OnItemClickListener() {
-                    @Override
-                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        DocumentVisualization docFrag = new DocumentVisualization();
-                        Bundle b = new Bundle();
-                        b.putInt("item", position);
-                        docFrag.setArguments(b);
-                        getActivity()
-                                .getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.nav_host_fragment, docFrag,
-                                        "visualizeDoc")
-                                .addToBackStack(null)
-                                .commit();
-                    }
+                (recyclerView, position, v) -> {
+                    DocumentVisualization docFrag = new DocumentVisualization();
+                    Bundle b = new Bundle();
+                    b.putInt("item", position);
+                    docFrag.setArguments(b);
+                    requireActivity()
+                            .getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.nav_host_fragment, docFrag,
+                                    "visualizeDoc")
+                            .addToBackStack(null)
+                            .commit();
                 });
 
         return root;
@@ -81,14 +71,14 @@ public class DocumentsFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
-            if(resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 String selector = Objects.requireNonNull(data).getStringExtra("label");
 
                 InsertNewDocument newDocFragment = new InsertNewDocument();
                 Bundle bundle = new Bundle();
                 bundle.putString("label", selector);
                 newDocFragment.setArguments(bundle);
-                getActivity()
+                requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, newDocFragment, "newDocFragment")

@@ -4,18 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.hci.R;
-
 import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapter.MyViewHolder>{
-
+public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapter.MyViewHolder> {
     private final ArrayList<DocumentsFragment.Document> data;
-
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name;

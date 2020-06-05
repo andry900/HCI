@@ -18,9 +18,7 @@ import com.example.hci.R;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
 public class PopUpFrequencyEvent extends Activity {
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +60,7 @@ public class PopUpFrequencyEvent extends Activity {
         textView_popup_frequency_event.setText("Choose the " + frequency_chosen + " frequency");
 
         //FILTER RESULTS BASED ON THE FREQUENCY CHOSEN
-        if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic")  ){
+        if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic")  ) {
             textView_popup_frequency_event.setText("Choose the time for the " + frequency_chosen + " event");
 
             layout_mon_tue_wed.setVisibility(View.INVISIBLE);
@@ -71,14 +69,14 @@ public class PopUpFrequencyEvent extends Activity {
             layout_calendar_freq_popup.setVisibility(View.INVISIBLE);
         }
 
-        else if(Objects.equals(frequency_chosen, "weekly")){
+        else if (Objects.equals(frequency_chosen, "weekly")) {
             layout_calendar_freq_popup.setVisibility(View.INVISIBLE);
             layout_mon_tue_wed.setVisibility(View.VISIBLE);
             layout_thu_fri_sat.setVisibility(View.VISIBLE);
             layout_sunday.setVisibility(View.VISIBLE);
         }
 
-        else{
+        else {
             layout_mon_tue_wed.setVisibility(View.INVISIBLE);
             layout_thu_fri_sat.setVisibility(View.INVISIBLE);
             layout_sunday.setVisibility(View.INVISIBLE);
@@ -86,22 +84,20 @@ public class PopUpFrequencyEvent extends Activity {
 
            ArrayList<String> days = new ArrayList<>();
 
-            for(int i = 0;i<31;i++){
-               days.add(String.valueOf(i+1));
+            for (int i = 0; i < 31; i++) {
+               days.add(String.valueOf(i + 1));
             }
             GridViewAdapter adapter = new GridViewAdapter(this,days);
             calendarEvent_freq_popup.setAdapter(adapter);
         }
 
         //CLICKING ON BACK BUTTON
-        back_button.setOnClickListener(v -> {
-            finish();
-        });
+        back_button.setOnClickListener(v -> finish());
 
         //CLICKING OK BUTTON
         ok_button.setOnClickListener(v -> {
 
-            if(Objects.equals(frequency_chosen, "weekly")) {
+            if (Objects.equals(frequency_chosen, "weekly")) {
 
                 if (!checkBox_monday.isChecked() && !checkBox_tuesday.isChecked() && !checkBox_wednesday.isChecked()
                         && !checkBox_thursday.isChecked() && !checkBox_friday.isChecked() && !checkBox_saturday.isChecked() &&
@@ -115,7 +111,7 @@ public class PopUpFrequencyEvent extends Activity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (!editText_from_hour_event.getText().toString().contains(":") ||
-                        !editText_to_hour_event.getText().toString().contains(":")){
+                        !editText_to_hour_event.getText().toString().contains(":")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "the value must contain ':'", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
@@ -152,7 +148,7 @@ public class PopUpFrequencyEvent extends Activity {
                 }
             }
 
-            if(Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic") || Objects.equals(frequency_chosen, "monthly") || frequency_chosen.equals("yearly")){
+            if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic") || Objects.equals(frequency_chosen, "monthly") || Objects.equals(frequency_chosen, "yearly")) {
                 if (editText_from_hour_event.getText().toString().equals("") || editText_from_hour_event.getText().toString().equals(" ")
                         || editText_to_hour_event.getText().toString().equals("") || editText_to_hour_event.getText().toString().equals(" ")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
@@ -160,7 +156,7 @@ public class PopUpFrequencyEvent extends Activity {
                     toast.show();
                 }
                 else if (!editText_from_hour_event.getText().toString().contains(":") ||
-                        !editText_to_hour_event.getText().toString().contains(":")){
+                        !editText_to_hour_event.getText().toString().contains(":")) {
                     Toast toast = Toast.makeText(getApplicationContext(), "the value must contain ':'", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();

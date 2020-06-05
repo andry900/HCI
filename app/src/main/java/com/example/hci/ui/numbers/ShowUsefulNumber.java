@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.example.hci.R;
+import java.util.Objects;
 
 public class ShowUsefulNumber extends Fragment {
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -28,14 +28,14 @@ public class ShowUsefulNumber extends Fragment {
 
         //GET VALUES FROM THE PREVIOUS FRAGMENT
         Bundle bundle = getArguments();
-        String name_number = bundle.getString("name_number");
+        String name_number = Objects.requireNonNull(bundle).getString("name_number");
         String icon_number = bundle.getString("icon_number");
         String number = bundle.getString("number");
         String comment = bundle.getString("comment");
         String position = bundle.getString("position");
 
         //SET THE INFO INTO THE RELATED EDIT-TEXT
-        imageButton_show_useful_number.setImageResource(Integer.parseInt(icon_number));
+        imageButton_show_useful_number.setImageResource(Integer.parseInt(Objects.requireNonNull(icon_number)));
         editText_insert_name_show_number.setText(name_number);
         editText_insert_show_number.setText(number);
         editText_insert_show_comment.setText(comment);
@@ -49,11 +49,11 @@ public class ShowUsefulNumber extends Fragment {
                 editText_insert_show_number.setError("Please enter a number!");
             if (editText_insert_show_comment.getText().toString().equals("") || editText_insert_show_comment.getText().toString().equals(" "))
                 editText_insert_show_comment.setError("Please enter a comment!");
-            else if( editText_insert_name_show_number.getError() == null && editText_insert_show_number.getError() == null
-                    && editText_insert_show_comment.getError() == null){
+            else if ( editText_insert_name_show_number.getError() == null && editText_insert_show_number.getError() == null
+                    && editText_insert_show_comment.getError() == null) {
 
                 //UPDATE THE VALUES
-                NumbersFragment.name_numbers.set(Integer.parseInt(position),editText_insert_name_show_number.getText().toString());
+                NumbersFragment.name_numbers.set(Integer.parseInt(Objects.requireNonNull(position)),editText_insert_name_show_number.getText().toString());
                 NumbersFragment.numbers.set(Integer.parseInt(position),editText_insert_show_number.getText().toString());
                 NumbersFragment.comments.set(Integer.parseInt(position),editText_insert_show_comment.getText().toString());
 
@@ -69,7 +69,7 @@ public class ShowUsefulNumber extends Fragment {
 
         //DELETE BUTTON
         delete_button_show.setOnClickListener(v -> {
-            NumbersFragment.icon_numbers.remove(Integer.parseInt(position));
+            NumbersFragment.icon_numbers.remove(Integer.parseInt(Objects.requireNonNull(position)));
             NumbersFragment.name_numbers.remove(Integer.parseInt(position));
             NumbersFragment.numbers.remove(Integer.parseInt(position));
             NumbersFragment.comments.remove(Integer.parseInt(position));

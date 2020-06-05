@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,7 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class PopUpSignIn extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,24 +34,19 @@ public class PopUpSignIn extends Activity {
         RadioButton landlord = findViewById(R.id.landlord_radio);
         CheckBox privacy = findViewById(R.id.privacy_check);
 
-        privacy.setOnClickListener(v->{
-            if(privacy.getError() != null){
+        privacy.setOnClickListener(v-> {
+            if (privacy.getError() != null) {
                 privacy.setError(null);
             }
         });
 
-        userRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(landlord.getError() != null){
-                    landlord.setError(null);
-                }
+        userRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (landlord.getError() != null) {
+                landlord.setError(null);
             }
         });
 
-        abort.setOnClickListener(v -> {
-            onBackPressed();
-        });
+        abort.setOnClickListener(v -> onBackPressed());
 
         sign_in.setOnClickListener(v -> {
             String txtName = popup_name.getText().toString();
@@ -67,7 +60,7 @@ public class PopUpSignIn extends Activity {
                 (TextUtils.isEmpty(txtEmail) || !Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) ||
                 (TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) ||
                 !txtPassword.equals(txtPasswordCheck) || TextUtils.isEmpty(txtPasswordCheck) ||
-                userRadioGroup.getCheckedRadioButtonId() == -1 || !privacy.isChecked() ){
+                userRadioGroup.getCheckedRadioButtonId() == -1 || !privacy.isChecked() ) {
 
                 if (TextUtils.isEmpty(txtName)) {
                     popup_name.setError("Please enter your Name!");
@@ -98,13 +91,13 @@ public class PopUpSignIn extends Activity {
                         landlord.setError("Please select one user type!");
                 }
 
-                if (!privacy.isChecked()){
+                if (!privacy.isChecked()) {
                     privacy.setError("You need to accept privacy policy");
                 }
 
 
             } else {
-                if (landlord.isChecked()){
+                if (landlord.isChecked()) {
                     userType = "landlord";
                 }
                 Intent returnIntent = new Intent();
@@ -114,6 +107,5 @@ public class PopUpSignIn extends Activity {
                 finish();
             }
         });
-
     }
 }

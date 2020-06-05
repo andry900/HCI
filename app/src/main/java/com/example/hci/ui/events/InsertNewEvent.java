@@ -22,7 +22,6 @@ import com.example.hci.ui.documents.NotifyPerson;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
-
 import static android.app.Activity.RESULT_OK;
 
 public class InsertNewEvent extends Fragment {
@@ -35,8 +34,8 @@ public class InsertNewEvent extends Fragment {
     public static String description = "";
     public static Button button_event_popup;
     private String frequency_chosen;
-    @SuppressLint("SetTextI18n")
 
+    @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -56,20 +55,20 @@ public class InsertNewEvent extends Fragment {
         Bundle bundle = getArguments();
         frequency_chosen = Objects.requireNonNull(bundle).getString("frequency_chosen");
 
-        if(Objects.requireNonNull(frequency_chosen).equals("weekly")){
-            if(!days.equals("") && !from_hour_event.equals("") && !to_hour_event.equals("")) {
+        if (Objects.requireNonNull(frequency_chosen).equals("weekly")) {
+            if (!days.equals("") && !from_hour_event.equals("") && !to_hour_event.equals("")) {
                 button_event_popup.setText("days: " + days + "\n" + "from: " + from_hour_event + " - to: " + to_hour_event);
                 button_event_popup.setTextSize(10);
             }
         }
-        if(frequency_chosen.equals("daily") || frequency_chosen.equals("no periodic") ){
-            if(!from_hour_event.equals("") && !to_hour_event.equals("")) {
+        if (frequency_chosen.equals("daily") || frequency_chosen.equals("no periodic") ) {
+            if (!from_hour_event.equals("") && !to_hour_event.equals("")) {
                 button_event_popup.setText("from: " + from_hour_event + " - to: " + to_hour_event);
                 button_event_popup.setTextSize(10);
             }
         }
-        if(frequency_chosen.equals("monthly") || frequency_chosen.equals("yearly") ){
-            if(!from_hour_event.equals("") && !to_hour_event.equals("") &&  !GridViewAdapter.dates.equals("")) {
+        if (frequency_chosen.equals("monthly") || frequency_chosen.equals("yearly") ) {
+            if (!from_hour_event.equals("") && !to_hour_event.equals("") &&  !GridViewAdapter.dates.equals("")) {
                 button_event_popup.setText("days: " + GridViewAdapter.dates + "\n" + "from: " + from_hour_event + " - to: " + to_hour_event);
                 button_event_popup.setTextSize(10);
             }
@@ -106,18 +105,18 @@ public class InsertNewEvent extends Fragment {
 
         //GO TO THE NEXT FRAGMENT
         next_button_event.setOnClickListener(v -> {
-            if(editText_duration_event.getText().toString().equals("") || editText_duration_event.getText().toString().equals(" ")){
-                editText_duration_event.setError("enter a duration");
+            if (editText_duration_event.getText().toString().equals("") || editText_duration_event.getText().toString().equals(" ")) {
+                editText_duration_event.setError("Enter a duration");
             }
-            if(editText_description_event.getText().toString().equals("") || editText_duration_event.getText().toString().equals(" ")){
-                editText_description_event.setError("enter a description");
+            if (editText_description_event.getText().toString().equals("") || editText_description_event.getText().toString().equals(" ")) {
+                editText_description_event.setError("Enter a description");
             }
-            if(editText_autocomplete_event.getText().toString().equals("") || editText_duration_event.getText().toString().equals(" ")){
-                editText_autocomplete_event.setError("enter a type of event");
+            if (editText_autocomplete_event.getText().toString().equals("") || editText_autocomplete_event.getText().toString().equals(" ")) {
+                editText_autocomplete_event.setError("Enter a type of event");
             }
 
-            if(editText_autocomplete_event.getError() == null && editText_description_event.getError() == null && editText_duration_event.getError() == null){
-                if(!button_event_popup.getText().equals(getResources().getString(R.string.enter_days_and_hours))){
+            if (editText_autocomplete_event.getError() == null && editText_description_event.getError() == null && editText_duration_event.getError() == null) {
+                if (!button_event_popup.getText().equals(getResources().getString(R.string.enter_days_and_hours))) {
                     NotifyPerson notifyPerson = new NotifyPerson();
                     Bundle arguments = new Bundle();
                     arguments.putString("insert_new_event", "insert new event");
@@ -133,7 +132,7 @@ public class InsertNewEvent extends Fragment {
                             .replace(R.id.nav_host_fragment, notifyPerson,"NotifyPerson")
                             .addToBackStack(null)
                             .commit();
-                }else {
+                } else {
                     Toast toast = Toast.makeText(getContext(), "You must enter days and hours!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
@@ -143,18 +142,15 @@ public class InsertNewEvent extends Fragment {
         });
 
         //GO TO THE PREVIOUS FRAGMENT
-        prev_button_event.setOnClickListener(v -> {
-            requireActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.nav_host_fragment, new EventsFragment(),"EventsFragment")
-                    .addToBackStack(null)
-                    .commit();
-        });
+        prev_button_event.setOnClickListener(v -> requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, new EventsFragment(),"EventsFragment")
+                .addToBackStack(null)
+                .commit());
         
         return root;
     }
-
 
     //TAKE RESULT FROM POPUP FREQUENCY EVENT ACTIVITY
     @SuppressLint("SetTextI18n")
@@ -163,18 +159,17 @@ public class InsertNewEvent extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                if(frequency_chosen.equals("weekly")){
+                if (frequency_chosen.equals("weekly")) {
                     button_event_popup.setText("days: -" + days + "\n" + "from: " + from_hour_event + " -- to: " +to_hour_event);
                 }
-                if(frequency_chosen.equals("daily") || frequency_chosen.equals("no periodic") ){
+                if (frequency_chosen.equals("daily") || frequency_chosen.equals("no periodic") ) {
                     button_event_popup.setText("from: " + from_hour_event + " - to: " +to_hour_event);
                 }
-                if(frequency_chosen.equals("monthly") || frequency_chosen.equals("yearly") ){
+                if (frequency_chosen.equals("monthly") || frequency_chosen.equals("yearly") ) {
                     button_event_popup.setText("days: -" + GridViewAdapter.dates + "\n" +"from: " + from_hour_event + " -- to: " +to_hour_event);
                 }
               button_event_popup.setTextSize(10);
             }
         }
     }
-
 }

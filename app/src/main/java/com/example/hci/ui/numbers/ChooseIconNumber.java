@@ -7,10 +7,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageButton;
 import com.example.hci.R;
 
-
 public class ChooseIconNumber extends Activity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

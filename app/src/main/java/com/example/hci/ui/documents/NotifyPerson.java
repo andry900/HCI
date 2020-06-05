@@ -23,8 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import static com.example.hci.ui.documents.DocumentsFragment.personsList;
 
 public class NotifyPerson extends Fragment {
-
-
     private ArrayList<String> selectedPersons;
 
     @Nullable
@@ -40,7 +38,7 @@ public class NotifyPerson extends Fragment {
         Bundle recapBundle = getArguments();
         selectedPersons = new ArrayList<>();
 
-        if(personsList == null) {
+        if (personsList == null) {
             personsList = new ArrayList<>();
             personsList.add(new Person("Mario Rossi", "Roomates", null,false));
             personsList.add(new Person("Palma Alessandro", "Roomates", null,false));
@@ -55,9 +53,8 @@ public class NotifyPerson extends Fragment {
         personRecycler.setAdapter(mAdapter);
 
         next.setOnClickListener(v ->{
-            assert getArguments() != null;
-            if(Objects.equals(getArguments().getString("insert_new_event"), "insert new event")){
-                String frequency_chosen = getArguments().getString("frequency_chosen");
+            if (Objects.equals(requireArguments().getString("insert_new_event"), "insert new event")) {
+                String frequency_chosen = requireArguments().getString("frequency_chosen");
 
                 CheckRecap checkRecap = new CheckRecap();
                 Bundle arguments = new Bundle();
@@ -67,19 +64,18 @@ public class NotifyPerson extends Fragment {
                 arguments.putString("frequency_chosen",frequency_chosen);
                 checkRecap.setArguments(arguments);
 
-                getActivity()
+                requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment,checkRecap, "checkRecap")
                         .addToBackStack(null)
                         .commit();
-            }else {
-                assert recapBundle != null;
-                recapBundle.putStringArrayList("persons", selectedPersons);
+            } else {
+                Objects.requireNonNull(recapBundle).putStringArrayList("persons", selectedPersons);
                 selectedPersons = new ArrayList<>();
                 CheckRecap recapFrag = new CheckRecap();
                 recapFrag.setArguments(recapBundle);
-                getActivity()
+                requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, recapFrag, "checkRecap")
@@ -91,7 +87,7 @@ public class NotifyPerson extends Fragment {
         RecyclerItemClickSupport.addTo(personRecycler).setOnItemClickListener(
                 (recyclerView, position, v) -> {
                     String n = personsList.get(position).getName();
-                    if(selectedPersons.contains(n)){
+                    if (selectedPersons.contains(n)) {
                         selectedPersons.remove(n);
                         personsList.get(position).setSel(Boolean.FALSE);
                     }
@@ -102,9 +98,7 @@ public class NotifyPerson extends Fragment {
                     mAdapter.notifyDataSetChanged();
                 });
 
-        prev.setOnClickListener(v->{
-          getActivity().onBackPressed();
-        });
+        prev.setOnClickListener(v-> requireActivity().onBackPressed());
 
         return root;
     }

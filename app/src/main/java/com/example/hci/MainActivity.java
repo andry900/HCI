@@ -1,20 +1,15 @@
 package com.example.hci;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
-
-import java.time.format.TextStyle;
 import java.util.Objects;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     EditText login_name;
     EditText login_pwd;
 
@@ -30,19 +25,13 @@ public class MainActivity extends AppCompatActivity {
         login_name = findViewById(R.id.email);
         login_pwd = findViewById(R.id.password);
 
-        login.setOnClickListener(v -> {
-            Login();
-        });
+        login.setOnClickListener(v -> Login());
         signIn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
             startActivityForResult(intent, 1);
         });
-        google.setOnClickListener(v -> {
-            Login();
-        });
-        facebook.setOnClickListener(v -> {
-            Login();
-        });
+        google.setOnClickListener(v -> Login());
+        facebook.setOnClickListener(v -> Login());
     }
 
     public void Login() {
@@ -51,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         finish();
     }

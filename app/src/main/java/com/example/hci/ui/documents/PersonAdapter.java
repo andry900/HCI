@@ -7,18 +7,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.hci.R;
-
 import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PersonAdapter extends RecyclerView.Adapter<com.example.hci.ui.documents.PersonAdapter.MyViewHolder>{
-
+public class PersonAdapter extends RecyclerView.Adapter<com.example.hci.ui.documents.PersonAdapter.MyViewHolder> {
         private final ArrayList<NotifyPerson.Person> data;
-
 
         static class MyViewHolder extends RecyclerView.ViewHolder {
             TextView name;

@@ -17,12 +17,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.hci.R;
 import java.util.Objects;
-
 import static android.app.Activity.RESULT_OK;
 
 public class InsertNumberFragment extends Fragment {
-
     public ImageButton ic_general_image;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -47,13 +46,13 @@ public class InsertNumberFragment extends Fragment {
                 editText_insert_number.setError("Please enter a number!");
             if (editText_insert_comment.getText().toString().equals("") || editText_insert_comment.getText().toString().equals(" "))
                 editText_insert_comment.setError("Please enter a comment!");
-            if(ic_general_image.getTag() == null)
+            if (ic_general_image.getTag() == null)
                 Toast.makeText(getContext(), "Please choose an icon", Toast.LENGTH_SHORT).show();
-            else if( editText_insert_name_number.getError() == null && editText_insert_number.getError() == null
-            && editText_insert_comment.getError() == null && ic_general_image.getTag() != null){
+            else if ( editText_insert_name_number.getError() == null && editText_insert_number.getError() == null
+            && editText_insert_comment.getError() == null && ic_general_image.getTag() != null) {
 
                 String image_path = "";
-                switch (ic_general_image.getTag().toString()){
+                switch (ic_general_image.getTag().toString()) {
                     case "imgButton_ic_ambulance":
                         image_path = String.valueOf(R.mipmap.ic_ambulance);
                         break;
@@ -99,10 +98,10 @@ public class InsertNumberFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            if(resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
                 String imgTag= Objects.requireNonNull(data).getStringExtra("result");
-                assert imgTag != null;
-                switch (imgTag){
+
+                switch (Objects.requireNonNull(imgTag)) {
                     case "imgButton_ic_ambulance":
                         ic_general_image.setImageResource(R.mipmap.ic_ambulance);
                         ic_general_image.setTag(imgTag);
