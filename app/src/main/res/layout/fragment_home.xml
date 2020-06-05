@@ -27,13 +27,12 @@
             android:layout_gravity="center"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/agenda_day_circle"
             android:scaleType="fitStart"
             android:src="@mipmap/ic_neighbour" />
 
         <TextView
             android:id="@+id/user_summary"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="90dp"
             android:layout_weight="0.5"
             android:background="@drawable/border"
