@@ -1,26 +1,39 @@
 package com.example.hci.ui.events;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.hci.R;
+import com.example.hci.ui.home.HomeFragment;
+import com.github.tibolte.agendacalendarview.AgendaCalendarView;
+import com.github.tibolte.agendacalendarview.CalendarPickerController;
+import com.github.tibolte.agendacalendarview.models.CalendarEvent;
+import com.github.tibolte.agendacalendarview.models.DayItem;
+
+import java.security.AlgorithmParameterGenerator;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
-public class EventsFragment extends Fragment {
+public class EventsFragment extends Fragment implements CalendarPickerController {
     public static ArrayList<String> defined_events = new ArrayList<>();
     public static String date_selected;
     public boolean event_selected = false;
@@ -30,37 +43,19 @@ public class EventsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_events, container, false);
-        CalendarView calendarEvent = root.findViewById(R.id.calendar_event);
         Button add_event_button = root.findViewById(R.id.add_event_button);
+        AgendaCalendarView mEventCalendarView = root.findViewById(R.id.calendar_event);
         //Button edit_event_button = root.findViewById(R.id.edit_event_button);
         //Button delete_event_button = root.findViewById(R.id.delete_event_button);
 
-        //TAKE THE DATE SELECTED BY THE USER
-        calendarEvent.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date_selected = dayOfMonth + "-" + month + "-" + year;
-                event_selected = true;
-            }
-        });
+        Calendar minDate = Calendar.getInstance();
+        Calendar maxDate = Calendar.getInstance();
 
-        if(defined_events.size()!=0){
-            for(int i=0;i<defined_events.size();i++){
-                String[] result = defined_events.get(i).split("-");
-                int day = Integer.parseInt(result[0]);
-                int month = Integer.parseInt(result[1]);
-                int year = Integer.parseInt(result[2]);
+        minDate.add(Calendar.MONTH, -2);
+        minDate.set(Calendar.DAY_OF_MONTH, 1);
+        maxDate.add(Calendar.YEAR, 1);
 
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.DAY_OF_MONTH, day);
-                calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.YEAR, year);
-
-                long milliTime = calendar.getTimeInMillis();
-                start_date = milliTime;
-                calendarEvent.setDate(milliTime,true,true);
-            }
-        }
+        mEventCalendarView.init(HomeFragment.eventList, minDate, maxDate, Locale.getDefault(), this);
 
         //CLICK ON ADD BUTTON
         add_event_button.setOnClickListener(v -> {
@@ -97,6 +92,35 @@ public class EventsFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
             }
+        }
+    }
+
+    @Override
+    public void onDaySelected(DayItem dayItem) {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat simpleDate =  new SimpleDateFormat("dd-MM-yyyy");
+        date_selected = simpleDate.format(dayItem.getDate());
+        event_selected = true;
+        Date sdt = null;
+        try {
+            sdt = new SimpleDateFormat("dd-MM-yyyy").parse(date_selected);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        start_date = sdt.getTime();
+        }
+
+    @Override
+    public void onEventSelected(CalendarEvent event) {
+
+    }
+
+    @Override
+    public void onScrollToDate(Calendar calendar) {
+        if (getActivity().findViewById(R.id.event_agenda_bar) != null) {
+            ((TextView)getActivity().findViewById(R.id.event_agenda_bar)).setText(
+                    (calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()))
+                            .toUpperCase());
         }
     }
 }

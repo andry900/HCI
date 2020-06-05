@@ -1,81 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:agendaCalendar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_events"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/fragment_events">
+    android:orientation="vertical">
+
 
     <TextView
-        android:id="@+id/textView_new_event"
+        android:id="@+id/event_agenda_bar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
+        android:layout_height="30dp"
+        android:background="@color/colorAccent"
         android:gravity="center"
-        android:fontFamily="@font/architects_daughter"
-        android:text="@string/my_events"
-        android:textSize="25sp"
-        android:textColor="#000" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        agendaCalendar:layout_constraintEnd_toEndOf="parent"
+        agendaCalendar:layout_constraintStart_toStartOf="parent"
+        agendaCalendar:layout_constraintTop_toBottomOf="@+id/user_info" />
 
+    <com.github.tibolte.agendacalendarview.AgendaCalendarView
+        android:id="@+id/calendar_event"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="30dp"
+        agendaCalendar:agendaCurrentDayTextColor="@color/theme_primary"
+        agendaCalendar:calendarColor="@color/theme_primary"
+        agendaCalendar:calendarCurrentDayTextColor="@color/calendar_text_current_day"
+        agendaCalendar:calendarDayTextColor="@color/theme_text_icons"
+        agendaCalendar:calendarHeaderColor="@color/theme_primary_dark"
+        agendaCalendar:calendarPastDayTextColor="@color/theme_light_primary"
+        agendaCalendar:fabColor="@color/theme_accent"
+        agendaCalendar:layout_constraintBottom_toBottomOf="parent"
+        agendaCalendar:layout_constraintEnd_toEndOf="parent"
+        agendaCalendar:layout_constraintStart_toStartOf="parent"
+        agendaCalendar:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/border_layout_calendar">
-        <CalendarView
-            android:id="@+id/calendar_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:theme="@style/CalenderViewMonthCustomText"
-            android:dateTextAppearance="@style/CalendarViewDateCustomText"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText">
-
-        </CalendarView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp">
+        agendaCalendar:layout_constraintBottom_toBottomOf="parent"
+        agendaCalendar:layout_constraintEnd_toEndOf="parent"
+        agendaCalendar:layout_constraintStart_toStartOf="parent"
+        agendaCalendar:layout_constraintTop_toBottomOf="@+id/calendar_event">
+
         <Button
             android:id="@+id/add_event_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/rounded_btn"
-            android:textColor="#000"
-            android:text="@string/add"/>
+            android:text="@string/add"
+            android:textColor="@android:color/background_light" />
+
         <Button
             android:id="@+id/edit_event_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/rounded_btn"
-            android:textColor="#000"
-            android:text="@string/edit"/>
+            android:text="@string/edit"
+            android:textColor="@android:color/background_light" />
+
         <Button
             android:id="@+id/delete_event_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/rounded_btn"
-            android:textColor="#000"
-            android:text="@string/delete"/>
+            android:text="@string/delete"
+            android:textColor="@android:color/background_light" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        agendaCalendar:layout_constraintEnd_toEndOf="parent"
+        agendaCalendar:layout_constraintStart_toStartOf="parent"
+        agendaCalendar:layout_constraintTop_toBottomOf="@+id/calendar_event" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

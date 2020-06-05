@@ -157,12 +157,6 @@ public class CheckRecap extends Fragment {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    try {
-                        startTime.setTime((Objects.requireNonNull(
-                                new SimpleDateFormat("dd-MM-yyyy").parse(InsertNewEvent.duration))));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
                     endTime.add(Calendar.DAY_OF_WEEK, 1);
                     BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
                             InsertNewEvent.description,

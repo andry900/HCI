@@ -63,6 +63,7 @@ public class NotifyPerson extends Fragment {
                 Bundle arguments = new Bundle();
                 arguments.putString("notify_person", "notify person");
                 arguments.putStringArrayList("persons",selectedPersons);
+                selectedPersons = new ArrayList<>();
                 arguments.putString("frequency_chosen",frequency_chosen);
                 checkRecap.setArguments(arguments);
 
@@ -75,6 +76,7 @@ public class NotifyPerson extends Fragment {
             }else {
                 assert recapBundle != null;
                 recapBundle.putStringArrayList("persons", selectedPersons);
+                selectedPersons = new ArrayList<>();
                 CheckRecap recapFrag = new CheckRecap();
                 recapFrag.setArguments(recapBundle);
                 getActivity()
