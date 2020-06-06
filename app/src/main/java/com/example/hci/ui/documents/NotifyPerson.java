@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import static com.example.hci.ui.documents.DocumentsFragment.personsList;
 
 public class NotifyPerson extends Fragment {
-    private ArrayList<String> selectedPersons;
+    private static ArrayList<String> selectedPersons;
 
     @Nullable
     @Override
@@ -34,11 +34,10 @@ public class NotifyPerson extends Fragment {
         RecyclerView personRecycler = root.findViewById(R.id.person_list);
         ImageButton next = root.findViewById(R.id.nextBtn);
         ImageButton prev = root.findViewById(R.id.prevBtn);
-        
         Bundle recapBundle = getArguments();
-        selectedPersons = new ArrayList<>();
 
         if (personsList == null) {
+            selectedPersons = new ArrayList<>();
             personsList = new ArrayList<>();
             personsList.add(new Person("Mario Rossi", "Roomates", null,false));
             personsList.add(new Person("Palma Alessandro", "Roomates", null,false));
@@ -55,12 +54,10 @@ public class NotifyPerson extends Fragment {
         next.setOnClickListener(v ->{
             if (Objects.equals(requireArguments().getString("insert_new_event"), "insert new event")) {
                 String frequency_chosen = requireArguments().getString("frequency_chosen");
-
                 CheckRecap checkRecap = new CheckRecap();
                 Bundle arguments = new Bundle();
                 arguments.putString("notify_person", "notify person");
                 arguments.putStringArrayList("persons",selectedPersons);
-                selectedPersons = new ArrayList<>();
                 arguments.putString("frequency_chosen",frequency_chosen);
                 checkRecap.setArguments(arguments);
 
@@ -72,7 +69,6 @@ public class NotifyPerson extends Fragment {
                         .commit();
             } else {
                 Objects.requireNonNull(recapBundle).putStringArrayList("persons", selectedPersons);
-                selectedPersons = new ArrayList<>();
                 CheckRecap recapFrag = new CheckRecap();
                 recapFrag.setArguments(recapBundle);
                 requireActivity()
@@ -98,7 +94,7 @@ public class NotifyPerson extends Fragment {
                     mAdapter.notifyDataSetChanged();
                 });
 
-        prev.setOnClickListener(v-> requireActivity().onBackPressed());
+        prev.setOnClickListener(v->  requireActivity().onBackPressed());
 
         return root;
     }

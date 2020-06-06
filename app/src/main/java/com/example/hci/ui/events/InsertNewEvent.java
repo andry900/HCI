@@ -151,23 +151,7 @@ public class InsertNewEvent extends Fragment {
 
         //GO TO THE PREVIOUS FRAGMENT
         prev_button_event.setOnClickListener(v -> {
-            Dialog dialog = new AlertDialog.Builder(getContext(), R.style.PrevDialogTheme)
-                    .setTitle("Attention")
-                    .setMessage("You will lose all inserted information.\nDo you really want to go back?")
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            requireActivity()
-                                    .getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .replace(R.id.nav_host_fragment, new EventsFragment(),"EventsFragment")
-                                    .addToBackStack(null)
-                                    .commit();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.no, null).show();
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_list);
+            requireActivity().onBackPressed();
         });
         return root;
     }

@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.hci.R;
+import com.example.hci.ui.documents.DocumentsFragment;
+import com.example.hci.ui.documents.NotifyPerson;
 import com.example.hci.ui.home.HomeFragment;
 import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
@@ -40,6 +42,7 @@ public class EventsFragment extends Fragment implements CalendarPickerController
         AgendaCalendarView mEventCalendarView = root.findViewById(R.id.calendar_event);
         //Button edit_event_button = root.findViewById(R.id.edit_event_button);
         //Button delete_event_button = root.findViewById(R.id.delete_event_button);
+        DocumentsFragment.personsList = null;
 
         Calendar minDate = Calendar.getInstance();
         Calendar maxDate = Calendar.getInstance();

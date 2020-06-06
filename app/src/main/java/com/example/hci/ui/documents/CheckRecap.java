@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import static android.widget.Toast.LENGTH_LONG;
+import static com.example.hci.ui.documents.DocumentsFragment.personsList;
 import static com.example.hci.ui.documents.DocumentsFragment.savedDocs;
 
 public class CheckRecap extends Fragment {
@@ -206,7 +207,7 @@ public class CheckRecap extends Fragment {
                 InsertNewEvent.from_hour_event = "";
                 InsertNewEvent.to_hour_event = "";
                 InsertNewEvent.days = "";
-
+                personsList = null;
                 requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -256,7 +257,7 @@ public class CheckRecap extends Fragment {
                 t.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
                 t.setView(layout);
                 t.show();
-
+                personsList = null;
                 requireActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -281,7 +282,9 @@ public class CheckRecap extends Fragment {
 
         recapText.setText(sb.toString());
 
-        change.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
+        change.setOnClickListener(v ->{
+                        requireActivity().getSupportFragmentManager().popBackStack();
+                requireActivity().getSupportFragmentManager().popBackStack();});
 
         return root;
     }

@@ -20,13 +20,13 @@ import static android.app.Activity.RESULT_OK;
 
 public class DocumentsFragment extends Fragment {
     static ArrayList<Document> savedDocs;
-    static ArrayList<NotifyPerson.Person> personsList;
+    public static ArrayList<NotifyPerson.Person> personsList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_documents, container, false);
-
+        personsList = null;
         RecyclerView docList = root.findViewById(R.id.docs_list);
         Button newDocBtn = root.findViewById(R.id.newDoc_btn);
         if (savedDocs == null) {

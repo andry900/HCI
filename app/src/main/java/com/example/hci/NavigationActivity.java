@@ -1,6 +1,10 @@
 package com.example.hci;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -184,10 +189,23 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             drawer.closeDrawer(GravityCompat.START);
         }
         else if (fragment instanceof InsertNewEvent) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
-                    .commit();
+            Dialog dialog = new AlertDialog.Builder(this,R.style.PrevDialogTheme)
+                    .setTitle("Attention")
+                    .setMessage("You will lose all inserted information.\nDo you really want to go back?")
+                    .setIcon(R.drawable.yellow_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            /*getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
+                                    .commit();*/
+                            getSupportFragmentManager().popBackStackImmediate();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_layout_calendar);
+            dialog.setCanceledOnTouchOutside(false);
         }
         else if (fragment instanceof NumbersFragment) {
             getSupportFragmentManager()
@@ -217,8 +235,22 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
             drawer.closeDrawer(GravityCompat.START);
         }
-        else if (fragment instanceof InsertNewDocument || fragment instanceof NotifyPerson
-        || fragment instanceof DocumentVisualization) {
+        else if (fragment instanceof InsertNewDocument){
+            Dialog dialog = new AlertDialog.Builder(this,R.style.PrevDialogTheme)
+                    .setTitle("Attention")
+                    .setMessage("You will lose all inserted information.\nDo you really want to go back?")
+                    .setIcon(R.drawable.yellow_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            getSupportFragmentManager().popBackStackImmediate();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_layout_calendar);
+            dialog.setCanceledOnTouchOutside(false);
+        }
+        else if (fragment instanceof NotifyPerson || fragment instanceof DocumentVisualization) {
             getSupportFragmentManager().popBackStackImmediate();
         }
         else if (fragment instanceof AnalyticsFragment) {

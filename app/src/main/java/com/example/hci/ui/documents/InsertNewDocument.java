@@ -140,18 +140,7 @@ public class InsertNewDocument extends Fragment {
 
         prev = root.findViewById(R.id.prevBtn);
         prev.setOnClickListener(v->{
-                Dialog dialog = new AlertDialog.Builder(getContext(),R.style.PrevDialogTheme)
-                        .setTitle("Attention")
-                        .setMessage("You will lose all inserted information.\nDo you really want to go back?")
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                requireActivity().onBackPressed();
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, null).show();
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_list);
+            requireActivity().onBackPressed();
         });
 
         //hide and shows layout items wrt selected label
