@@ -2,6 +2,8 @@ package com.example.hci.ui.documents;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -18,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.hci.R;
+import com.example.hci.ui.events.EventsFragment;
+
 import org.angmarch.views.NiceSpinner;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -27,6 +31,7 @@ import java.util.List;
 import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import static android.app.Activity.RESULT_OK;
 
@@ -134,7 +139,20 @@ public class InsertNewDocument extends Fragment {
         });
 
         prev = root.findViewById(R.id.prevBtn);
-        prev.setOnClickListener(v-> requireActivity().onBackPressed());
+        prev.setOnClickListener(v->{
+                Dialog dialog = new AlertDialog.Builder(getContext(),R.style.PrevDialogTheme)
+                        .setTitle("Attention")
+                        .setMessage("You will lose all inserted information.\nDo you really want to go back?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                requireActivity().onBackPressed();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null).show();
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_list);
+        });
 
         //hide and shows layout items wrt selected label
         Objects.requireNonNull(selector);

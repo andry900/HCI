@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="PrevDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:iconTint">#D3E10D</item>
+    </style>
+
+</resources>

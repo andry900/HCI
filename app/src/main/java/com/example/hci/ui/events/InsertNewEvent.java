@@ -2,6 +2,8 @@ package com.example.hci.ui.events;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -16,13 +18,17 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.example.hci.MainActivity;
 import com.example.hci.R;
 import com.example.hci.ui.documents.NotifyPerson;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AlertDialog.*;
 
 public class InsertNewEvent extends Fragment {
     private DatePickerDialog picker;
@@ -144,13 +150,25 @@ public class InsertNewEvent extends Fragment {
         });
 
         //GO TO THE PREVIOUS FRAGMENT
-        prev_button_event.setOnClickListener(v -> requireActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.nav_host_fragment, new EventsFragment(),"EventsFragment")
-                .addToBackStack(null)
-                .commit());
-        
+        prev_button_event.setOnClickListener(v -> {
+            Dialog dialog = new AlertDialog.Builder(getContext(), R.style.PrevDialogTheme)
+                    .setTitle("Attention")
+                    .setMessage("You will lose all inserted information.\nDo you really want to go back?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            requireActivity()
+                                    .getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.nav_host_fragment, new EventsFragment(),"EventsFragment")
+                                    .addToBackStack(null)
+                                    .commit();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_list);
+        });
         return root;
     }
 
