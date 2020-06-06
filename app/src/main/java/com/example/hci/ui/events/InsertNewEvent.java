@@ -87,11 +87,13 @@ public class InsertNewEvent extends Fragment {
             int day = calendar.get(Calendar.DAY_OF_MONTH);
             int month = calendar.get(Calendar.MONTH);
             int year = calendar.get(Calendar.YEAR);
+
             //DATE PICKER DIALOG
             picker = new DatePickerDialog(requireActivity(),
                     (view, year1, monthOfYear, dayOfMonth) ->
                             editText_duration_event.setText(String.format(Locale.ITALY,  "%d/%d/%d", dayOfMonth, monthOfYear + 1, year1))
                     , year, month, day);
+            editText_duration_event.setError(null);
             picker.show();
         });
 
