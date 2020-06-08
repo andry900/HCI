@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         login_name = findViewById(R.id.email);
         login_pwd = findViewById(R.id.password);
         bar_login = findViewById(R.id.progressBar);
-        bar_login.bringToFront();
 
         signIn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
