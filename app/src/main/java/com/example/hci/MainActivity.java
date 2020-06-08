@@ -2,9 +2,12 @@ package com.example.hci;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+
 import java.util.Objects;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     EditText login_name;
     EditText login_pwd;
+    ProgressBar bar_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +28,21 @@ public class MainActivity extends AppCompatActivity {
         Button facebook = findViewById(R.id.facebook_login);
         login_name = findViewById(R.id.email);
         login_pwd = findViewById(R.id.password);
+        bar_login = findViewById(R.id.progressBar);
+        bar_login.bringToFront();
 
-        login.setOnClickListener(v -> Login());
         signIn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
             startActivityForResult(intent, 1);
+
         });
+        login.setOnClickListener(v -> Login());
         google.setOnClickListener(v -> Login());
         facebook.setOnClickListener(v -> Login());
     }
 
     public void Login() {
+        bar_login.setVisibility(View.VISIBLE);
         Intent navigationActivity = new Intent(getApplicationContext(), NavigationActivity.class);
         startActivity(navigationActivity);
     }
