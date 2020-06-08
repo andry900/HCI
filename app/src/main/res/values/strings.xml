@@ -107,8 +107,8 @@
     <string name="enter_your_age">Enter your age</string>
     <string name="profession">Profession:</string>
     <string name="enter_your_profession">Enter your profession</string>
-    <string name="passions_and_hobbies">Passions and \nHobbies:</string>
-    <string name="enter_your_passions_nand_hobbies">Enter your passions\nand hobbies</string>
+    <string name="hobbies">Hobbies:</string>
+    <string name="enter_your_hobbies">Enter your hobbies</string>
     <string name="marco">Marco</string>
     <string name="rossi">Rossi</string>
     <string name="_23">23</string>

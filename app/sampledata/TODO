@@ -5,11 +5,6 @@
     - Al click su foto profilo o info della home page va portato l'utente nella sezione profilo
     - Al click sul calendario devo andare nella sezione EVENTS
 
--PROFILE
-    - Al salvataggio del profilo devo tornare alla HomePage
-    - Cambiare la label "Passions and Hobbies" in "Hobbies"
-    - Mettere il click sull'immagine per modificarlo
-
 -EVENTS
     - Impostare la data di fine evento per Weekly e Monthly
     - Gli orari devono poter essere soltanto numerici, (ex. 10 al posto di 10:00)
