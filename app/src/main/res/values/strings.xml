@@ -8,7 +8,7 @@
     <string name="menu_events">Events</string>
     <string name="menu_numbers">Useful Numbers</string>
     <string name="menu_documents">Documents</string>
-    <string name="menu_analytics">Analytics</string>
+    <string name="menu_expenses_analysis">Expenses Analysis</string>
 
     <string name="login_in_our_system">Login in our system</string>
     <string name="login">Login</string>

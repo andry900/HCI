@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/fragment_analytics"
         android:name="com.example.hci.ui.analytics.AnalyticsFragment"
-        android:label="@string/menu_analytics"
+        android:label="@string/menu_expenses_analysis"
         tools:layout="@layout/fragment_analytics" />
 
 </navigation>
