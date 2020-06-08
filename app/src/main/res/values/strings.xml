@@ -75,7 +75,7 @@
     <string name="add">Add</string>
     <string name="edit">Edit</string>
     <string name="choose_frequency">Choose frequency</string>
-    <string name="daily">Daily</string>
+    <string name="every_day">Every day</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
     <string name="yearly">Yearly</string>
@@ -87,8 +87,6 @@
     <string name="enter_duration">Enter duration</string>
     <string name="choose_daily_frequency">Choose daily frequency</string>
     <string name="monday">Monday</string>
-    <string name="from">FROM</string>
-    <string name="to">TO</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>
@@ -107,19 +105,19 @@
     <string name="enter_your_age">Enter your age</string>
     <string name="profession">Profession:</string>
     <string name="enter_your_profession">Enter your profession</string>
-    <string name="passions_and_hobbies">Passions and \nHobbies:</string>
-    <string name="enter_your_passions_nand_hobbies">Enter your passions\nand hobbies</string>
+    <string name="hobbies">Hobbies:</string>
+    <string name="enter_your_hobbies">Enter your hobbies</string>
     <string name="marco">Marco</string>
     <string name="rossi">Rossi</string>
     <string name="_23">23</string>
     <string name="student">Student</string>
     <string name="i_really_like_to_play_football_in_my_free_time_i_also_enjoy_reading">I really like to play football. In my free time I also enjoy reading.</string>
     <string name="abort">Abort</string>
-    <string name="enter_ending_date">enter ending date</string>
+    <string name="enter_ending_date">Enter ending date</string>
     <string name="select_an_icon">Select an icon</string>
-    <string name="starting_hour">Starting hour</string>
-    <string name="ending_hour">ending hour</string>
-    <string name="every_day">Every day</string>
+    <string name="starting_hour">Starting hour:</string>
+    <string name="ending_hour">Ending hour:</string>
+    <string name="hh_mm">hh:mm</string>
 
     <string-array name="data_types">
         <item>Average</item>

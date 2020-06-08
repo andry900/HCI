@@ -71,6 +71,12 @@ public class ProfileFragment extends Fragment {
             hobbies.setText(strHobbies);
         }
 
+        profile_pic.setOnClickListener(v-> {
+            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+            photoPickerIntent.setType("image/*");
+            startActivityForResult(photoPickerIntent, PICK_IMAGE);
+        });
+
         change_image.setOnClickListener(v-> {
             Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
             photoPickerIntent.setType("image/*");
@@ -90,7 +96,7 @@ public class ProfileFragment extends Fragment {
             strProfession = profession.getText().toString();
             strHobbies = hobbies.getText().toString();
 
-            if (strName.equals("") || strSurname.equals("")) {
+            if (strName.equals("") || strSurname.equals("") || age.getError() != null) {
                 if (TextUtils.isEmpty(strName)) {
                     name.setError("Please enter your Name!");
                 }
@@ -106,7 +112,7 @@ public class ProfileFragment extends Fragment {
 
                 NavigationActivity.change_nav_info(strName, strSurname);
 
-                Toast.makeText(getContext(), "Changes applied!", Toast.LENGTH_SHORT).show();
+                requireActivity().onBackPressed();
             }
         });
 

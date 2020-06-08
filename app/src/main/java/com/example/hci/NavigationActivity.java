@@ -1,10 +1,7 @@
 package com.example.hci;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -193,23 +190,15 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     .setTitle("Attention")
                     .setMessage("You will lose all inserted information.\nDo you really want to go back?")
                     .setIcon(R.drawable.yellow_alert)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            /*getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
-                                    .commit();*/
-                            getSupportFragmentManager().popBackStackImmediate();
-                            InsertNewEvent.from_hour_event = "";
-                            InsertNewEvent.to_hour_event = "";
-                            InsertNewEvent.button_event_popup.setText(getResources().getString(R.string.enter_days_and_hours));
-                            InsertNewEvent.button_event_popup.setTextSize(15);
-
-                        }
+                    .setPositiveButton(android.R.string.yes, (dialog12, whichButton) -> {
+                        getSupportFragmentManager().popBackStackImmediate();
+                        InsertNewEvent.from_hour_event = "";
+                        InsertNewEvent.to_hour_event = "";
+                        InsertNewEvent.button_event_popup.setText(getResources().getString(R.string.enter_days_and_hours));
+                        InsertNewEvent.button_event_popup.setTextSize(15);
                     })
                     .setNegativeButton(android.R.string.no, null).show();
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_layout_calendar);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(R.drawable.border_layout_calendar);
             dialog.setCanceledOnTouchOutside(false);
         }
         else if (fragment instanceof NumbersFragment) {
@@ -245,14 +234,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     .setTitle("Attention")
                     .setMessage("You will lose all inserted information.\nDo you really want to go back?")
                     .setIcon(R.drawable.yellow_alert)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            getSupportFragmentManager().popBackStackImmediate();
-                        }
-                    })
+                    .setPositiveButton(android.R.string.yes, (dialog1, whichButton) -> getSupportFragmentManager().popBackStackImmediate())
                     .setNegativeButton(android.R.string.no, null).show();
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_layout_calendar);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(R.drawable.border_layout_calendar);
             dialog.setCanceledOnTouchOutside(false);
         }
         else if (fragment instanceof NotifyPerson || fragment instanceof DocumentVisualization) {
