@@ -1,6 +1,3 @@
--HOMEPAGE:
-    - Al click sul calendario devo andare nella sezione EVENTS
-
 -EVENTS
     - Impostare la data di fine evento per Weekly e Monthly
     - Gli orari devono poter essere soltanto numerici, (ex. 10 al posto di 10:00)

@@ -95,10 +95,6 @@ public class HomeFragment extends Fragment implements CalendarPickerController {
             NavigationActivity.navigationView.getMenu().getItem(1).setChecked(true);
         });
 
-        //DA IMPLEMENTARE CLICK SUL CALENDARIO PER ANDARE IN EVENTS
-        //NavigationActivity.navigationView.getMenu().getItem(0).setChecked(false);
-        //NavigationActivity.navigationView.getMenu().getItem(2).setChecked(true);
-
         return root;
     }
 
@@ -126,12 +122,28 @@ public class HomeFragment extends Fragment implements CalendarPickerController {
 
     @Override
     public void onDaySelected(DayItem dayItem) {
+        requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, new EventsFragment(), "fragment_events")
+                .addToBackStack(null)
+                .commit();
 
+        NavigationActivity.navigationView.getMenu().getItem(0).setChecked(false);
+        NavigationActivity.navigationView.getMenu().getItem(2).setChecked(true);
     }
 
     @Override
     public void onEventSelected(CalendarEvent event) {
+        requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, new EventsFragment(), "fragment_events")
+                .addToBackStack(null)
+                .commit();
 
+        NavigationActivity.navigationView.getMenu().getItem(0).setChecked(false);
+        NavigationActivity.navigationView.getMenu().getItem(2).setChecked(true);
     }
 
     @Override
