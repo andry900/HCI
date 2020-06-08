@@ -14,14 +14,9 @@
 -EVENTS
     - Impostare la data di fine evento per Weekly e Monthly
     - Gli orari devono poter essere soltanto numerici, (ex. 10 al posto di 10:00)
-    - Modificare la label di Duration, non si capisce cosa sia quel campo
-    - Togliere la descrizione obbligatoria
-    - Cambiare il tasto DAILY in EVERY DAY
-    - Cambiare nomi di FROM e TO degli orari in Staring Hour ed Ending Hour
     - Mettere orologio per selezionare Staring Hour ed Ending Hour
 
 -USEFUL NUMBERS
-    - Togliere il commento obbligatorio
     - Mettere una scritta in cui viene detto "Selezionare un'icona"
     - Mettere il toast di alert più visibile
     - Eliminare tasto UPDATE e tutta la sua logica

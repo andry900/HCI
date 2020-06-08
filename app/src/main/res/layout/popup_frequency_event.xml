@@ -225,17 +225,17 @@
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/amita"
             android:gravity="center"
-            android:text="@string/from"
+            android:text="@string/starting_hour"
             android:textColor="#000"
             android:textSize="15sp" />
 
         <EditText
             android:id="@+id/editText_from_hour_event"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@drawable/border"
-            android:hint="@string/from"
+            android:hint="@string/starting_hour"
             android:inputType="numberDecimal"
             android:maxLength="5"
             android:textAlignment="center"
@@ -249,22 +249,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="55dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/amita"
             android:gravity="center"
-            android:text="@string/to"
+            android:text="@string/ending_hour"
             android:textColor="#000"
             android:textSize="15sp" />
 
 
         <EditText
             android:id="@+id/editText_to_hour_event"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@drawable/border"
-            android:hint="@string/to"
+            android:hint="@string/ending_hour"
             android:inputType="numberDecimal"
             android:maxLength="5"
             android:textAlignment="center"
