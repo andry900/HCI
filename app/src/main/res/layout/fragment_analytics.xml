@@ -22,9 +22,20 @@
         android:layout_height="wrap_content"
         android:text="@string/select_time_frame"
         android:textColor="#000"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_below="@+id/home_analytics"
         android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/house_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_no_dates_for_the_whole_house_history"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:layout_below="@+id/time_frame"
+        android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -33,8 +44,8 @@
         android:layout_height="wrap_content"
         android:text="@string/starting_date"
         android:textColor="#000"
-        android:textSize="15sp"
-        android:layout_below="@+id/time_frame"
+        android:textSize="18sp"
+        android:layout_below="@+id/house_history"
         android:layout_marginTop="27dp"
         android:layout_marginStart="40dp"/>
 
@@ -42,10 +53,10 @@
         android:id="@+id/editStart"
         android:layout_height="wrap_content"
         android:layout_width="120dp"
-        android:layout_below="@+id/time_frame"
+        android:layout_below="@+id/house_history"
         android:layout_toEndOf="@id/labStart"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/border"
         android:hint="@string/enter_date"
         android:textAlignment="center"
@@ -58,8 +69,8 @@
         android:id="@+id/calStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/time_frame"
-        android:layout_marginTop="11dp"
+        android:layout_below="@+id/house_history"
+        android:layout_marginTop="14dp"
         android:layout_toEndOf="@id/editStart"
         android:layout_marginStart="10dp"
         android:background="#FFF"
@@ -71,7 +82,7 @@
         android:layout_height="wrap_content"
         android:text="@string/ending_date"
         android:textColor="#000"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:layout_below="@+id/labStart"
         android:layout_marginTop="50dp"
         android:layout_marginStart="40dp"/>
