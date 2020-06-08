@@ -201,6 +201,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                                     .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
                                     .commit();*/
                             getSupportFragmentManager().popBackStackImmediate();
+                            InsertNewEvent.from_hour_event = "";
+                            InsertNewEvent.to_hour_event = "";
+                            InsertNewEvent.button_event_popup.setText(getResources().getString(R.string.enter_days_and_hours));
+                            InsertNewEvent.button_event_popup.setTextSize(15);
+
                         }
                     })
                     .setNegativeButton(android.R.string.no, null).show();

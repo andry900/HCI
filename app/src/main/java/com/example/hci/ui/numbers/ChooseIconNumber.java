@@ -18,7 +18,7 @@ public class ChooseIconNumber extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
-        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.44));
+        getWindow().setLayout((int) (width * 0.9), (int) (height * 0.5));
 
         //IMAGE BUTTONS
         ImageButton imgButton_ic_ambulance = findViewById(R.id.imageButton_ic_ambulance);

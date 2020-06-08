@@ -116,14 +116,11 @@ public class InsertNewEvent extends Fragment {
             if (editText_duration_event.getText().toString().equals("") || editText_duration_event.getText().toString().equals(" ")) {
                 editText_duration_event.setError("Enter a duration");
             }
-            if (editText_description_event.getText().toString().equals("") || editText_description_event.getText().toString().equals(" ")) {
-                editText_description_event.setError("Enter a description");
-            }
             if (editText_autocomplete_event.getText().toString().equals("") || editText_autocomplete_event.getText().toString().equals(" ")) {
                 editText_autocomplete_event.setError("Enter a type of event");
             }
 
-            if (editText_autocomplete_event.getError() == null && editText_description_event.getError() == null && editText_duration_event.getError() == null) {
+            if (editText_autocomplete_event.getError() == null && editText_duration_event.getError() == null) {
                 if (!button_event_popup.getText().equals(getResources().getString(R.string.enter_days_and_hours))) {
                     NotifyPerson notifyPerson = new NotifyPerson();
                     Bundle arguments = new Bundle();

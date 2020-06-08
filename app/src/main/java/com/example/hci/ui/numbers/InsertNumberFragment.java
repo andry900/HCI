@@ -44,12 +44,10 @@ public class InsertNumberFragment extends Fragment {
                 editText_insert_name_number.setError("Please enter a name!");
             if (editText_insert_number.getText().toString().equals("") || editText_insert_number.getText().toString().equals(" "))
                 editText_insert_number.setError("Please enter a number!");
-            if (editText_insert_comment.getText().toString().equals("") || editText_insert_comment.getText().toString().equals(" "))
-                editText_insert_comment.setError("Please enter a comment!");
             if (ic_general_image.getTag() == null)
                 Toast.makeText(getContext(), "Please choose an icon", Toast.LENGTH_SHORT).show();
             else if ( editText_insert_name_number.getError() == null && editText_insert_number.getError() == null
-            && editText_insert_comment.getError() == null && ic_general_image.getTag() != null) {
+            && ic_general_image.getTag() != null) {
 
                 String image_path = "";
                 switch (ic_general_image.getTag().toString()) {

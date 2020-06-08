@@ -3,6 +3,7 @@ package com.example.hci.ui.events;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,13 @@ public class GridViewAdapter extends ArrayAdapter<String> {
         day.setText(days.get(position));
 
         day.setOnClickListener(v -> {
-            day.setBackground(ContextCompat.getDrawable(context, R.drawable.cell_gridview_border));
-            dates += day.getText().toString() + " - ";
-
+            if(day.getBackground() == null) {
+                day.setBackground(ContextCompat.getDrawable(context, R.drawable.cell_gridview_border));
+                //dates += day.getText().toString() + " - ";
+            }else {
+                day.setBackgroundResource(0);
+            }
         });
-
 
         return rowView;
     }

@@ -3,6 +3,7 @@ package com.example.hci.ui.events;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -14,6 +15,9 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
+
 import com.example.hci.R;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -58,6 +62,8 @@ public class PopUpFrequencyEvent extends Activity {
         Intent intent = getIntent();
         String frequency_chosen = intent.getStringExtra("frequency_chosen");
         textView_popup_frequency_event.setText("Choose the " + frequency_chosen + " frequency");
+
+        GridViewAdapter.dates="";
 
         //FILTER RESULTS BASED ON THE FREQUENCY CHOSEN
         if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic")  ) {
@@ -110,11 +116,6 @@ public class PopUpFrequencyEvent extends Activity {
                     Toast toast = Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                } else if (!editText_from_hour_event.getText().toString().contains(":") ||
-                        !editText_to_hour_event.getText().toString().contains(":")) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "the value must contain ':'", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
                 }
                 else {
                     InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();
@@ -155,15 +156,27 @@ public class PopUpFrequencyEvent extends Activity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
-                else if (!editText_from_hour_event.getText().toString().contains(":") ||
-                        !editText_to_hour_event.getText().toString().contains(":")) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "the value must contain ':'", Toast.LENGTH_SHORT);
+                else if (Float.parseFloat(editText_from_hour_event.getText().toString()) > 24 || Float.parseFloat(editText_to_hour_event.getText().toString()) > 24 ) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "the value must be between 0 and 24", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
+                else if (Float.parseFloat(editText_from_hour_event.getText().toString()) > Float.parseFloat(editText_to_hour_event.getText().toString())) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "the 'from' value must be smaller than the 'to' value", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
                 else {
                     InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();
                     InsertNewEvent.to_hour_event = editText_to_hour_event.getText().toString();
+
+                    final int size = calendarEvent_freq_popup.getChildCount();
+                    Drawable background_elem_grid = getDrawable(R.drawable.cell_gridview_border);
+                    for(int i = 0; i < size; i++) {
+                        if(calendarEvent_freq_popup.getChildAt(i).getBackground().equals(background_elem_grid)){
+                            GridViewAdapter.dates = calendarEvent_freq_popup.getChildAt(i).toString() + " - ";
+                        }
+                    }
 
                     Intent returnIntent = new Intent();
                     setResult(Activity.RESULT_OK,returnIntent);
