@@ -34,6 +34,8 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        requireActivity().setTitle("Profile");
+
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         //LOCAL VARIABLES

@@ -42,7 +42,7 @@ import java.util.Objects;
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawer;
-    private static NavigationView navigationView;
+    public static NavigationView navigationView;
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override

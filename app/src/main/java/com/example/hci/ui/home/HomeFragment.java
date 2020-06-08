@@ -10,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import com.example.hci.NavigationActivity;
 import com.example.hci.R;
+import com.example.hci.ui.events.EventsFragment;
+import com.example.hci.ui.profile.ProfileFragment;
 import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
 import com.github.tibolte.agendacalendarview.models.BaseCalendarEvent;
@@ -67,6 +70,34 @@ public class HomeFragment extends Fragment implements CalendarPickerController {
         }
 
         mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), this);
+
+        profile_pic.setOnClickListener(v-> {
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new ProfileFragment(), "fragment_profile")
+                    .addToBackStack(null)
+                    .commit();
+
+            NavigationActivity.navigationView.getMenu().getItem(0).setChecked(false);
+            NavigationActivity.navigationView.getMenu().getItem(1).setChecked(true);
+        });
+
+        user_summary.setOnClickListener(v-> {
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, new ProfileFragment(), "fragment_profile")
+                    .addToBackStack(null)
+                    .commit();
+
+            NavigationActivity.navigationView.getMenu().getItem(0).setChecked(false);
+            NavigationActivity.navigationView.getMenu().getItem(1).setChecked(true);
+        });
+
+        //DA IMPLEMENTARE CLICK SUL CALENDARIO PER ANDARE IN EVENTS
+        //NavigationActivity.navigationView.getMenu().getItem(0).setChecked(false);
+        //NavigationActivity.navigationView.getMenu().getItem(2).setChecked(true);
 
         return root;
     }
