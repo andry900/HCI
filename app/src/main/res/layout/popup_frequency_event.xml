@@ -208,41 +208,58 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_from_to"
+        android:id="@+id/layout_vertical_from_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/layout_calendar_freq_popup"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_from_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/textView_from_hour_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/amita"
+                    android:gravity="center"
+                    android:text="@string/starting_hour"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/editText_from_hour_event"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border"
+                    android:hint="@string/hh_mm"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textColorHint="#808080"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_from_to_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/layout_calendar_freq_popup"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView_from_hour_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/amita"
-            android:gravity="center"
-            android:text="@string/starting_hour"
-            android:textColor="#000"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/editText_from_hour_event"
-            android:layout_width="90dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@drawable/border"
-            android:hint="@string/starting_hour"
-            android:inputType="numberDecimal"
-            android:maxLength="5"
-            android:textAlignment="center"
-            android:textColor="#000"
-            android:textColorHint="#808080"
-            android:textSize="15sp" />
-
 
         <TextView
             android:id="@+id/textView_to_hour_event"
@@ -264,20 +281,22 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@drawable/border"
-            android:hint="@string/ending_hour"
+            android:hint="@string/hh_mm"
             android:inputType="numberDecimal"
             android:maxLength="5"
             android:textAlignment="center"
             android:textColor="#000"
             android:textColorHint="#808080"
             android:textSize="15sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/layout_from_to"
+        android:layout_below="@+id/layout_vertical_from_to"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
