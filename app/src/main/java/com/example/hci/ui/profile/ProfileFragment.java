@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.example.hci.NavigationActivity;
 import com.example.hci.R;
@@ -22,6 +23,7 @@ import com.example.hci.ui.home.HomeFragment;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
@@ -34,7 +36,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        requireActivity().setTitle("Profile");
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Profile");
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 

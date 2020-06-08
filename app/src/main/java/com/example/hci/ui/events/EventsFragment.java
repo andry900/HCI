@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.example.hci.R;
 import com.example.hci.ui.documents.DocumentsFragment;
@@ -36,7 +37,7 @@ public class EventsFragment extends Fragment implements CalendarPickerController
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        requireActivity().setTitle("Events");
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle("Events");
 
         View root = inflater.inflate(R.layout.fragment_events, container, false);
 
