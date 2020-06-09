@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:agendaCalendar="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_events"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="#FFF">
 
     <TextView
         android:id="@+id/event_agenda_bar"
@@ -20,7 +19,7 @@
         android:textStyle="bold"
         agendaCalendar:layout_constraintEnd_toEndOf="parent"
         agendaCalendar:layout_constraintStart_toStartOf="parent"
-        agendaCalendar:layout_constraintTop_toBottomOf="@+id/user_info" />
+        agendaCalendar:layout_constraintTop_toTopOf="parent" />
 
     <com.github.tibolte.agendacalendarview.AgendaCalendarView
         android:id="@+id/calendar_event"
@@ -93,6 +92,5 @@
         agendaCalendar:layout_constraintEnd_toEndOf="parent"
         agendaCalendar:layout_constraintStart_toStartOf="parent"
         agendaCalendar:layout_constraintTop_toBottomOf="@+id/calendar_event" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
