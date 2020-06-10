@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +33,15 @@ public class InsertNumberFragment extends Fragment {
         EditText editText_insert_number = root.findViewById(R.id.editText_insert_number);
         EditText editText_insert_comment= root.findViewById(R.id.editText_insert_comment);
         Button button_save = root.findViewById(R.id.saveButton_insertNumber);
+        TextView choose_icon_number = root.findViewById(R.id.textView_choose_icon_number);
+
+        choose_icon_number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ChooseIconNumber.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
         //TO CHOOSE THE ICON OF THE NUMBER
         ic_general_image.setOnClickListener(v -> {
@@ -44,8 +55,11 @@ public class InsertNumberFragment extends Fragment {
                 editText_insert_name_number.setError("Please enter a name!");
             if (editText_insert_number.getText().toString().equals("") || editText_insert_number.getText().toString().equals(" "))
                 editText_insert_number.setError("Please enter a number!");
-            if (ic_general_image.getTag() == null)
-                Toast.makeText(getContext(), "Please choose an icon", Toast.LENGTH_SHORT).show();
+            if (ic_general_image.getTag() == null) {
+                Toast toast = Toast.makeText(getContext(), "Please choose an icon", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
             else if ( editText_insert_name_number.getError() == null && editText_insert_number.getError() == null
             && ic_general_image.getTag() != null) {
 

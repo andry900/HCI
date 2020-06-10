@@ -14,7 +14,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:fontFamily="@font/architects_daughter"
@@ -28,15 +28,27 @@
         android:layout_height="120dp"
         android:layout_below="@+id/textView_insert_new_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="#FFFFFF"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@mipmap/ic_general_image"/>
 
+    <TextView
+        android:id="@+id/textView_choose_icon_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_insert_new_number"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:fontFamily="@font/amita"
+        android:text="@string/choose_an_icon_number"
+        android:textSize="12sp"
+        android:textColor="@color/colorPrimary" />
+
     <EditText
         android:id="@+id/editText_insert_name_number"
-        android:layout_below="@+id/image_insert_new_number"
+        android:layout_below="@+id/textView_choose_icon_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -95,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_insert_comment"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:padding="5dp"
         android:gravity="center"
         android:background="@drawable/round_bg"

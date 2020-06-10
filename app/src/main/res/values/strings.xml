@@ -119,6 +119,7 @@
     <string name="ending_hour">Ending hour:</string>
     <string name="hh_mm">hh:mm</string>
     <string name="enter_no_dates_for_the_whole_house_history">(Enter no dates for the whole house history)</string>
+    <string name="choose_an_icon_number">Choose an icon number</string>
 
     <string-array name="data_types">
         <item>Average</item>
