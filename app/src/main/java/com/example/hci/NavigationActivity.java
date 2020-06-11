@@ -26,6 +26,7 @@ import com.example.hci.ui.analytics.HouseGraphs;
 import com.example.hci.ui.documents.DocumentVisualization;
 import com.example.hci.ui.documents.InsertNewDocument;
 import com.example.hci.ui.documents.NotifyPerson;
+import com.example.hci.ui.events.GridViewAdapter;
 import com.example.hci.ui.events.InsertNewEvent;
 import com.example.hci.ui.home.HomeFragment;
 import com.example.hci.ui.events.EventsFragment;
@@ -196,6 +197,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         InsertNewEvent.to_hour_event = "";
                         InsertNewEvent.button_event_popup.setText(getResources().getString(R.string.enter_days_and_hours));
                         InsertNewEvent.button_event_popup.setTextSize(15);
+                        GridViewAdapter.dates_selected_deselected.clear();
                     })
                     .setNegativeButton(android.R.string.no, null).show();
             Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(R.drawable.border_layout_calendar);

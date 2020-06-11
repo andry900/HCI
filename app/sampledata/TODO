@@ -1,10 +1,7 @@
 -EVENTS
     - Impostare la data di fine evento per Weekly e Monthly
-    - Gli orari devono poter essere soltanto numerici, (ex. 10 al posto di 10:00)
-    - Mettere orologio per selezionare Staring Hour ed Ending Hour
-    - selecionare e deselzionare giorni in week e monthly
-    - togli totlamente yearly
-
+    - il popup che filla il nuovo evento è resizato con i margin top
+    - se il mese non ha il 31 lo mette a 1
 -NUMBERS
     - non so perchè ma la textview della scelta delle icone non prende il font
 

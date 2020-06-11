@@ -208,6 +208,7 @@ public class CheckRecap extends Fragment {
                 InsertNewEvent.from_hour_event = "";
                 InsertNewEvent.to_hour_event = "";
                 InsertNewEvent.days = "";
+                GridViewAdapter.dates_selected_deselected.clear();
                 personsList = null;
                 requireActivity()
                         .getSupportFragmentManager()

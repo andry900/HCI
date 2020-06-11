@@ -2,6 +2,8 @@ package com.example.hci.ui.events;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,14 +14,18 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
 import com.example.hci.R;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class PopUpFrequencyEvent extends Activity {
@@ -28,6 +34,7 @@ public class PopUpFrequencyEvent extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_frequency_event);
+        Context mContext = this;
 
         //TO CREATE THE PANEL
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -52,11 +59,14 @@ public class PopUpFrequencyEvent extends Activity {
         CheckBox checkBox_saturday = findViewById(R.id.checkbox_saturday);
         CheckBox checkBox_sunday = findViewById(R.id.checkbox_sunday);
 
-        EditText editText_from_hour_event = findViewById(R.id.editText_from_hour_event);
-        EditText editText_to_hour_event = findViewById(R.id.editText_to_hour_event);
+        TextView editText_from_hour_event = findViewById(R.id.editText_from_hour_event);
+        TextView editText_to_hour_event = findViewById(R.id.editText_to_hour_event);
         TextView textView_popup_frequency_event = findViewById(R.id.textView_popup_frequency_event);
 
         GridView calendarEvent_freq_popup = findViewById(R.id.calendar_event_freq_popup);
+        ImageButton starting_time_btn = findViewById(R.id.img_btn_start_time);
+        ImageButton ending_time_btn = findViewById(R.id.img_btn_end_time);
+        LinearLayout layout_vertical_from_to = findViewById(R.id.layout_vertical_from_to);
 
         //GET THE FREQUENCY CHOSEN BY THE USER FROM PREVIOUS FRAGMENT
         Intent intent = getIntent();
@@ -67,6 +77,7 @@ public class PopUpFrequencyEvent extends Activity {
 
         //FILTER RESULTS BASED ON THE FREQUENCY CHOSEN
         if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic")  ) {
+            getWindow().setLayout((int) (width * 0.93), (int) (height * 0.4));
             textView_popup_frequency_event.setText("Choose the time for the " + frequency_chosen + " event");
 
             layout_mon_tue_wed.setVisibility(View.INVISIBLE);
@@ -76,13 +87,26 @@ public class PopUpFrequencyEvent extends Activity {
         }
 
         else if (Objects.equals(frequency_chosen, "weekly")) {
+            getWindow().setLayout((int) (width * 0.93), (int) (height * 0.65));
+
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(200, 780, 0, 0);
+            layout_vertical_from_to.setLayoutParams(params);
+
             layout_calendar_freq_popup.setVisibility(View.INVISIBLE);
             layout_mon_tue_wed.setVisibility(View.VISIBLE);
             layout_thu_fri_sat.setVisibility(View.VISIBLE);
             layout_sunday.setVisibility(View.VISIBLE);
+
         }
 
         else {
+            getWindow().setLayout((int) (width * 0.93), (int) (height * 0.79));
+
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(200, 1000, 0, 0);
+            layout_vertical_from_to.setLayoutParams(params);
+
             layout_mon_tue_wed.setVisibility(View.INVISIBLE);
             layout_thu_fri_sat.setVisibility(View.INVISIBLE);
             layout_sunday.setVisibility(View.INVISIBLE);
@@ -97,14 +121,60 @@ public class PopUpFrequencyEvent extends Activity {
             calendarEvent_freq_popup.setAdapter(adapter);
         }
 
+        //CLICK ON IMAGE BUTTON STARTING TIME
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        starting_time_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        editText_from_hour_event.setText(hourOfDay + ":" + minute);
+                    }
+                },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+                timePickerDialog.show();
+            }
+        });
+
+        //CLICK ON TEXT_VIEW STARTING TIME
+        editText_from_hour_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starting_time_btn.callOnClick();
+            }
+        });
+
+        //CLICK ON TEXT_VIEW ENDING TIME
+        editText_to_hour_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ending_time_btn.callOnClick();
+            }
+        });
+
+        //CLICK ON IMAGE BUTTON ENDING TIME
+        ending_time_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        editText_to_hour_event.setText(hourOfDay + ":" + minute);
+                    }
+                },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+                timePickerDialog.show();
+            }
+        });
+
         //CLICKING ON BACK BUTTON
         back_button.setOnClickListener(v -> finish());
 
         //CLICKING OK BUTTON
         ok_button.setOnClickListener(v -> {
-
             if (Objects.equals(frequency_chosen, "weekly")) {
-
                 if (!checkBox_monday.isChecked() && !checkBox_tuesday.isChecked() && !checkBox_wednesday.isChecked()
                         && !checkBox_thursday.isChecked() && !checkBox_friday.isChecked() && !checkBox_saturday.isChecked() &&
                         !checkBox_sunday.isChecked()) {
@@ -113,7 +183,7 @@ public class PopUpFrequencyEvent extends Activity {
                     toast.show();
                 } else if (editText_from_hour_event.getText().toString().equals("") || editText_from_hour_event.getText().toString().equals(" ")
                         || editText_to_hour_event.getText().toString().equals("") || editText_to_hour_event.getText().toString().equals(" ")) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "You must fill the starting and ending times", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
@@ -149,34 +219,19 @@ public class PopUpFrequencyEvent extends Activity {
                 }
             }
 
-            if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic") || Objects.equals(frequency_chosen, "monthly") || Objects.equals(frequency_chosen, "yearly")) {
+            if (Objects.equals(frequency_chosen, "daily") || Objects.equals(frequency_chosen, "no periodic") || Objects.equals(frequency_chosen, "monthly")) {
                 if (editText_from_hour_event.getText().toString().equals("") || editText_from_hour_event.getText().toString().equals(" ")
                         || editText_to_hour_event.getText().toString().equals("") || editText_to_hour_event.getText().toString().equals(" ")) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "You must fill the From and To values", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                }
-                else if (Float.parseFloat(editText_from_hour_event.getText().toString()) > 24 || Float.parseFloat(editText_to_hour_event.getText().toString()) > 24 ) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "the value must be between 0 and 24", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                }
-                else if (Float.parseFloat(editText_from_hour_event.getText().toString()) > Float.parseFloat(editText_to_hour_event.getText().toString())) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "the 'from' value must be smaller than the 'to' value", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "You must fill the starting and ending times", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
                 else {
+                    for(int i=0;i<GridViewAdapter.dates_selected_deselected.size();i++){
+                        GridViewAdapter.dates += GridViewAdapter.dates_selected_deselected.get(i) + " - ";
+                    }
                     InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();
                     InsertNewEvent.to_hour_event = editText_to_hour_event.getText().toString();
-
-                    final int size = calendarEvent_freq_popup.getChildCount();
-                    Drawable background_elem_grid = getDrawable(R.drawable.cell_gridview_border);
-                    for(int i = 0; i < size; i++) {
-                        if(calendarEvent_freq_popup.getChildAt(i).getBackground().equals(background_elem_grid)){
-                            GridViewAdapter.dates = calendarEvent_freq_popup.getChildAt(i).toString() + " - ";
-                        }
-                    }
 
                     Intent returnIntent = new Intent();
                     setResult(Activity.RESULT_OK,returnIntent);

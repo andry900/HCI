@@ -61,17 +61,6 @@
             android:textColor="#000"/>
 
         <Button
-            android:id="@+id/yearly_event_button"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:text="@string/yearly"
-            android:textColor="#000"/>
-
-        <Button
             android:id="@+id/no_periodic_event_button"
             android:layout_width="140dp"
             android:layout_height="40dp"

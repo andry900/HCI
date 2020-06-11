@@ -32,13 +32,11 @@ public class ChooseTypeofEvent extends Activity {
         daily_button = findViewById(R.id.daily_event_button);
         weekly_button = findViewById(R.id.weekly_event_button);
         monthly_button = findViewById(R.id.monthly_event_button);
-        yearly_button = findViewById(R.id.yearly_event_button);
         no_periodic_button = findViewById(R.id.no_periodic_event_button);
 
         onClickSpecificButton(daily_button);
         onClickSpecificButton(weekly_button);
         onClickSpecificButton(monthly_button);
-        onClickSpecificButton(yearly_button);
         onClickSpecificButton(no_periodic_button);
 
     }
@@ -53,8 +51,6 @@ public class ChooseTypeofEvent extends Activity {
                 frequency = "weekly";
             } else if (monthly_button.equals(button)) {
                 frequency = "monthly";
-            } else if (yearly_button.equals(button)) {
-                frequency = "yearly";
             } else if (no_periodic_button.equals(button)) {
                 frequency = "no periodic";
             }

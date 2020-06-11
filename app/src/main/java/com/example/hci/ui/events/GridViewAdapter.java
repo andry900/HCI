@@ -17,6 +17,7 @@ import java.util.Objects;
 public class GridViewAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final ArrayList<String> days;
+    public static ArrayList<String> dates_selected_deselected = new ArrayList<>();
     public static String dates = "";
 
     GridViewAdapter(Activity context, ArrayList<String> days) {
@@ -35,9 +36,11 @@ public class GridViewAdapter extends ArrayAdapter<String> {
         day.setOnClickListener(v -> {
             if(day.getBackground() == null) {
                 day.setBackground(ContextCompat.getDrawable(context, R.drawable.cell_gridview_border));
+                dates_selected_deselected.add(day.getText().toString());
                 //dates += day.getText().toString() + " - ";
             }else {
                 day.setBackgroundResource(0);
+                dates_selected_deselected.remove(day.getText().toString());
             }
         });
 

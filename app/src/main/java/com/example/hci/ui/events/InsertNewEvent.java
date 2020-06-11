@@ -73,7 +73,7 @@ public class InsertNewEvent extends Fragment {
                 button_event_popup.setTextSize(10);
             }
         }
-        if (frequency_chosen.equals("monthly") || frequency_chosen.equals("yearly") ) {
+        if (frequency_chosen.equals("monthly")) {
             if (!from_hour_event.equals("") && !to_hour_event.equals("") &&  !GridViewAdapter.dates.equals("")) {
                 button_event_popup.setText("days: " + GridViewAdapter.dates + "\n" + "from: " + from_hour_event + " - to: " + to_hour_event);
                 button_event_popup.setTextSize(10);
@@ -161,13 +161,13 @@ public class InsertNewEvent extends Fragment {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 if (frequency_chosen.equals("weekly")) {
-                    button_event_popup.setText("days: -" + days + "\n" + "from: " + from_hour_event + " -- to: " +to_hour_event);
+                    button_event_popup.setText("days: " + days + "\n" + "from: " + from_hour_event + " -- to: " +to_hour_event);
                 }
                 if (frequency_chosen.equals("daily") || frequency_chosen.equals("no periodic") ) {
                     button_event_popup.setText("from: " + from_hour_event + " - to: " +to_hour_event);
                 }
-                if (frequency_chosen.equals("monthly") || frequency_chosen.equals("yearly") ) {
-                    button_event_popup.setText("days: -" + GridViewAdapter.dates + "\n" +"from: " + from_hour_event + " -- to: " +to_hour_event);
+                if (frequency_chosen.equals("monthly")) {
+                    button_event_popup.setText("days: " + GridViewAdapter.dates + "\n" +"from: " + from_hour_event + " -- to: " +to_hour_event);
                 }
               button_event_popup.setTextSize(10);
             }
