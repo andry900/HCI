@@ -33,7 +33,8 @@
                 android:background="@drawable/border"
                 android:fontFamily="sans-serif"
                 android:text="@string/enter_days_and_hours"
-                android:textColor="#000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#808080"
                 android:textSize="15sp" />
 
             <LinearLayout

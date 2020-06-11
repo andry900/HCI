@@ -16,11 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
+            android:fontFamily="@font/architects_daughter"
             android:text="@string/select_an_icon"
             android:textColor="#000"
-            android:textSize="12sp"
-            android:fontFamily="@font/architects_daughter">
-        </TextView>
+            android:textSize="12sp"></TextView>
 
         <LinearLayout
             android:layout_width="match_parent"

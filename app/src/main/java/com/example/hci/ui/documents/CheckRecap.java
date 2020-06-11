@@ -20,6 +20,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
 import androidx.annotation.NonNull;
@@ -93,33 +95,24 @@ public class CheckRecap extends Fragment {
                             startTime, endTime, false);
                     (HomeFragment.eventList).add(newEvent);
                 }
-                if (Objects.equals(frequency_chosen, "yearly")) {
-                    String[] tmpArr = GridViewAdapter.dates.split(" - ");
-                    for (int i=0; i<=10; i++) {
-                        for (String s : tmpArr) {
-                            Calendar startTime = Calendar.getInstance();
-                            startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
-                            startTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-                            startTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-                            startTime.add(Calendar.YEAR, i);
-                            Calendar endTime = Calendar.getInstance();
-                            endTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
-                            endTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-                            endTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-                            endTime.add(Calendar.YEAR, i);
-                            BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
-                                    InsertNewEvent.description,
-                                    "FROM" + InsertNewEvent.from_hour_event +
-                                            "TO" + InsertNewEvent.to_hour_event,
-                                    ContextCompat.getColor(requireContext(), R.color.colorAccent),
-                                    startTime, endTime, false);
-                            (HomeFragment.eventList).add(newEvent);
-                        }
-                    }
-                }
+
                 if (Objects.equals(frequency_chosen, "monthly")) {
                     String[] tmpArr = GridViewAdapter.dates.split(" - ");
-                    for (int i=0; i<=10; i++) {
+                    int endMonth = 0;
+                    int startMonth = 0;
+                    try {
+                        Calendar myCal = new GregorianCalendar();
+                        myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY)
+                                .parse(EventsFragment.date_selected)));
+                        startMonth = myCal.get(Calendar.MONTH);
+                        Calendar myCal2 = new GregorianCalendar();
+                        myCal2.setTime(Objects.requireNonNull(new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY)
+                                .parse(InsertNewEvent.duration)));
+                        endMonth = myCal2.get(Calendar.MONTH);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    for (int i=startMonth; i<=endMonth; i++) {
                         for (String s : tmpArr) {
                             Calendar startTime = Calendar.getInstance();
                             startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));

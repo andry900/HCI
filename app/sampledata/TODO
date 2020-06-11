@@ -1,7 +1,10 @@
 -EVENTS
     - Impostare la data di fine evento per Weekly e Monthly
-    - il popup che filla il nuovo evento è resizato con i margin top
+    - il popup che filla il nuovo evento è resizato con i margin top (TEST)
     - se il mese non ha il 31 lo mette a 1
+
+    * Va bene selezione start date o inseriamo campo nel form??
+
 -NUMBERS
     - non so perchè ma la textview della scelta delle icone non prende il font
 
