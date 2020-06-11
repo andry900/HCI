@@ -105,6 +105,7 @@ public class InsertNewEvent extends Fragment {
 
         //CALL THE POPUP WHEN BUTTON IS CLICKED
         button_event_popup.setOnClickListener(v -> {
+            button_event_popup.setError(null);
             days = "";
             Intent intent = new Intent(getContext(), PopUpFrequencyEvent.class);
             intent.putExtra("frequency_chosen",frequency_chosen);
@@ -119,8 +120,11 @@ public class InsertNewEvent extends Fragment {
             if (editText_autocomplete_event.getText().toString().equals("") || editText_autocomplete_event.getText().toString().equals(" ")) {
                 editText_autocomplete_event.setError("Enter a type of event");
             }
+            if (button_event_popup.getText().toString().equals(getResources().getString(R.string.enter_days_and_hours))) {
+                button_event_popup.setError("Enter dates and hours");
+            }
 
-            if (editText_autocomplete_event.getError() == null && editText_duration_event.getError() == null) {
+            if (editText_autocomplete_event.getError() == null && editText_duration_event.getError() == null && button_event_popup.getError() == null) {
                 if (!button_event_popup.getText().equals(getResources().getString(R.string.enter_days_and_hours))) {
                     NotifyPerson notifyPerson = new NotifyPerson();
                     Bundle arguments = new Bundle();
@@ -137,10 +141,6 @@ public class InsertNewEvent extends Fragment {
                             .replace(R.id.nav_host_fragment, notifyPerson,"NotifyPerson")
                             .addToBackStack(null)
                             .commit();
-                } else {
-                    Toast toast = Toast.makeText(getContext(), "You must enter days and hours!", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
                 }
             }
 
