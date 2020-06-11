@@ -2,6 +2,7 @@ package com.example.hci.ui.documents;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ public class CheckRecap extends Fragment {
         Button confirm = root.findViewById(R.id.confirm_btn);
         Button change = root.findViewById(R.id.change_btn);
         StringBuilder sb = new StringBuilder();
-        sb.append("RECAP: \n -");
+        sb.append("<b>RECAP:</b> <br /> &nbsp -");
 
         if (Objects.equals(requireArguments().getString("notify_person"), "notify person")) {
             String frequency_chosen = requireArguments().getString("frequency_chosen");
@@ -223,20 +224,20 @@ public class CheckRecap extends Fragment {
                 utility = null;
             }
 
-            sb.append( recapBundle.getString("name"));
+            sb.append("<b><i> Name: </i></b>"+recapBundle.getString("name"));
 
             if (!Objects.equals(recapBundle.getString("amount"), " Euro")) {
-                Float.parseFloat(
+                amount = Float.parseFloat(
                         recapBundle.getString("amount").replace("Euro", ""));
-                sb.append("\n -");
+                sb.append("<br />&nbsp - <i><b>Amount: </i></b>");
                 sb.append(recapBundle.getString("amount"));
             }
             if (!Objects.equals(recapBundle.getString("utility"), "")) {
-                sb.append("\n -");
+                sb.append("<br />&nbsp - <i><b>Utility: </i></b>");
                 sb.append(recapBundle.getString("utility"));
             }
             if (!Objects.equals(recapBundle.getString("status"), "")) {
-                sb.append("\n -");
+                sb.append("<br />&nbsp - <i><b>Status: </i></b>");
                 sb.append(recapBundle.getString("status"));
             }
 
@@ -270,20 +271,20 @@ public class CheckRecap extends Fragment {
             });
         }
 
-        sb.append("\n ");
-        sb.append("\n ");
-        sb.append("PERSONS TO NOTIFY:");
+        sb.append("<br />");
+        sb.append("<br />");
+        sb.append("<b>PERSONS TO NOTIFY:</b>");
 
         ArrayList<String> persNotify = Objects.requireNonNull(recapBundle).getStringArrayList("persons");
         if (Objects.requireNonNull(persNotify).size()> 0) {
             for (int p = 0; p < (persNotify.size()); p++) {
-                sb.append("\n -");
+                sb.append("<br /> &nbsp - ");
                 sb.append(persNotify.get(p));
 
             }
         }
 
-        recapText.setText(sb.toString());
+        recapText.setText(Html.fromHtml(sb.toString()));
 
         change.setOnClickListener(v ->{
                         requireActivity().getSupportFragmentManager().popBackStack();

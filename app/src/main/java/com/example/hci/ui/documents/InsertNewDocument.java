@@ -114,6 +114,9 @@ public class InsertNewDocument extends Fragment {
         next =  root.findViewById(R.id.nextBtn);
 
         next.setOnClickListener(v -> {
+
+
+
             if (checkAndCollectData()) {
                 NotifyPerson notifyPerson = new NotifyPerson();
                 //prepare data to pass on

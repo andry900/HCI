@@ -35,7 +35,7 @@ public class DocumentVisualization extends Fragment {
             (root.findViewById(R.id.doc_utility_box)).setVisibility(View.GONE);
         }
         if (doc.getAmount() != null) {
-            ((TextView) root.findViewById(R.id.doc_amount)).setText(doc.getAmount().toString());
+            ((TextView) root.findViewById(R.id.doc_amount)).setText(doc.getAmount().toString() + " Euro");
         }
         else {
             (root.findViewById(R.id.doc_amount_box)).setVisibility(View.GONE);
