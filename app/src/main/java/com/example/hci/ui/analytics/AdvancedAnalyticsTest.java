@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,7 +20,7 @@ import androidx.fragment.app.Fragment;
 
 public class AdvancedAnalyticsTest extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_advanced_analytics_text, container, false);
+        View root = inflater.inflate(R.layout.fragment_advanced_analytics_test, container, false);
 
         TextView rentalAnalytics = root.findViewById(R.id.rental_analytics);
         TextView foodAnalytics = root.findViewById(R.id.food_analytics);
@@ -42,8 +44,8 @@ public class AdvancedAnalyticsTest extends Fragment {
         TextView minus_6_percentage = root.findViewById(R.id.minus_6_percentage);
         TextView minus_3_percentage = root.findViewById(R.id.minus_3_percentage);
 
-        Spinner data_types = root.findViewById(R.id.data_types);
-        Spinner visualization_types = root.findViewById(R.id.visualization_types);
+        RadioGroup radioData = root.findViewById(R.id.radioData);
+        RadioGroup radioVisualization = root.findViewById(R.id.radioVisualization);
 
         Bundle bundle = getArguments();
         String graph_type = Objects.requireNonNull(bundle).getString("graph_type");
@@ -63,7 +65,7 @@ public class AdvancedAnalyticsTest extends Fragment {
                 minus_6_percentage.setVisibility(View.GONE);
                 minus_3_percentage.setVisibility(View.GONE);
 
-                visualization_types.setSelection(0);
+                radioVisualization.check(radioVisualization.getChildAt(0).getId());
             } else if (graph_type.equals("foodAnalytics")) {
                 foodAnalytics.setVisibility(View.VISIBLE);
                 pieChart.setVisibility(View.VISIBLE);
@@ -78,7 +80,7 @@ public class AdvancedAnalyticsTest extends Fragment {
                 plus_12_percentage.setVisibility(View.GONE);
                 minus_3_percentage.setVisibility(View.GONE);
 
-                visualization_types.setSelection(1);
+                radioVisualization.check(radioVisualization.getChildAt(1).getId());
             } else {    //billsAnalytics
                 billsAnalytics.setVisibility(View.VISIBLE);
                 lineGraph.setVisibility(View.VISIBLE);
@@ -93,73 +95,55 @@ public class AdvancedAnalyticsTest extends Fragment {
                 plus_12_percentage.setVisibility(View.GONE);
                 minus_6_percentage.setVisibility(View.GONE);
 
-                visualization_types.setSelection(2);
+                radioVisualization.check(radioVisualization.getChildAt(2).getId());
             }
         }
 
-        data_types.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position == 0) {    //Average
-                    average_expenses.setVisibility(View.VISIBLE);
-                    average_data.setVisibility(View.VISIBLE);
+        radioData.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.avg) {    //Average
+                average_expenses.setVisibility(View.VISIBLE);
+                average_data.setVisibility(View.VISIBLE);
 
-                    median_expenses.setVisibility(View.GONE);
-                    median_data.setVisibility(View.GONE);
-                    variance_expenses.setVisibility(View.GONE);
-                    variance_data.setVisibility(View.GONE);
-                } else if (position == 1) {     //Median
-                    median_expenses.setVisibility(View.VISIBLE);
-                    median_data.setVisibility(View.VISIBLE);
+                median_expenses.setVisibility(View.GONE);
+                median_data.setVisibility(View.GONE);
+                variance_expenses.setVisibility(View.GONE);
+                variance_data.setVisibility(View.GONE);
+            } else if (checkedId == R.id.med) {     //Median
+                median_expenses.setVisibility(View.VISIBLE);
+                median_data.setVisibility(View.VISIBLE);
 
-                    average_expenses.setVisibility(View.GONE);
-                    average_data.setVisibility(View.GONE);
-                    variance_expenses.setVisibility(View.GONE);
-                    variance_data.setVisibility(View.GONE);
-                } else {    //Variance
-                    variance_expenses.setVisibility(View.VISIBLE);
-                    variance_data.setVisibility(View.VISIBLE);
+                average_expenses.setVisibility(View.GONE);
+                average_data.setVisibility(View.GONE);
+                variance_expenses.setVisibility(View.GONE);
+                variance_data.setVisibility(View.GONE);
+            } else {    //Variance
+                variance_expenses.setVisibility(View.VISIBLE);
+                variance_data.setVisibility(View.VISIBLE);
 
-                    median_expenses.setVisibility(View.GONE);
-                    median_data.setVisibility(View.GONE);
-                    average_expenses.setVisibility(View.GONE);
-                    average_data.setVisibility(View.GONE);
-                }
+                median_expenses.setVisibility(View.GONE);
+                median_data.setVisibility(View.GONE);
+                average_expenses.setVisibility(View.GONE);
+                average_data.setVisibility(View.GONE);
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
         });
 
-        visualization_types.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position == 0) {    //Histogram
-                    histogram.setVisibility(View.VISIBLE);
+        radioVisualization.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.hist) {    //Histogram
+                histogram.setVisibility(View.VISIBLE);
 
-                    pieChart.setVisibility(View.GONE);
-                    lineGraph.setVisibility(View.GONE);
-                } else if (position == 1) {     //Pie Chart
-                    pieChart.setVisibility(View.VISIBLE);
+                pieChart.setVisibility(View.GONE);
+                lineGraph.setVisibility(View.GONE);
+            } else if (checkedId == R.id.pie) {     //Pie Chart
+                pieChart.setVisibility(View.VISIBLE);
 
-                    histogram.setVisibility(View.GONE);
-                    lineGraph.setVisibility(View.GONE);
-                } else {    //Line Graph
-                    lineGraph.setVisibility(View.VISIBLE);
+                histogram.setVisibility(View.GONE);
+                lineGraph.setVisibility(View.GONE);
+            } else {    //Line Graph
+                lineGraph.setVisibility(View.VISIBLE);
 
-                    pieChart.setVisibility(View.GONE);
-                    histogram.setVisibility(View.GONE);
-                }
+                pieChart.setVisibility(View.GONE);
+                histogram.setVisibility(View.GONE);
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
         });
 
         return root;
@@ -174,4 +158,5 @@ public class AdvancedAnalyticsTest extends Fragment {
 
         return advancedAnalytics;
     }
+
 }

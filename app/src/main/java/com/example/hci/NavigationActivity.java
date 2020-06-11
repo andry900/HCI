@@ -22,6 +22,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.hci.ui.analytics.AdvancedAnalytics;
+import com.example.hci.ui.analytics.AdvancedAnalyticsTest;
 import com.example.hci.ui.analytics.HouseGraphs;
 import com.example.hci.ui.documents.DocumentVisualization;
 import com.example.hci.ui.documents.InsertNewDocument;
@@ -261,7 +262,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     .replace(R.id.nav_host_fragment, new AnalyticsFragment(),"fragment_analytics")
                     .commit();
         }
-        else if (fragment instanceof AdvancedAnalytics) {
+        else if (fragment instanceof AdvancedAnalytics || fragment instanceof AdvancedAnalyticsTest) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.nav_host_fragment, new HouseGraphs(),"fragment_house_graphs")

@@ -51,8 +51,8 @@
 
     <ImageView
         android:id="@+id/histogram"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_marginTop="80dp"
         android:layout_below="@id/home_analytics"
         android:background="#FFF"
@@ -61,8 +61,8 @@
 
     <ImageView
         android:id="@+id/pieChart"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_marginTop="80dp"
         android:layout_below="@id/home_analytics"
         android:background="#FFFFFF"
@@ -71,8 +71,8 @@
 
     <ImageView
         android:id="@+id/line_graph"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_marginTop="80dp"
         android:layout_below="@id/home_analytics"
         android:background="#FFF"
@@ -87,7 +87,7 @@
         android:textColor="#000"
         android:textSize="16sp"
         android:layout_below="@+id/home_analytics"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="330dp"
         android:layout_marginStart="20dp"/>
 
     <TextView
@@ -110,7 +110,7 @@
         android:textSize="16sp"
         android:visibility="invisible"
         android:layout_below="@+id/home_analytics"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="330dp"
         android:layout_marginStart="20dp"/>
 
     <TextView
@@ -134,7 +134,7 @@
         android:textSize="16sp"
         android:visibility="invisible"
         android:layout_below="@+id/home_analytics"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="330dp"
         android:layout_marginStart="20dp"/>
 
     <TextView
@@ -157,7 +157,7 @@
         android:textColor="#000"
         android:textSize="16sp"
         android:layout_below="@+id/home_analytics"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="330dp"
         android:layout_marginStart="220dp"/>
 
     <ImageView
@@ -233,41 +233,97 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontal_line"
-        android:layout_marginStart="120dp"
         android:text="@string/data_type"
+        android:layout_centerHorizontal="true"
         android:textColor="#000"
         android:textSize="16sp"/>
 
-    <Spinner
-        android:id="@+id/data_types"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioData"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/horizontal_line"
-        android:background="@color/colorPrimary"
-        android:layout_toEndOf="@+id/labDataTypes"
-        android:entries="@array/data_types"
-        android:layout_marginStart="10dp"/>
+        android:layout_below="@+id/labDataTypes"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/avg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Average"
+            android:checked="true"
+            android:textColor="#000" />
+
+        <RadioButton
+            android:id="@+id/med"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Median"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:textColor="#000">
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/var"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Variance"
+            android:textColor="#000">
+        </RadioButton>
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/labVisualizationTypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labDataTypes"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/radioData"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/visualization_type"
         android:textColor="#000"
         android:textSize="16sp"/>
 
-    <Spinner
-        android:id="@+id/visualization_types"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioVisualization"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/data_types"
-        android:background="@color/colorPrimary"
-        android:layout_toEndOf="@id/labVisualizationTypes"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:entries="@array/visualization_types"/>
+        android:layout_below="@+id/labVisualizationTypes"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/hist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Histogram"
+            android:textColor="#000" />
+
+        <RadioButton
+            android:id="@+id/pie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Pie Chart"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:textColor="#000">
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:text="Line Graph"
+            android:textColor="#000">
+        </RadioButton>
+
+    </RadioGroup>
 
 </RelativeLayout>
