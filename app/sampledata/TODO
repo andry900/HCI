@@ -7,8 +7,5 @@
 
 -NUMBERS
     - non so perchè ma la textview della scelta delle icone non prende il font
+
 -DOCUMENTS:
-    - Eliminare il campo Utility Type
-    - Mettere la possibilità di inserire importi decimali per ad esempio il costo delle bollette
-    - Inserire automaticamente il simbolo dell'euro dopo l'importo della bolletta
-    - Eliminare lo status per tipologia OTHERS

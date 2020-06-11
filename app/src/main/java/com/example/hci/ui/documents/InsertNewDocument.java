@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,6 +72,7 @@ public class InsertNewDocument extends Fragment {
         name = root.findViewById(R.id.nameField);
         utility = root.findViewById(R.id.utilityField);
         amount = root.findViewById(R.id.amountField);
+
         docImg = root.findViewById(R.id.upld_img);
         if (selImg != null) {
             docImg.setImageBitmap(selImg);
@@ -116,7 +119,7 @@ public class InsertNewDocument extends Fragment {
                 //prepare data to pass on
                 Bundle b = new Bundle();
                 b.putString("name", selName);
-                b.putString("amount", selAmount);
+                b.putString("amount", selAmount+" Euro");
                 b.putString("status", selStatus);
                 b.putParcelable("image", selImg);
                 if (Objects.equals(selector, "OTHERS")) {
@@ -157,20 +160,19 @@ public class InsertNewDocument extends Fragment {
         }
         if (selector.equals("UTILITY")) {
             ((TextView)root.findViewById(R.id.titleDocInsert)).setText("Insert new bill");
+            utility.setVisibility(View.GONE);
+            root.findViewById(R.id.utilityBox).setVisibility(View.GONE);
             List<String> dataset = new LinkedList<>(Arrays.asList("Select a status",
                     "Paid", "To pay", "expired"));
             status.attachDataSource(dataset);
         }
         if (selector.equals("OTHERS")) {
             ((TextView)root.findViewById(R.id.titleDocInsert)).setText("Insert other document");
-            utility.setHint("Insert a label for the document");
             amount.setVisibility(View.GONE);
             root.findViewById(R.id.amountBox).setVisibility(View.GONE);
-            List<String> dataset = new LinkedList<>(Arrays.asList("Select a status",
-                    "Valid", "not valid"));
-            status.attachDataSource(dataset);
+            status.setVisibility(View.GONE);
+            root.findViewById(R.id.status_cont).setVisibility(View.GONE);
         }
-
         return root;
     }
 
@@ -191,9 +193,11 @@ public class InsertNewDocument extends Fragment {
                 resp = false;
             }
         }
-        if (selStatus == null) {
-           status.setError("Please enter a valid status!");
+        if (status.getVisibility() == View.VISIBLE) {
+            if (selStatus == null) {
+                status.setError("Please enter a valid status!");
                 resp = false;
+            }
         }
 
         if (resp) {

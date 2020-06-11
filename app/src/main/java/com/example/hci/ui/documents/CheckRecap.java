@@ -224,18 +224,21 @@ public class CheckRecap extends Fragment {
             }
 
             sb.append( recapBundle.getString("name"));
-            sb.append("\n -");
 
-            if (!Objects.equals(recapBundle.getString("amount"), "")) {
-                amount = Float.valueOf((Objects.requireNonNull(recapBundle.getString("amount"))));
-                sb.append(amount);
+            if (!Objects.equals(recapBundle.getString("amount"), " Euro")) {
+                Float.parseFloat(
+                        recapBundle.getString("amount").replace("Euro", ""));
                 sb.append("\n -");
+                sb.append(recapBundle.getString("amount"));
             }
             if (!Objects.equals(recapBundle.getString("utility"), "")) {
-                sb.append(recapBundle.getString("utility"));
                 sb.append("\n -");
+                sb.append(recapBundle.getString("utility"));
             }
-            sb.append(recapBundle.getString("status"));
+            if (!Objects.equals(recapBundle.getString("status"), "")) {
+                sb.append("\n -");
+                sb.append(recapBundle.getString("status"));
+            }
 
             Float finalAmount = amount;
             String finalUtility = utility;
