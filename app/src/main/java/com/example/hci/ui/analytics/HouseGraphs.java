@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -73,6 +74,21 @@ public class HouseGraphs extends Fragment {
                     .replace(R.id.nav_host_fragment, analyticsFragment,"fragment_advanced_analytics")
                     .commit();
         });
+
+
+        //TEST PART
+        Button testBtn = root.findViewById(R.id.buttonTest);
+        testBtn.setOnClickListener(v->{
+            AdvancedAnalyticsTest analyticsFragmentTest = AdvancedAnalyticsTest
+                    .newInstance("billsAnalytics");
+
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, analyticsFragmentTest,"fragment_advanced_analytics_test")
+                    .commit();
+        });
+
 
         return root;
     }

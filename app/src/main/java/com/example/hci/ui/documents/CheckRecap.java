@@ -89,8 +89,8 @@ public class CheckRecap extends Fragment {
                     endTime.setTimeInMillis(EventsFragment.start_date);
                     BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
                             InsertNewEvent.description,
-                            "FROM"+InsertNewEvent.from_hour_event+
-                                    "TO"+InsertNewEvent.to_hour_event,
+                            "FROM "+InsertNewEvent.from_hour_event+
+                                    "  TO "+InsertNewEvent.to_hour_event,
                             ContextCompat.getColor(requireContext(), R.color.noPeriodicColor),
                             startTime, endTime, false);
                     (HomeFragment.eventList).add(newEvent);
@@ -109,92 +109,119 @@ public class CheckRecap extends Fragment {
                         myCal2.setTime(Objects.requireNonNull(new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY)
                                 .parse(InsertNewEvent.duration)));
                         endMonth = myCal2.get(Calendar.MONTH);
+
+                        for (int i=0; i<=(endMonth-startMonth); i++) {
+                            for (String s : tmpArr) {
+                                Calendar startTime = Calendar.getInstance();
+                                startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
+                                startTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
+                                startTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
+                                startTime.add(Calendar.MONTH, i);
+                                Calendar endTime = Calendar.getInstance();
+                                endTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
+                                endTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
+                                endTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
+                                endTime.add(Calendar.MONTH, i);
+
+                                BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
+                                        InsertNewEvent.description,
+                                        "FROM " + InsertNewEvent.from_hour_event +
+                                                "  TO " + InsertNewEvent.to_hour_event,
+                                        ContextCompat.getColor(requireContext(), R.color.monthlyColor),
+                                        startTime, endTime, false);
+                                (HomeFragment.eventList).add(newEvent);
+                            }
+                        }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    for (int i=startMonth; i<=endMonth; i++) {
-                        for (String s : tmpArr) {
-                            Calendar startTime = Calendar.getInstance();
-                            startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
-                            startTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-                            startTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-                            startTime.add(Calendar.MONTH, i);
-                            Calendar endTime = Calendar.getInstance();
-                            endTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
-                            endTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-                            endTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-                            endTime.add(Calendar.MONTH, i);
-
-                            BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
-                                    InsertNewEvent.description,
-                                    "FROM" + InsertNewEvent.from_hour_event +
-                                            "TO" + InsertNewEvent.to_hour_event,
-                                    ContextCompat.getColor(requireContext(), R.color.monthlyColor),
-                                    startTime, endTime, false);
-                            (HomeFragment.eventList).add(newEvent);
-                        }
-                    }
                 }
+
                 if (Objects.equals(frequency_chosen, "daily")) {
                     Calendar startTime = Calendar.getInstance();
                     startTime.setTimeInMillis(EventsFragment.start_date);
                     Calendar endTime = Calendar.getInstance();
+
                     try {
                         endTime.setTime(Objects.requireNonNull
-                                (new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(InsertNewEvent.duration)));
+                                (new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY)
+                                        .parse(InsertNewEvent.duration)));
+
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     endTime.add(Calendar.DAY_OF_WEEK, 1);
                     BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
                             InsertNewEvent.description,
-                            "FROM"+InsertNewEvent.from_hour_event+
-                                    "TO"+InsertNewEvent.to_hour_event,
+                            "FROM "+InsertNewEvent.from_hour_event+
+                                    "  TO "+InsertNewEvent.to_hour_event,
                             ContextCompat.getColor(requireContext(), R.color.dailyColor),
                             startTime, endTime, true);
                     (HomeFragment.eventList).add(newEvent);
                 }
+
                 if (Objects.equals(frequency_chosen, "weekly")) {
                     String[] tmpArr = InsertNewEvent.days.split(", ");
-                    for (int i=0; i<=30; i++) {
-                        for (String s : tmpArr) {
-                            int day = 0;
-                            if (s.equals("Sunday"))
-                                day = Calendar.SUNDAY;
-                            if (s.equals("Monday"))
-                                day = Calendar.MONDAY;
-                            if (s.equals("Tuesday"))
-                                day = Calendar.TUESDAY;
-                            if (s.equals("Wednesday"))
-                                day = Calendar.WEDNESDAY;
-                            if (s.equals("Thursday"))
-                                day = Calendar.THURSDAY;
-                            if (s.equals("Friday"))
-                                day = Calendar.FRIDAY;
-                            if (s.equals("Saturday"))
-                                day = Calendar.SATURDAY;
 
-                            Calendar startTime = Calendar.getInstance();
-                            startTime.set(Calendar.DAY_OF_WEEK, day);
-                            startTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-                            startTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-                            startTime.add(Calendar.WEEK_OF_MONTH, i);
-                            Calendar endTime = Calendar.getInstance();
-                            endTime.set(Calendar.DAY_OF_WEEK, day);
-                            endTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
-                            endTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-                            endTime.add(Calendar.WEEK_OF_MONTH, i);
+                    int startWeek, startMonth;
+                    int endWeek, endMonth;
+                    try {
+                        Calendar myCal = new GregorianCalendar();
+                        myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY)
+                                .parse(EventsFragment.date_selected)));
+                        startMonth = myCal.get(Calendar.MONTH);
+                        startWeek = myCal.get(Calendar.WEEK_OF_MONTH);
+                        Calendar myCal2 = new GregorianCalendar();
+                        myCal2.setTime(Objects.requireNonNull(new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY)
+                                .parse(InsertNewEvent.duration)));
+                        endMonth = myCal2.get(Calendar.MONTH);
+                        endWeek = myCal2.get(Calendar.WEEK_OF_MONTH);
+                        for (int k = 0; k <= (endMonth - startMonth); k++) {
+                            for (int i = 0; i <= (endWeek - startWeek); i++) {
+                                for (String s : tmpArr) {
+                                    int day = 0;
+                                    if (s.equals("Sunday"))
+                                        day = Calendar.SUNDAY;
+                                    if (s.equals("Monday"))
+                                        day = Calendar.MONDAY;
+                                    if (s.equals("Tuesday"))
+                                        day = Calendar.TUESDAY;
+                                    if (s.equals("Wednesday"))
+                                        day = Calendar.WEDNESDAY;
+                                    if (s.equals("Thursday"))
+                                        day = Calendar.THURSDAY;
+                                    if (s.equals("Friday"))
+                                        day = Calendar.FRIDAY;
+                                    if (s.equals("Saturday"))
+                                        day = Calendar.SATURDAY;
 
-                            BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
-                                    InsertNewEvent.description,
-                                    "FROM" + InsertNewEvent.from_hour_event +
-                                            "TO" + InsertNewEvent.to_hour_event,
-                                    ContextCompat.getColor(requireContext(), R.color.weeklyColor),
-                                    startTime, endTime, false);
-                            (HomeFragment.eventList).add(newEvent);
+                                    Calendar startTime = Calendar.getInstance();
+                                    startTime.set(Calendar.DAY_OF_WEEK, day);
+                                    startTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
+                                    startTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
+                                    startTime.add(Calendar.WEEK_OF_MONTH, i);
+                                    startTime.add(Calendar.MONTH, k);
+                                    Calendar endTime = Calendar.getInstance();
+                                    endTime.set(Calendar.DAY_OF_WEEK, day);
+                                    endTime.set(Calendar.MONTH, Calendar.getInstance().get(Calendar.MONTH));
+                                    endTime.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
+                                    endTime.add(Calendar.WEEK_OF_MONTH, i);
+                                    endTime.add(Calendar.MONTH, k);
+
+                                    BaseCalendarEvent newEvent = new BaseCalendarEvent(InsertNewEvent.type_of_event,
+                                            InsertNewEvent.description,
+                                            "FROM " + InsertNewEvent.from_hour_event +
+                                                    "  TO " + InsertNewEvent.to_hour_event,
+                                            ContextCompat.getColor(requireContext(), R.color.weeklyColor),
+                                            startTime, endTime, false);
+                                    (HomeFragment.eventList).add(newEvent);
+                                }
+                            }
+                        }
+                        } catch(ParseException e){
+                            e.printStackTrace();
                         }
                     }
-                }
 
                 EventsFragment.defined_events.add(EventsFragment.date_selected);
                 InsertNewEvent.button_event_popup.setText(getResources().getString(R.string.enter_days_and_hours));
