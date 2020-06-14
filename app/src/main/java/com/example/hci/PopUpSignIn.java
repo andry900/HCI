@@ -20,103 +20,145 @@ public class PopUpSignIn extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.sign_in);
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        //avoid external touch to close the registration dialog
-        this.setFinishOnTouchOutside(false);
+        if (MainActivity.chosenPopUp.equals("ForgotPassword")) {
+            setContentView(R.layout.forgot_password);
 
-        Button sign_in = findViewById(R.id.popup_btnSignIn);
-        EditText popup_name = findViewById(R.id.popup_edName);
-        EditText popup_surname = findViewById(R.id.popup_edSurname);
-        EditText popup_email = findViewById(R.id.popup_edEmail);
-        EditText popup_password = findViewById(R.id.popup_edPassword);
-        EditText popup_passwordCheck = findViewById(R.id.popup_edPasswordCheck);
-        Button abort = findViewById(R.id.btn_abort);
-        RadioGroup userRadioGroup = findViewById(R.id.radioGroup);
-        RadioButton landlord = findViewById(R.id.landlord_radio);
-        CheckBox privacy = findViewById(R.id.privacy_check);
-        TextView GDPR = findViewById(R.id.GDPR);
+            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            //avoid external touch to close the registration dialog
+            this.setFinishOnTouchOutside(false);
 
-        privacy.setOnClickListener(v-> {
-            if (privacy.getError() != null) {
-                privacy.setError(null);
-            }
-        });
+            EditText popup_password = findViewById(R.id.popup_edPassword);
+            EditText popup_passwordCheck = findViewById(R.id.popup_edPasswordCheck);
+            Button abort = findViewById(R.id.btn_abort);
+            Button save_changes = findViewById(R.id.btn_saveChanges);
 
-        GDPR.setOnClickListener(v -> {
-            String url = "https://www.gdprprivacypolicy.net/live.php?token=MUWvXQkGkKhzxrJ7hNPUXdcasNi617l2";
+            abort.setOnClickListener(v -> onBackPressed());
 
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            startActivity(i);
-        });
+            save_changes.setOnClickListener(v -> {
+                String txtPassword = popup_password.getText().toString();
+                String txtPasswordCheck = popup_passwordCheck.getText().toString();
 
-        userRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (landlord.getError() != null) {
-                landlord.setError(null);
-            }
-        });
+                if ((TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) ||
+                        !txtPassword.equals(txtPasswordCheck) || TextUtils.isEmpty(txtPasswordCheck)) {
 
-        abort.setOnClickListener(v -> onBackPressed());
+                    if (TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) {
+                        popup_password.setError("Please enter a password of at least 6 characters!");
+                    }
 
-        sign_in.setOnClickListener(v -> {
-            String txtName = popup_name.getText().toString();
-            String txtSurname = popup_surname.getText().toString();
-            String txtEmail = popup_email.getText().toString();
-            String txtPassword = popup_password.getText().toString();
-            String txtPasswordCheck = popup_passwordCheck.getText().toString();
-            String userType = "tenant";
+                    if (TextUtils.isEmpty(txtPasswordCheck)) {
+                        popup_passwordCheck.setError("Please enter the password to check!");
+                    }
 
-            if ( TextUtils.isEmpty(txtName) || TextUtils.isEmpty(txtSurname) ||
-                (TextUtils.isEmpty(txtEmail) || !Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) ||
-                (TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) ||
-                !txtPassword.equals(txtPasswordCheck) || TextUtils.isEmpty(txtPasswordCheck) ||
-                userRadioGroup.getCheckedRadioButtonId() == -1 || !privacy.isChecked() ) {
+                    if (!(txtPassword.equals(txtPasswordCheck))) {
+                        popup_password.setError("Password are different!");
+                        popup_passwordCheck.setError("Password are different!");
+                    }
 
-                if (TextUtils.isEmpty(txtName)) {
-                    popup_name.setError("Please enter your Name!");
+                } else {
+                    finish();
                 }
+            });
 
-                if (TextUtils.isEmpty(txtSurname)) {
-                    popup_surname.setError("Please enter your Surname!");
+        } else {
+            setContentView(R.layout.sign_in);
+
+            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            //avoid external touch to close the registration dialog
+            this.setFinishOnTouchOutside(false);
+
+            Button sign_in = findViewById(R.id.popup_btnSignIn);
+            EditText popup_name = findViewById(R.id.popup_edName);
+            EditText popup_surname = findViewById(R.id.popup_edSurname);
+            EditText popup_email = findViewById(R.id.popup_edEmail);
+            EditText popup_password = findViewById(R.id.popup_edPassword);
+            EditText popup_passwordCheck = findViewById(R.id.popup_edPasswordCheck);
+            Button abort = findViewById(R.id.btn_abort);
+            RadioGroup userRadioGroup = findViewById(R.id.radioGroup);
+            RadioButton landlord = findViewById(R.id.landlord_radio);
+            CheckBox privacy = findViewById(R.id.privacy_check);
+            TextView GDPR = findViewById(R.id.GDPR);
+
+            privacy.setOnClickListener(v-> {
+                if (privacy.getError() != null) {
+                    privacy.setError(null);
                 }
+            });
 
-                if (TextUtils.isEmpty(txtEmail) || !Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {
-                    popup_email.setError("Please enter a valid Email!");
+            GDPR.setOnClickListener(v -> {
+                String url = "https://www.gdprprivacypolicy.net/live.php?token=MUWvXQkGkKhzxrJ7hNPUXdcasNi617l2";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            });
+
+            userRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+                if (landlord.getError() != null) {
+                    landlord.setError(null);
                 }
+            });
 
-                if (TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) {
-                    popup_password.setError("Please enter a password of at least 6 characters!");
-                }
+            abort.setOnClickListener(v -> onBackPressed());
 
-                if (TextUtils.isEmpty(txtPasswordCheck)) {
-                    popup_passwordCheck.setError("Please enter the password to check!");
-                }
+            sign_in.setOnClickListener(v -> {
+                String txtName = popup_name.getText().toString();
+                String txtSurname = popup_surname.getText().toString();
+                String txtEmail = popup_email.getText().toString();
+                String txtPassword = popup_password.getText().toString();
+                String txtPasswordCheck = popup_passwordCheck.getText().toString();
+                String userType = "tenant";
 
-                if (!(txtPassword.equals(txtPasswordCheck))) {
-                    popup_password.setError("Password are different!");
-                    popup_passwordCheck.setError("Password are different!");
-                }
+                if ( TextUtils.isEmpty(txtName) || TextUtils.isEmpty(txtSurname) ||
+                        (TextUtils.isEmpty(txtEmail) || !Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) ||
+                        (TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) ||
+                        !txtPassword.equals(txtPasswordCheck) || TextUtils.isEmpty(txtPasswordCheck) ||
+                        userRadioGroup.getCheckedRadioButtonId() == -1 || !privacy.isChecked() ) {
 
-                if (userRadioGroup.getCheckedRadioButtonId() == -1) {
+                    if (TextUtils.isEmpty(txtName)) {
+                        popup_name.setError("Please enter your Name!");
+                    }
+
+                    if (TextUtils.isEmpty(txtSurname)) {
+                        popup_surname.setError("Please enter your Surname!");
+                    }
+
+                    if (TextUtils.isEmpty(txtEmail) || !Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {
+                        popup_email.setError("Please enter a valid Email!");
+                    }
+
+                    if (TextUtils.isEmpty(txtPassword) || txtPassword.length() < 6) {
+                        popup_password.setError("Please enter a password of at least 6 characters!");
+                    }
+
+                    if (TextUtils.isEmpty(txtPasswordCheck)) {
+                        popup_passwordCheck.setError("Please enter the password to check!");
+                    }
+
+                    if (!(txtPassword.equals(txtPasswordCheck))) {
+                        popup_password.setError("Password are different!");
+                        popup_passwordCheck.setError("Password are different!");
+                    }
+
+                    if (userRadioGroup.getCheckedRadioButtonId() == -1) {
                         landlord.setError("Please select one user type!");
-                }
+                    }
 
-                if (!privacy.isChecked()) {
-                    privacy.setError("You need to accept privacy policy");
-                }
+                    if (!privacy.isChecked()) {
+                        privacy.setError("You need to accept privacy policy");
+                    }
 
 
-            } else {
-                if (landlord.isChecked()) {
-                    userType = "landlord";
+                } else {
+                    if (landlord.isChecked()) {
+                        userType = "landlord";
+                    }
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("mail",txtEmail);
+                    returnIntent.putExtra("pwd",txtPassword);
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    finish();
                 }
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("mail",txtEmail);
-                returnIntent.putExtra("pwd",txtPassword);
-                setResult(Activity.RESULT_OK,returnIntent);
-                finish();
-            }
-        });
+            });
+        }
     }
 }

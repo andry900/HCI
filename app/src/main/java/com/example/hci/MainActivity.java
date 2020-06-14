@@ -7,15 +7,15 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
 import java.util.Objects;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    EditText login_name;
-    EditText login_pwd;
-    ProgressBar bar_login;
+    private EditText login_name;
+    private EditText login_pwd;
+    private ProgressBar bar_login;
+    public static String chosenPopUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +26,26 @@ public class MainActivity extends AppCompatActivity {
         CheckedTextView signIn = findViewById(R.id.sign_in);
         Button google = findViewById(R.id.google_login);
         Button facebook = findViewById(R.id.facebook_login);
+        CheckedTextView forgot_password = findViewById(R.id.forgot_password);
+
         login_name = findViewById(R.id.email);
         login_pwd = findViewById(R.id.password);
         bar_login = findViewById(R.id.progressBar);
 
-        signIn.setOnClickListener(v -> {
+        forgot_password.setOnClickListener(v -> {
+            chosenPopUp = "ForgotPassword";
             Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
             startActivityForResult(intent, 1);
 
         });
+
+        signIn.setOnClickListener(v -> {
+            chosenPopUp = "SignIn";
+            Intent intent = new Intent(getApplicationContext(), PopUpSignIn.class);
+            startActivityForResult(intent, 1);
+
+        });
+
         login.setOnClickListener(v -> Login());
         google.setOnClickListener(v -> Login());
         facebook.setOnClickListener(v -> Login());
@@ -55,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //Return from registartion
+        //Return from registration
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 login_name.setText(Objects.requireNonNull(data).getStringExtra("mail"));
