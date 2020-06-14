@@ -47,17 +47,21 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     public static NavigationView navigationView;
     private boolean doubleBackToExitPressedOnce = false;
 
+    private Toolbar toolbar_search;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        toolbar_search = findViewById(R.id.app_bar_search);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_profile, R.id.nav_events, R.id.nav_numbers,
@@ -92,61 +96,79 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         switch (item.getItemId()) {
             case R.id.nav_home:
                 frameLayout.removeAllViews();
+                toolbar.setVisibility(View.VISIBLE);
+                toolbar_search.setVisibility(View.GONE);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
                         .addToBackStack(null)
                         .commit();
+                setSupportActionBar(toolbar);
                 Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
                 break;
 
             case R.id.nav_profile:
                 frameLayout.removeAllViews();
+                toolbar.setVisibility(View.VISIBLE);
+                toolbar_search.setVisibility(View.GONE);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new ProfileFragment(),"fragment_profile")
                         .addToBackStack(null)
                         .commit();
+                setSupportActionBar(toolbar);
                 Objects.requireNonNull(getSupportActionBar()).setTitle("Profile");
                 break;
 
             case R.id.nav_events:
                 frameLayout.removeAllViews();
+                toolbar.setVisibility(View.VISIBLE);
+                toolbar_search.setVisibility(View.GONE);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new EventsFragment(),"fragment_events")
                         .addToBackStack(null)
                         .commit();
+                setSupportActionBar(toolbar);
                 Objects.requireNonNull(getSupportActionBar()).setTitle("Events");
                 break;
 
             case R.id.nav_numbers:
                 frameLayout.removeAllViews();
+                toolbar.setVisibility(View.VISIBLE);
+                toolbar_search.setVisibility(View.GONE);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new NumbersFragment(),"fragment_numbers")
                         .addToBackStack(null)
                         .commit();
+                setSupportActionBar(toolbar);
                 Objects.requireNonNull(getSupportActionBar()).setTitle("Useful Numbers");
                 break;
 
             case R.id.nav_documents:
                 frameLayout.removeAllViews();
+                toolbar.setVisibility(View.GONE);
+                toolbar_search.setVisibility(View.VISIBLE);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new DocumentsFragment(),"fragment_documents")
                         .addToBackStack(null)
                         .commit();
-                Objects.requireNonNull(getSupportActionBar()).setTitle("Documents");
+                //Objects.requireNonNull(getSupportActionBar()).setTitle("Documents");
+                setSupportActionBar(toolbar_search);
                 break;
 
             case R.id.nav_analytics:
                 frameLayout.removeAllViews();
+                toolbar.setVisibility(View.VISIBLE);
+                toolbar_search.setVisibility(View.GONE);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.nav_host_fragment, new AnalyticsFragment(),"fragment_analytics")
                         .addToBackStack(null)
                         .commit();
+                setSupportActionBar(toolbar);
                 Objects.requireNonNull(getSupportActionBar()).setTitle("Analytics");
                 break;
 
@@ -227,6 +249,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     .replace(R.id.nav_host_fragment, new HomeFragment(),"fragment_home")
                     .commit();
 
+            toolbar.setVisibility(View.VISIBLE);
+            toolbar_search.setVisibility(View.GONE);
+            setSupportActionBar(toolbar);
             navigationView.getMenu().getItem(4).setChecked(false);
             navigationView.getMenu().getItem(0).setChecked(true);
             Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
@@ -237,12 +262,18 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     .setTitle("Attention")
                     .setMessage("You will lose all inserted information.\nDo you really want to go back?")
                     .setIcon(R.drawable.yellow_alert)
-                    .setPositiveButton(android.R.string.yes, (dialog1, whichButton) -> getSupportFragmentManager().popBackStackImmediate())
+                    .setPositiveButton(android.R.string.yes, (dialog1, whichButton) -> {
+                        toolbar_search.setVisibility(View.VISIBLE);
+                        toolbar.setVisibility(View.GONE);
+                        getSupportFragmentManager().popBackStackImmediate();
+                    })
                     .setNegativeButton(android.R.string.no, null).show();
             Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(R.drawable.border_layout_calendar);
             dialog.setCanceledOnTouchOutside(false);
         }
         else if (fragment instanceof NotifyPerson || fragment instanceof DocumentVisualization) {
+            toolbar_search.setVisibility(View.VISIBLE);
+            toolbar.setVisibility(View.GONE);
             getSupportFragmentManager().popBackStackImmediate();
         }
         else if (fragment instanceof AnalyticsFragment) {

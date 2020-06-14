@@ -6,11 +6,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.hci.R;
 import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapter.MyViewHolder> {
-    private final ArrayList<DocumentsFragment.Document> data;
+    private final DocumentsFragment.DocsFilterClass filter;
+    private ArrayList<DocumentsFragment.Document> data;
+    private ArrayList<DocumentsFragment.Document> filteredData;
+
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name;
@@ -28,6 +33,8 @@ public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapte
 
     DocumentListAdapter(ArrayList<DocumentsFragment.Document> savedDocs) {
         data = savedDocs;
+        filteredData = savedDocs;
+        filter = new DocumentsFragment.DocsFilterClass(savedDocs, this);
     }
 
     @NonNull
@@ -41,16 +48,24 @@ public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        if (data.get(position) != null) {
-            (holder.name).setText(data.get(position).getName());
-            (holder.status).setText(data.get(position).getStatus());
-            (holder.label).setText(data.get(position).getLabel());
+        if (filteredData.get(position) != null) {
+            (holder.name).setText(filteredData.get(position).getName());
+            (holder.status).setText(filteredData.get(position).getStatus());
+            (holder.label).setText(filteredData.get(position).getLabel());
         }
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return filteredData.size();
     }
 
+    // set adapter filtered list
+    public void setList(ArrayList<DocumentsFragment.Document> list) {
+        this.filteredData = list;
+    }
+    //call when you want to filter
+    public void filterList(String text) {
+        filter.filter(text);
+    }
 }

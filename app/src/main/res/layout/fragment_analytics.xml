@@ -1,129 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_analytics"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_analytics"
     android:background="#FFF">
-
-    <TextView
-        android:id="@+id/home_analytics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_analytics"
-        android:textColor="#000"
-        android:textSize="30sp"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/time_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_time_frame"
-        android:textColor="#000"
-        android:textSize="25sp"
-        android:layout_below="@+id/home_analytics"
-        android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/house_history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_no_dates_for_the_whole_house_history"
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:layout_below="@+id/time_frame"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/labStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/starting_date"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:layout_below="@+id/house_history"
-        android:layout_marginTop="27dp"
-        android:layout_marginStart="40dp"/>
-
-    <EditText
-        android:id="@+id/editStart"
-        android:layout_height="wrap_content"
-        android:layout_width="120dp"
-        android:layout_below="@+id/house_history"
-        android:layout_toEndOf="@id/labStart"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/border"
-        android:hint="@string/enter_date"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textColorHint="#808080"
-        android:maxLength="10"
-        android:inputType="date"/>
-
-    <ImageButton
-        android:id="@+id/calStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/house_history"
-        android:layout_marginTop="14dp"
-        android:layout_toEndOf="@id/editStart"
-        android:layout_marginStart="10dp"
-        android:background="#FFF"
-        android:src="@mipmap/ic_calendar"/>
-
-    <TextView
-        android:id="@+id/labEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ending_date"
-        android:textColor="#000"
-        android:textSize="18sp"
-        android:layout_below="@+id/labStart"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="40dp"/>
-
-    <EditText
-        android:id="@+id/editEnd"
-        android:layout_height="wrap_content"
-        android:layout_width="120dp"
-        android:layout_below="@+id/editStart"
-        android:layout_toEndOf="@id/labStart"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="47dp"
-        android:background="@drawable/border"
-        android:hint="@string/enter_date"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textColorHint="#808080"
-        android:maxLength="10"
-        android:inputType="date"/>
-
-    <ImageButton
-        android:id="@+id/calEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/calStart"
-        android:layout_marginTop="26dp"
-        android:layout_toEndOf="@id/editStart"
-        android:layout_marginStart="10dp"
-        android:background="#FFF"
-        android:src="@mipmap/ic_calendar"/>
 
     <Button
         android:id="@+id/btnAnalytics"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labEnd"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="@string/generate_analytics"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/round_bg"
         android:backgroundTint="@color/colorPrimary"
-        android:textSize="16sp" />
+        android:text="@string/generate_analytics"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labEnd" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/editStart"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/border"
+        android:hint="@string/enter_date"
+        android:inputType="date"
+        android:maxLength="10"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textColorHint="#808080"
+        app:layout_constraintStart_toEndOf="@id/labStart"
+        app:layout_constraintTop_toBottomOf="@+id/house_history" />
+
+    <EditText
+        android:id="@+id/editEnd"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/border"
+        android:hint="@string/enter_date"
+        android:inputType="date"
+        android:maxLength="10"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textColorHint="#808080"
+        app:layout_constraintStart_toEndOf="@id/labStart"
+        app:layout_constraintTop_toBottomOf="@+id/editStart" />
+
+    <ImageButton
+        android:id="@+id/calStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="14dp"
+        android:background="#FFF"
+        android:src="@mipmap/ic_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/editStart"
+        app:layout_constraintTop_toBottomOf="@+id/house_history" />
+
+    <ImageButton
+        android:id="@+id/calEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="26dp"
+        android:background="#FFF"
+        android:src="@mipmap/ic_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/editStart"
+        app:layout_constraintTop_toBottomOf="@+id/calStart" />
+
+    <TextView
+        android:id="@+id/home_analytics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/home_analytics"
+        android:textColor="#000"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:text="@string/select_time_frame"
+        android:textColor="#000"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_analytics" />
+
+    <TextView
+        android:id="@+id/house_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/enter_no_dates_for_the_whole_house_history"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_frame" />
+
+    <TextView
+        android:id="@+id/labStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:text="@string/starting_date"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/house_history" />
+
+    <TextView
+        android:id="@+id/labEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/ending_date"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labStart" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

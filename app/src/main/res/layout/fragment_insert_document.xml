@@ -164,7 +164,7 @@
                 android:layout_marginTop="7dp"
                 android:paddingEnd="20dp"
                 android:paddingStart="20dp"
-                android:text="@string/image_hint"
+                android:text="Select a document image, if needed:"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
