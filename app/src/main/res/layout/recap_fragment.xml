@@ -16,6 +16,7 @@
         android:backgroundTint="#096F14"
         android:text="@string/confirm"
         app:layout_constraintEnd_toEndOf="parent"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintTop_toBottomOf="@+id/recapMultiLine" />
 
     <Button
@@ -26,6 +27,7 @@
         android:layout_marginTop="15dp"
         android:backgroundTint="#CF0505"
         android:text="@string/change"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recapMultiLine" />
 

@@ -14,6 +14,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/round_bg"
         android:backgroundTint="@color/colorPrimary"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/new_doc_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

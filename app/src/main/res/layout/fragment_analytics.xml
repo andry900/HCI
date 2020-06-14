@@ -15,6 +15,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/generate_analytics"
         android:textSize="16sp"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
