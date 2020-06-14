@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,8 @@ public class DocumentsFragment extends Fragment {
             savedDocs.add(new Document("telephone contract", "CONTRACT", "payed",
                     null, null, null));
         }
+
+
         docList.setHasFixedSize(true);
         LinearLayoutManager lm = new LinearLayoutManager(getContext());
         docList.setLayoutManager(lm);
@@ -106,6 +109,7 @@ public class DocumentsFragment extends Fragment {
                 return false;
             }
         });
+        mAdapter.filterList(String.valueOf(sv.getQuery()));
 
         return root;
     }
