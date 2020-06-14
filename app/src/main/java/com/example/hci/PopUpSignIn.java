@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class PopUpSignIn extends Activity {
     @Override
@@ -33,11 +35,20 @@ public class PopUpSignIn extends Activity {
         RadioGroup userRadioGroup = findViewById(R.id.radioGroup);
         RadioButton landlord = findViewById(R.id.landlord_radio);
         CheckBox privacy = findViewById(R.id.privacy_check);
+        TextView GDPR = findViewById(R.id.GDPR);
 
         privacy.setOnClickListener(v-> {
             if (privacy.getError() != null) {
                 privacy.setError(null);
             }
+        });
+
+        GDPR.setOnClickListener(v -> {
+            String url = "https://www.gdprprivacypolicy.net/live.php?token=MUWvXQkGkKhzxrJ7hNPUXdcasNi617l2";
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         });
 
         userRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {

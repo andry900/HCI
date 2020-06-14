@@ -43,14 +43,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:buttonTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <TextView
+        android:id="@+id/GDPR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:text="Accept privacy policy (GDPR)"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
         android:textColorLink="@color/colorAccent"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/privacy_check"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <RadioGroup
@@ -192,7 +201,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:importantForAutofill="no"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:textColor="@android:color/black"
             android:textColorHint="@color/colorPrimary"
