@@ -6,20 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
 import com.example.hci.R;
-import com.example.hci.ui.events.InsertNewEvent;
 import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import static com.example.hci.ui.documents.DocumentsFragment.personsList;
 
 public class NotifyPerson extends Fragment {

@@ -5,24 +5,18 @@ import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
-
 import com.example.hci.R;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -126,47 +120,25 @@ public class PopUpFrequencyEvent extends Activity {
         final int hour = calendar.get(Calendar.HOUR_OF_DAY);
         final int minute = calendar.get(Calendar.MINUTE);
 
-        starting_time_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        editText_from_hour_event.setText(hourOfDay + ":" + minute);
-                    }
-                },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
-                timePickerDialog.show();
-            }
+        starting_time_btn.setOnClickListener(v -> {
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view, hourOfDay, minute1) ->
+                    editText_from_hour_event.setText(hourOfDay + ":" + minute1),
+                    hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
         });
 
         //CLICK ON TEXT_VIEW STARTING TIME
-        editText_from_hour_event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                starting_time_btn.callOnClick();
-            }
-        });
+        editText_from_hour_event.setOnClickListener(v -> starting_time_btn.callOnClick());
 
         //CLICK ON TEXT_VIEW ENDING TIME
-        editText_to_hour_event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ending_time_btn.callOnClick();
-            }
-        });
+        editText_to_hour_event.setOnClickListener(v -> ending_time_btn.callOnClick());
 
         //CLICK ON IMAGE BUTTON ENDING TIME
-        ending_time_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        editText_to_hour_event.setText(hourOfDay + ":" + minute);
-                    }
-                },hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
-                timePickerDialog.show();
-            }
+        ending_time_btn.setOnClickListener(v -> {
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view, hourOfDay, minute12) ->
+                    editText_to_hour_event.setText(hourOfDay + ":" + minute12),
+                    hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
         });
 
         //CLICKING ON BACK BUTTON
@@ -227,7 +199,7 @@ public class PopUpFrequencyEvent extends Activity {
                     toast.show();
                 }
                 else {
-                    for(int i=0;i<GridViewAdapter.dates_selected_deselected.size();i++){
+                    for (int i=0; i < GridViewAdapter.dates_selected_deselected.size(); i++){
                         GridViewAdapter.dates += GridViewAdapter.dates_selected_deselected.get(i) + " - ";
                     }
                     InsertNewEvent.from_hour_event = editText_from_hour_event.getText().toString();

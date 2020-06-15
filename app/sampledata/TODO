@@ -1,7 +1,2 @@
 -EVENTS
-    - Mettere nel riepilogo la frequenza dell'evento
-
-    * Va bene selezione start date o inseriamo campo nel form??
-
--DOCUMENTS:
-    - Rendere esplicito che l'immagine del documento non è obbligatoria (TO CHECK)
+    - Inserire il campo Starting Date nell'inserimento evento. Deve avere la data del giorno già preselezionata.

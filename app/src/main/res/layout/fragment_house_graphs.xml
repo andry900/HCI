@@ -20,18 +20,6 @@
             android:layout_height="wrap_content"
             android:background="#FFF">
 
-            <Button
-                android:id="@+id/buttonTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/line_graph"
-                android:layout_alignStart="@+id/line_graph"
-                android:layout_below="@+id/bills_analytics"
-                android:layout_marginEnd="33dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="35dp"
-                android:text="TEST" />
-
             <ImageButton
                 android:id="@+id/line_graph"
                 android:layout_width="150dp"

@@ -35,12 +35,9 @@ public class InsertNumberFragment extends Fragment {
         Button button_save = root.findViewById(R.id.saveButton_insertNumber);
         TextView choose_icon_number = root.findViewById(R.id.textView_choose_icon_number);
 
-        choose_icon_number.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(),ChooseIconNumber.class);
-                startActivityForResult(intent, 1);
-            }
+        choose_icon_number.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(),ChooseIconNumber.class);
+            startActivityForResult(intent, 1);
         });
 
         //TO CHOOSE THE ICON OF THE NUMBER

@@ -12,20 +12,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.hci.MainActivity;
 import com.example.hci.R;
 import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
 
@@ -68,8 +62,8 @@ public class DocumentsFragment extends Fragment {
                     Bundle b = new Bundle();
                     b.putInt("item", position);
                     docFrag.setArguments(b);
-                    getActivity().findViewById(R.id.app_bar_search).setVisibility(View.GONE);
-                    getActivity().findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
+                    requireActivity().findViewById(R.id.app_bar_search).setVisibility(View.GONE);
+                    requireActivity().findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
                     requireActivity()
                             .getSupportFragmentManager()
                             .beginTransaction()
@@ -79,14 +73,9 @@ public class DocumentsFragment extends Fragment {
                             .commit();
                 });
 
-        SearchView sv = getActivity().findViewById(R.id.search_field);
+        SearchView sv = requireActivity().findViewById(R.id.search_field);
         sv.setQueryHint("Search documents by name");
-        sv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sv.setIconified(false);
-            }
-        });
+        sv.setOnClickListener(v -> sv.setIconified(false));
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -101,13 +90,10 @@ public class DocumentsFragment extends Fragment {
                 return false;
             }
         });
-        sv.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                mAdapter.setList(savedDocs);
-                mAdapter.notifyDataSetChanged();
-                return false;
-            }
+        sv.setOnCloseListener(() -> {
+            mAdapter.setList(savedDocs);
+            mAdapter.notifyDataSetChanged();
+            return false;
         });
         mAdapter.filterList(String.valueOf(sv.getQuery()));
 
@@ -115,9 +101,10 @@ public class DocumentsFragment extends Fragment {
     }
 
     public static void hideKeyboard(Activity activity) {
-        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
-            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+        if (activity != null && activity.getWindow() != null) {
+            activity.getWindow().getDecorView();
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            Objects.requireNonNull(imm).hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }
 
@@ -127,8 +114,8 @@ public class DocumentsFragment extends Fragment {
         if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
                 String selector = Objects.requireNonNull(data).getStringExtra("label");
-                getActivity().findViewById(R.id.app_bar_search).setVisibility(View.GONE);
-                getActivity().findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
+                requireActivity().findViewById(R.id.app_bar_search).setVisibility(View.GONE);
+                requireActivity().findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
                 InsertNewDocument newDocFragment = new InsertNewDocument();
                 Bundle bundle = new Bundle();
                 bundle.putString("label", selector);
@@ -144,7 +131,6 @@ public class DocumentsFragment extends Fragment {
     }
 
     public static class DocsFilterClass extends Filter {
-
         private ArrayList<Document> docList;
         private ArrayList<Document> filteredDocsList;
         private DocumentListAdapter adapter;
@@ -179,8 +165,7 @@ public class DocumentsFragment extends Fragment {
         }
     }
 
-    public static class Document{
-
+    public static class Document {
         private String name;
         private String label;
         private String status;

@@ -106,7 +106,6 @@ public class PopUpSignIn extends Activity {
                 String txtEmail = popup_email.getText().toString();
                 String txtPassword = popup_password.getText().toString();
                 String txtPasswordCheck = popup_passwordCheck.getText().toString();
-                String userType = "tenant";
 
                 if ( TextUtils.isEmpty(txtName) || TextUtils.isEmpty(txtSurname) ||
                         (TextUtils.isEmpty(txtEmail) || !Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) ||
@@ -146,12 +145,7 @@ public class PopUpSignIn extends Activity {
                     if (!privacy.isChecked()) {
                         privacy.setError("You need to accept privacy policy");
                     }
-
-
                 } else {
-                    if (landlord.isChecked()) {
-                        userType = "landlord";
-                    }
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("mail",txtEmail);
                     returnIntent.putExtra("pwd",txtPassword);

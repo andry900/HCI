@@ -6,16 +6,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.hci.R;
 import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapter.MyViewHolder> {
     private final DocumentsFragment.DocsFilterClass filter;
-    private ArrayList<DocumentsFragment.Document> data;
     private ArrayList<DocumentsFragment.Document> filteredData;
-
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name;
@@ -32,7 +28,6 @@ public class DocumentListAdapter extends RecyclerView.Adapter<DocumentListAdapte
     }
 
     DocumentListAdapter(ArrayList<DocumentsFragment.Document> savedDocs) {
-        data = savedDocs;
         filteredData = savedDocs;
         filter = new DocumentsFragment.DocsFilterClass(savedDocs, this);
     }
