@@ -41,7 +41,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/editText_start_event"
+                    android:layout_width="245dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border"
+                    android:hint="Enter start date"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textColorHint="#808080"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/calStart_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:layout_marginStart="15dp"
+                    android:src="@mipmap/ic_calendar"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
                 android:layout_gravity="center">
 
                 <EditText
@@ -99,7 +129,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal"
             android:paddingEnd="30dp"
             android:paddingStart="30dp"

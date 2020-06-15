@@ -31,7 +31,6 @@ import static android.app.Activity.RESULT_OK;
 public class EventsFragment extends Fragment implements CalendarPickerController {
     public static ArrayList<String> defined_events = new ArrayList<>();
     public static String date_selected;
-    public boolean event_selected = false;
     public static long start_date;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -58,10 +57,6 @@ public class EventsFragment extends Fragment implements CalendarPickerController
 
         //CLICK ON ADD BUTTON
         add_event_button.setOnClickListener(v -> {
-            if (!event_selected) {
-                date_selected = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                start_date = Calendar.getInstance().getTimeInMillis();
-            }
             Intent intent = new Intent(getContext(), ChooseTypeofEvent.class);
             startActivityForResult(intent, 1);
 
@@ -96,18 +91,8 @@ public class EventsFragment extends Fragment implements CalendarPickerController
 
     @Override
     public void onDaySelected(DayItem dayItem) {
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat simpleDate =  new SimpleDateFormat("dd-MM-yyyy");
-        date_selected = simpleDate.format(dayItem.getDate());
-        event_selected = true;
-        Date sdt = null;
-        try {
-            sdt = new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY).parse(date_selected);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        start_date = Objects.requireNonNull(sdt).getTime();
-        }
+
+    }
 
     @Override
     public void onEventSelected(CalendarEvent event) {

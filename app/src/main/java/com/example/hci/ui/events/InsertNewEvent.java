@@ -24,11 +24,16 @@ import androidx.fragment.app.Fragment;
 import com.example.hci.MainActivity;
 import com.example.hci.R;
 import com.example.hci.ui.documents.NotifyPerson;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
 import static androidx.appcompat.app.AlertDialog.*;
+import static com.example.hci.ui.events.EventsFragment.date_selected;
 
 public class InsertNewEvent extends Fragment {
     private DatePickerDialog picker;
@@ -48,6 +53,9 @@ public class InsertNewEvent extends Fragment {
         View root = inflater.inflate(R.layout.fragment_insert_new_event, container, false);
         @SuppressLint("CutPasteId") AutoCompleteTextView auto_complete_event = root.findViewById(R.id.auto_complete_type_of_event);
         ImageButton calDuration_event = root.findViewById(R.id.calDuration_event);
+
+        ImageButton calStart_event = root.findViewById(R.id.calStart_event);
+        EditText editText_start_event = root.findViewById(R.id.editText_start_event);
 
         EditText editText_duration_event = root.findViewById(R.id.editText_duration_event);
         EditText editText_description_event = root.findViewById(R.id.editText_description_event);
@@ -97,9 +105,27 @@ public class InsertNewEvent extends Fragment {
             //DATE PICKER DIALOG
             picker = new DatePickerDialog(requireActivity(),
                     (view, year1, monthOfYear, dayOfMonth) ->
-                            editText_duration_event.setText(String.format(Locale.ITALY,  "%d/%d/%d", dayOfMonth, monthOfYear + 1, year1))
+                            editText_duration_event.setText(String.format(Locale.ITALY,
+                                    "%d/%d/%d", dayOfMonth, monthOfYear + 1, year1))
                     , year, month, day);
             editText_duration_event.setError(null);
+            picker.show();
+        });
+
+        //SET THE START DATE USING PICKER
+        calStart_event.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int month = calendar.get(Calendar.MONTH);
+            int year = calendar.get(Calendar.YEAR);
+
+            //DATE PICKER DIALOG
+            picker = new DatePickerDialog(requireActivity(),
+                    (view, year1, monthOfYear, dayOfMonth) ->
+                            editText_start_event.setText(String.format(Locale.ITALY,
+                                    "%d/%d/%d", dayOfMonth, monthOfYear + 1, year1))
+                    , year, month, day);
+            editText_start_event.setError(null);
             picker.show();
         });
 
@@ -117,6 +143,9 @@ public class InsertNewEvent extends Fragment {
             if (editText_duration_event.getText().toString().equals("") || editText_duration_event.getText().toString().equals(" ")) {
                 editText_duration_event.setError("Enter a duration");
             }
+            if (editText_start_event.getText().toString().equals("") || editText_start_event.getText().toString().equals(" ")) {
+                editText_start_event.setError("Enter a start");
+            }
             if (editText_autocomplete_event.getText().toString().equals("") || editText_autocomplete_event.getText().toString().equals(" ")) {
                 editText_autocomplete_event.setError("Enter a type of event");
             }
@@ -133,6 +162,16 @@ public class InsertNewEvent extends Fragment {
                     notifyPerson.setArguments(arguments);
 
                     duration = editText_duration_event.getText().toString();
+                    date_selected = editText_start_event.getText().toString();
+                    @SuppressLint("SimpleDateFormat")
+                    Date sdt = null;
+                    try {
+                        sdt = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY).parse(date_selected);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    EventsFragment.start_date = Objects.requireNonNull(sdt).getTime();
+                    date_selected.replace("/","-");
                     type_of_event = editText_autocomplete_event.getText().toString();
                     description = editText_description_event.getText().toString();
                     requireActivity()
