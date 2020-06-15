@@ -24,6 +24,10 @@ public class HouseGraphs extends Fragment {
         ImageButton foodAnalytics = root.findViewById(R.id.pieChart);
         ImageButton billsAnalytics = root.findViewById(R.id.line_graph);
 
+        TextView lab_rental = root.findViewById(R.id.rental_analytics);
+        TextView lab_food = root.findViewById(R.id.food_analytics);
+        TextView lab_bills = root.findViewById(R.id.bills_analytics);
+
         String format = "dd/MM/yyyy";
 
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ITALY);
@@ -53,7 +57,29 @@ public class HouseGraphs extends Fragment {
                     .commit();
         });
 
+        lab_rental.setOnClickListener(v -> {
+            AdvancedAnalytics analyticsFragment = AdvancedAnalytics
+                    .newInstance("rentalAnalytics");
+
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, analyticsFragment,"fragment_advanced_analytics")
+                    .commit();
+        });
+
         foodAnalytics.setOnClickListener(v -> {
+            AdvancedAnalytics analyticsFragment = AdvancedAnalytics
+                    .newInstance("foodAnalytics");
+
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, analyticsFragment,"fragment_advanced_analytics")
+                    .commit();
+        });
+
+        lab_food.setOnClickListener(v -> {
             AdvancedAnalytics analyticsFragment = AdvancedAnalytics
                     .newInstance("foodAnalytics");
 
@@ -75,10 +101,21 @@ public class HouseGraphs extends Fragment {
                     .commit();
         });
 
+        lab_bills.setOnClickListener(v -> {
+            AdvancedAnalytics analyticsFragment = AdvancedAnalytics
+                    .newInstance("billsAnalytics");
+
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_host_fragment, analyticsFragment,"fragment_advanced_analytics")
+                    .commit();
+        });
+
 
         //TEST PART
         Button testBtn = root.findViewById(R.id.buttonTest);
-        testBtn.setOnClickListener(v->{
+        testBtn.setOnClickListener(v-> {
             AdvancedAnalyticsTest analyticsFragmentTest = AdvancedAnalyticsTest
                     .newInstance("billsAnalytics");
 
