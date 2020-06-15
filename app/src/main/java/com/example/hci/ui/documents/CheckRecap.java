@@ -235,7 +235,7 @@ public class CheckRecap extends Fragment {
                 utility = null;
             }
 
-            sb.append("<b><i> Name: </i></b>"+recapBundle.getString("name"));
+            sb.append("<br />&nbsp - <b><i> Name: </i></b>"+recapBundle.getString("name"));
 
             if (!Objects.equals(recapBundle.getString("amount"), " Euro")) {
                 amount = Float.parseFloat(

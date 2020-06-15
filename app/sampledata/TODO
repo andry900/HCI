@@ -1,6 +1,4 @@
 -EVENTS
-    - Il popup che filla il nuovo evento è resizato con i margin top (TEST)
-    - Se il mese non ha il 31, importa come giorno l'1 (NON LO MOSTRIAMO OK)
     - Mettere nel riepilogo la frequenza dell'evento
 
     * Va bene selezione start date o inseriamo campo nel form??

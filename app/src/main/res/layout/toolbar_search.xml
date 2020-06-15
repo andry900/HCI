@@ -24,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/border_list"
-            android:theme="@style/AppSearchView"
-            tools:visibility="visible" />
+            android:queryHint="Search document by name"
+            android:theme="@style/AppSearchView"/>
 
     </androidx.cardview.widget.CardView>
 </androidx.appcompat.widget.Toolbar>
