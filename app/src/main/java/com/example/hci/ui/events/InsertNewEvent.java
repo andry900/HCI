@@ -164,7 +164,6 @@ public class InsertNewEvent extends Fragment {
                         e.printStackTrace();
                     }
                     EventsFragment.start_date = Objects.requireNonNull(sdt).getTime();
-                    date_selected.replace("/","-");
                     type_of_event = editText_autocomplete_event.getText().toString();
                     description = editText_description_event.getText().toString();
                     requireActivity()

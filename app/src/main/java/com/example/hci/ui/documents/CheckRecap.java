@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import static android.widget.Toast.LENGTH_LONG;
 import static com.example.hci.ui.documents.DocumentsFragment.personsList;
 import static com.example.hci.ui.documents.DocumentsFragment.savedDocs;
+import static com.example.hci.ui.events.EventsFragment.date_selected;
 
 public class CheckRecap extends Fragment {
     @SuppressLint("SetTextI18n")
@@ -54,11 +55,14 @@ public class CheckRecap extends Fragment {
                 sb.append("<br /> &nbsp - <b><i>Days: </i></b>").append(InsertNewEvent.days);
             }
 
+            sb.append("<br /> &nbsp -<b><i> Start Date: </i></b>").append(EventsFragment.date_selected);
+            sb.append("<br /> &nbsp -<b><i> End Date: </i></b>").append(InsertNewEvent.duration);
             sb.append("<br /> &nbsp -<b><i> Starting time: </i></b>").append(InsertNewEvent.from_hour_event);
             sb.append("<br /> &nbsp -<b><i> Ending time: </i></b>").append(InsertNewEvent.to_hour_event);
-            sb.append("<br /> &nbsp -<b><i> Duration of the event: </i></b>").append(InsertNewEvent.duration);
             sb.append("<br /> &nbsp -<b><i> Type of event: </i></b>").append(InsertNewEvent.type_of_event);
             sb.append("<br /> &nbsp -<b><i> Description: </i></b> ").append(InsertNewEvent.description);
+
+            date_selected.replace("/","-");
 
             confirm.setOnClickListener(v -> {
 
