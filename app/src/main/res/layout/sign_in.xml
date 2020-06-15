@@ -29,14 +29,14 @@
         android:layout_width="95dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border"
         android:backgroundTint="#E40B0B"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/abort"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="15sp"
-        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/privacy_check" />
 
@@ -47,6 +47,8 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
         android:buttonTint="@color/colorPrimary"
+        android:text="Accept privacy policy (GDPR)"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
@@ -54,15 +56,15 @@
         android:id="@+id/GDPR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:text="Accept privacy policy (GDPR)"
+        android:layout_marginStart="30dp"
+        android:text="(click to here read conditions)"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
         android:textColorLink="@color/colorAccent"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/privacy_check"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        android:textSize="13sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/privacy_check"
+        app:layout_constraintTop_toBottomOf="@+id/privacy_check" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
