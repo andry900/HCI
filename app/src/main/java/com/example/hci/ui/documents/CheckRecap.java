@@ -61,7 +61,7 @@ public class CheckRecap extends Fragment {
             sb.append("<br /> &nbsp -<b><i> Ending time: </i></b>").append(InsertNewEvent.to_hour_event);
             sb.append("<br /> &nbsp -<b><i> Type of event: </i></b>").append(InsertNewEvent.type_of_event);
             sb.append("<br /> &nbsp -<b><i> Description: </i></b> ").append(InsertNewEvent.description);
-            
+
             confirm.setOnClickListener(v -> {
 
                 LayoutInflater toastInfl = getLayoutInflater();
