@@ -61,9 +61,7 @@ public class CheckRecap extends Fragment {
             sb.append("<br /> &nbsp -<b><i> Ending time: </i></b>").append(InsertNewEvent.to_hour_event);
             sb.append("<br /> &nbsp -<b><i> Type of event: </i></b>").append(InsertNewEvent.type_of_event);
             sb.append("<br /> &nbsp -<b><i> Description: </i></b> ").append(InsertNewEvent.description);
-
-            date_selected.replace("/","-");
-
+            
             confirm.setOnClickListener(v -> {
 
                 LayoutInflater toastInfl = getLayoutInflater();
@@ -98,7 +96,7 @@ public class CheckRecap extends Fragment {
                     int startMonth;
                     try {
                         Calendar myCal = new GregorianCalendar();
-                        myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY)
+                        myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY)
                                 .parse(EventsFragment.date_selected)));
                         startMonth = myCal.get(Calendar.MONTH);
                         Calendar myCal2 = new GregorianCalendar();
@@ -163,7 +161,7 @@ public class CheckRecap extends Fragment {
                     int endWeek, endMonth;
                     try {
                         Calendar myCal = new GregorianCalendar();
-                        myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY)
+                        myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY)
                                 .parse(EventsFragment.date_selected)));
                         startMonth = myCal.get(Calendar.MONTH);
                         startWeek = myCal.get(Calendar.WEEK_OF_MONTH);
