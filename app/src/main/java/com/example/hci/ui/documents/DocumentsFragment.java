@@ -131,7 +131,6 @@ public class DocumentsFragment extends Fragment {
     }
 
     public static class DocsFilterClass extends Filter {
-
         private ArrayList<Document> docList;
         private ArrayList<Document> filteredDocsList;
         private DocumentListAdapter adapter;
@@ -166,8 +165,7 @@ public class DocumentsFragment extends Fragment {
         }
     }
 
-    public static class Document{
-
+    public static class Document {
         private String name;
         private String label;
         private String status;

@@ -20,7 +20,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Objects;
@@ -91,8 +90,8 @@ public class CheckRecap extends Fragment {
 
                 if (Objects.equals(frequency_chosen, "monthly")) {
                     String[] tmpArr = GridViewAdapter.dates.split(" - ");
-                    int endMonth = 0;
-                    int startMonth = 0;
+                    int endMonth;
+                    int startMonth;
                     try {
                         Calendar myCal = new GregorianCalendar();
                         myCal.setTime(Objects.requireNonNull(new SimpleDateFormat("dd-MM-yyyy", Locale.ITALY)
@@ -103,7 +102,7 @@ public class CheckRecap extends Fragment {
                                 .parse(InsertNewEvent.duration)));
                         endMonth = myCal2.get(Calendar.MONTH);
 
-                        for (int i=0; i<=(endMonth-startMonth); i++) {
+                        for (int i=0; i <= (endMonth-startMonth); i++) {
                             for (String s : tmpArr) {
                                 Calendar startTime = Calendar.getInstance();
                                 startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(s));
@@ -235,11 +234,11 @@ public class CheckRecap extends Fragment {
                 utility = null;
             }
 
-            sb.append("<br />&nbsp - <b><i> Name: </i></b>"+recapBundle.getString("name"));
+            sb.append("<br />&nbsp - <b><i> Name: </i></b>").append(recapBundle.getString("name"));
 
             if (!Objects.equals(recapBundle.getString("amount"), " Euro")) {
                 amount = Float.parseFloat(
-                        recapBundle.getString("amount").replace("Euro", ""));
+                        Objects.requireNonNull(recapBundle.getString("amount")).replace("Euro", ""));
                 sb.append("<br />&nbsp - <i><b>Amount: </i></b>");
                 sb.append(recapBundle.getString("amount"));
             }

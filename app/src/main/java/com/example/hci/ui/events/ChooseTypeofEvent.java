@@ -12,7 +12,6 @@ public class ChooseTypeofEvent extends Activity {
     Button daily_button;
     Button weekly_button;
     Button monthly_button;
-    Button yearly_button;
     Button no_periodic_button;
 
     @SuppressLint("SetTextI18n")

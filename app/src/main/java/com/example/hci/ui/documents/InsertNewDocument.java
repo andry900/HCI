@@ -2,16 +2,12 @@ package com.example.hci.ui.documents;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.hci.R;
-import com.example.hci.ui.events.EventsFragment;
-
 import org.angmarch.views.NiceSpinner;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -33,7 +27,6 @@ import java.util.List;
 import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import static android.app.Activity.RESULT_OK;
 
@@ -142,9 +135,7 @@ public class InsertNewDocument extends Fragment {
         });
 
         prev = root.findViewById(R.id.prevBtn);
-        prev.setOnClickListener(v->{
-            requireActivity().onBackPressed();
-        });
+        prev.setOnClickListener(v-> requireActivity().onBackPressed());
 
         //hide and shows layout items wrt selected label
         Objects.requireNonNull(selector);

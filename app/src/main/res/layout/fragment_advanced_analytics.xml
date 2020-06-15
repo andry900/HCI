@@ -94,7 +94,7 @@
                     android:layout_marginStart="5dp"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Median"
-                    android:textColor="#000"></RadioButton>
+                    android:textColor="#000" />
 
                 <RadioButton
                     android:id="@+id/var"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Variance"
-                    android:textColor="#000"></RadioButton>
+                    android:textColor="#000" />
 
             </RadioGroup>
 
@@ -130,7 +130,7 @@
                     android:layout_marginStart="5dp"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Pie Chart"
-                    android:textColor="#000"></RadioButton>
+                    android:textColor="#000" />
 
                 <RadioButton
                     android:id="@+id/line"
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorPrimary"
                     android:text="Line Graph"
-                    android:textColor="#000"></RadioButton>
+                    android:textColor="#000" />
 
             </RadioGroup>
 

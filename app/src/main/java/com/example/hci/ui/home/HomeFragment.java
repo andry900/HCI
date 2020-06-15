@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.example.hci.NavigationActivity;
 import com.example.hci.R;
@@ -16,7 +15,6 @@ import com.example.hci.ui.events.EventsFragment;
 import com.example.hci.ui.profile.ProfileFragment;
 import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
-import com.github.tibolte.agendacalendarview.models.BaseCalendarEvent;
 import com.github.tibolte.agendacalendarview.models.CalendarEvent;
 import com.github.tibolte.agendacalendarview.models.DayItem;
 import java.util.ArrayList;
@@ -96,28 +94,6 @@ public class HomeFragment extends Fragment implements CalendarPickerController {
         });
 
         return root;
-    }
-
-    private void mockList(List<CalendarEvent> eventList) {
-        Calendar startTime1 = Calendar.getInstance();
-        Calendar endTime1 = Calendar.getInstance();
-        endTime1.add(Calendar.MONTH, 1);
-        BaseCalendarEvent event1 = new BaseCalendarEvent("Stefano back to spain",
-                "DESCRIPTION", "PLACE",
-                ContextCompat.getColor(requireContext(), R.color.blue_selected),
-                startTime1, endTime1, true);
-        eventList.add(event1);
-
-        Calendar startTime2 = Calendar.getInstance();
-        startTime2.add(Calendar.DAY_OF_YEAR, 1);
-        Calendar endTime2 = Calendar.getInstance();
-        endTime2.add(Calendar.DAY_OF_YEAR, 3);
-        BaseCalendarEvent event2 =  new BaseCalendarEvent("Manzo clean kitchen",
-                "DESCRIPTION", "PLACE",
-                ContextCompat.getColor(requireContext(), R.color.colorAccent),
-                startTime2, endTime2, false);
-        eventList.add(event2);
-
     }
 
     @Override

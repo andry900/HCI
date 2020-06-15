@@ -2,11 +2,8 @@ package com.example.hci.ui.events;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +12,15 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-
-import com.example.hci.MainActivity;
 import com.example.hci.R;
 import com.example.hci.ui.documents.NotifyPerson;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
-import static androidx.appcompat.app.AlertDialog.*;
 
 public class InsertNewEvent extends Fragment {
     private DatePickerDialog picker;
@@ -147,9 +139,7 @@ public class InsertNewEvent extends Fragment {
         });
 
         //GO TO THE PREVIOUS FRAGMENT
-        prev_button_event.setOnClickListener(v -> {
-            requireActivity().onBackPressed();
-        });
+        prev_button_event.setOnClickListener(v -> requireActivity().onBackPressed());
         return root;
     }
 
