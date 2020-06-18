@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="7dp"
         android:fontFamily="@font/architects_daughter"
         android:gravity="center"
         android:text="@string/insert_new_useful_number"
@@ -120,7 +120,6 @@
 
         <EditText
             android:id="@+id/editText_insert_comment"
-            android:paddingTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@drawable/border"
@@ -129,6 +128,7 @@
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
             android:paddingStart="20dp"
+            android:paddingTop="7dp"
             android:scrollbars="vertical"
             android:textAlignment="viewStart"
             android:textColor="#000"
