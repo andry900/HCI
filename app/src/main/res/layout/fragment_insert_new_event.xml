@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFF">
 
     <TextView
@@ -40,30 +40,42 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:orientation="horizontal"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center">
 
-                <EditText
-                    android:id="@+id/editText_start_event"
+                <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                    android:id="@+id/insert_starting_date_box"
                     android:layout_width="245dp"
                     android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/border"
-                    android:hint="Enter start date"
-                    android:inputType="date"
-                    android:maxLength="10"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textColorHint="#808080"
-                    android:textSize="15sp" />
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    app:borderColor="@color/colorPrimary"
+                    app:borderWidth="1dp"
+                    app:cornerRadius="8dp">
+                        <EditText
+                            android:id="@+id/editText_start_event"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/border"
+                            android:hint="Enter start date"
+                            android:inputType="date"
+                            android:maxLength="10"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textColorHint="#808080"
+                            android:textSize="15sp" />
+                </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
                 <ImageButton
                     android:id="@+id/calStart_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:background="#00FFFFFF"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="10dp"
                     android:src="@mipmap/ic_calendar"/>
             </LinearLayout>
 
@@ -71,59 +83,91 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center">
 
-                <EditText
-                    android:id="@+id/editText_duration_event"
-                    android:layout_height="45dp"
+                <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                    android:id="@+id/insert_name_ending_date_box"
                     android:layout_width="245dp"
-                    android:background="@drawable/border"
-                    android:hint="@string/enter_ending_date"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="#000"
-                    android:textColorHint="#808080"
-                    android:maxLength="10"
-                    android:textSize="15sp"
-                    android:inputType="date"/>
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    app:borderColor="@color/colorPrimary"
+                    app:borderWidth="1dp"
+                    app:cornerRadius="8dp">
+                        <EditText
+                            android:id="@+id/editText_duration_event"
+                            android:layout_height="45dp"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/border"
+                            android:hint="@string/enter_ending_date"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:textColorHint="#808080"
+                            android:maxLength="10"
+                            android:textSize="15sp"
+                            android:inputType="date"/>
+                </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
                 <ImageButton
                     android:id="@+id/calDuration_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:background="#00FFFFFF"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="10dp"
                     android:src="@mipmap/ic_calendar"/>
             </LinearLayout>
 
-            <AutoCompleteTextView
-                android:id="@+id/auto_complete_type_of_event"
+            <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                android:id="@+id/insert_type_of_event_box"
+                android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:layout_width="300dp"
+                android:layout_marginTop="30dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/border"
-                android:hint="@string/type_of_event"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textColorHint="#808080"
-                android:textSize="15sp"
-                android:inputType="text"/>
+                android:gravity="center"
+                app:borderColor="@color/colorPrimary"
+                app:borderWidth="1dp"
+                app:cornerRadius="8dp">
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_complete_type_of_event"
+                        android:layout_height="45dp"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/border"
+                        android:hint="@string/type_of_event"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textColorHint="#808080"
+                        android:textSize="15sp"
+                        android:inputType="text"/>
+            </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
 
-            <EditText
-                android:id="@+id/editText_description_event"
+            <ss.anoop.awesometextinputlayout.AwesomeTextInputLayout
+                android:id="@+id/insert_comment_box"
+                android:layout_width="290dp"
                 android:layout_height="80dp"
-                android:layout_width="300dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/border"
-                android:hint="@string/description"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textColorHint="#808080"
-                android:textSize="15sp"
-                android:inputType="text"/>
+               android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                app:borderColor="@color/colorPrimary"
+                app:borderWidth="1dp"
+                app:cornerRadius="8dp">
+                    <EditText
+                        android:id="@+id/editText_description_event"
+                        android:layout_height="80dp"
+                        android:layout_width="290dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/border"
+                        android:hint="@string/description"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textColorHint="#808080"
+                        android:textSize="15sp"
+                        android:inputType="text"/>
+            </ss.anoop.awesometextinputlayout.AwesomeTextInputLayout>
         </LinearLayout>
 
         <LinearLayout
